@@ -1,7 +1,7 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { ROLES_DB, TAG_DESCRIPTIONS } from './constants';
-import { UserAnswers, MatchResult, FitnessLevel, Role, TagPreference } from './types';
+import { UserAnswers, MatchResult, FitnessLevel } from './types';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import RoleList from './components/RoleList';
@@ -31,30 +31,18 @@ const App: React.FC = () => {
       let hasDealBreaker = false;
       const reasons: string[] = [];
 
-      // משתנים עבור מנוע השילובים (Combos)
-      let positiveComboCount = 0; // כמה דברים שהמשתמש רצה קיימים ביחידה
-      let negativeAvoidanceCount = 0; // כמה דברים שהמשתמש לא רצה באמת חסרים ביחידה (לטובה)
+      let positiveComboCount = 0; 
+      let negativeAvoidanceCount = 0; 
 
-      // 2. סינונים קשיחים (חובה)
+      // 2. סינונים קשיחים
       if (answers.gender === 'female' && !role.tags.toLowerCase().includes('f')) return null;
       if (answers.profile < role.minProfile || answers.dapr < role.minDapr) return null; 
       if (answers.tags['l'] === 'very_no' && role.tags.includes('l')) return null;
 
-      // 3. סינון לפי התרשמות מראיון (קה"ס/התאמה)
+      // 3. סינון לפי התרשמות מראיון
       if (answers.interviewScore === 'low') {
-        const allowedIdsForLowScore = [
-          42, // לוחם חוד ימי
-          49, // תותחנים
-          51, // הגנה אווירית
-          52, // איסוף קרבי
-          53, // פלח"ץ
-          55, // לוחמה במעברים
-          46, // לוחמה אלקטרונית
-          54  // חי"ר גבולות
-        ];
-        if (!allowedIdsForLowScore.includes(role.id)) {
-          return null; // חסימה מוחלטת למי שאינו ברשימה
-        }
+        const allowedIdsForLowScore = [42, 49, 51, 52, 53, 55, 46, 54];
+        if (!allowedIdsForLowScore.includes(role.id)) return null;
       }
 
       const fUser = userFitness;
@@ -74,35 +62,29 @@ const App: React.FC = () => {
 
         let weight = 12;
         if (['a', 'g', 'o', 't', 'd', 'h'].includes(tagKey)) weight = 24;
-
         maxPossibleForThisUser += weight;
-
-        // --- לוגיקה ראשית ואיסוף נתונים לשילובים ---
 
         if (userPref === 'very_yes') {
           if (roleHasFeature) {
-            // התאמה חיובית
             const treatAsPower = hasPowerTag || (tagKey === 'd');
             matchScore += weight * (treatAsPower ? 1.4 : 1.0);
             if (tagKey === 'h' && hasPowerTag) matchScore += 15;
-            
             reasons.push(TAG_DESCRIPTIONS[tagKey]);
-            positiveComboCount++; // סופרים להתאמה משולבת
-          }
-          else matchScore -= weight * 0.3; 
+            positiveComboCount++;
+          } else matchScore -= weight * 0.3; 
         } 
         else if (userPref === 'yes') {
           if (roleHasFeature) {
             matchScore += weight * 0.85;
             reasons.push(TAG_DESCRIPTIONS[tagKey]);
-            positiveComboCount++; // סופרים להתאמה משולבת
+            positiveComboCount++;
           }
         }
         else if (userPref === 'no') {
           if (roleHasFeature) matchScore -= weight * 2.0; 
           else {
             matchScore += weight * 0.4;
-            negativeAvoidanceCount++; // היחידה נקייה ממשהו שהמשתמש לא רצה
+            negativeAvoidanceCount++;
           }
         }
         else if (userPref === 'very_no') {
@@ -111,33 +93,22 @@ const App: React.FC = () => {
             hasDealBreaker = true; 
           } else {
             matchScore += weight * 0.8;
-            negativeAvoidanceCount++; // היחידה נקייה ממשהו שהמשתמש ממש לא רצה
+            negativeAvoidanceCount++;
           }
         }
         else {
-          // Neutral
           if (roleHasFeature) matchScore += weight * 0.2;
           else matchScore += weight * 0.1;
         }
       });
 
-      // --- בונוס שילובים (Combo Bonus) ---
-      
-      // 1. שילוב חיובי: בונוס אקספוננציאלי אם היחידה מכילה מספר דברים שהמשתמש רצה
       if (positiveComboCount >= 2) {
-        // דוגמה: 3 התאמות יתנו בונוס של ~15 נקודות, 4 יתנו ~24
-        const comboBonus = Math.pow(positiveComboCount, 1.5) * 3;
-        matchScore += comboBonus;
+        matchScore += Math.pow(positiveComboCount, 1.5) * 3;
       }
 
-      // 2. שילוב שלילי (Clean Slate): בונוס אם היחידה נקייה ממספר דברים שהמשתמש לא רצה
       if (negativeAvoidanceCount >= 2) {
-        // דוגמה: המשתמש לא רצה טכנולוגיה ולא רצה ימי, וביחידה אין את שניהם -> בונוס
-        const avoidanceBonus = Math.pow(negativeAvoidanceCount, 1.5) * 2.5;
-        matchScore += avoidanceBonus;
+        matchScore += Math.pow(negativeAvoidanceCount, 1.5) * 2.5;
       }
-
-      // --- התאמות נוספות ---
 
       const approachWeight = 40;
       maxPossibleForThisUser += approachWeight;
@@ -154,25 +125,14 @@ const App: React.FC = () => {
 
       if (hasDealBreaker) finalPercentage *= 0.6; 
       
-      // --- חישוב קנסות התרשמות מראיון (לפני ה-Capping הסופי) ---
       if (answers.interviewScore === 'medium') {
-        // התאמה למערך הלחימה: קנס מדורג ליחידות בדירוג 1-33
-        // יחידה בדרג 1 (הכי גבוהה) מקבלת קנס 8%
-        // יחידה בדרג 33 מקבלת קנס 1%
         if (role.rank <= 33) {
-           // נוסחת אינטרפולציה לינארית
-           const penalty = 8 - ((role.rank - 1) * (7 / 32));
-           finalPercentage -= penalty;
+           finalPercentage -= (8 - ((role.rank - 1) * (7 / 32)));
         }
       } else if (answers.interviewScore === 'low') {
-        // התאמה חלקית: קנסות ספציפיים על יחידות שנותרו
-        // חוד ימי (42), לוחמה אלקטרונית (46), חי"ר גבולות (54) -> מינוס 10%
-        if ([42, 46, 54].includes(role.id)) {
-          finalPercentage -= 10;
-        }
+        if ([42, 46, 54].includes(role.id)) finalPercentage -= 10;
       }
 
-      // אם היו הרבה שילובים מוצלחים, אפשר לעבור את ה-100 בחישוב הגולמי, אז נגביל
       finalPercentage = Math.round(Math.max(15, Math.min(99, finalPercentage)));
 
       return {
@@ -183,39 +143,25 @@ const App: React.FC = () => {
     })
     .filter((m): m is MatchResult => m !== null && m.matchPercentage >= 20);
 
-    // שלב ב': שובר שוויון מבוסס יוקרה (Prestige Tie-Breaker)
     const matchesByScore = new Map<number, MatchResult[]>();
-    
-    // קיבוץ לפי ציון
     rawMatches.forEach(m => {
-      if (!matchesByScore.has(m.matchPercentage)) {
-        matchesByScore.set(m.matchPercentage, []);
-      }
+      if (!matchesByScore.has(m.matchPercentage)) matchesByScore.set(m.matchPercentage, []);
       matchesByScore.get(m.matchPercentage)!.push(m);
     });
 
     const finalMatches: MatchResult[] = [];
-    
-    // מעבר על הציונים מהגבוה לנמוך
     const scores = Array.from(matchesByScore.keys()).sort((a, b) => b - a);
     
     scores.forEach(score => {
       const group = matchesByScore.get(score)!;
-      // מיון פנימי לפי דרג (יוקרה): דרג נמוך יותר = יוקרה גבוהה יותר (1 הכי גבוה)
       group.sort((a, b) => a.rank - b.rank);
-      
-      // החלת קנס מדורג כדי לשבור שוויון
       group.forEach((match, index) => {
-        // הראשון (אינדקס 0) נשאר עם הציון המקורי
-        // השני יורד ב-1%, השלישי ב-2% וכן הלאה
         match.matchPercentage = Math.max(0, match.matchPercentage - index);
         finalMatches.push(match);
       });
     });
 
-    // מיון סופי של כל הרשימה לאחר השינויים
     finalMatches.sort((a, b) => b.matchPercentage - a.matchPercentage);
-
     setResults(finalMatches);
     setView('results');
   };
@@ -232,7 +178,6 @@ const App: React.FC = () => {
               </svg>
             </h1>
           </div>
-         
           <nav className="flex gap-4">
             <button onClick={() => setView('intro')} className="text-sm font-medium hover:text-emerald-400 transition-colors">בית</button>
             <button onClick={() => setView('all-roles')} className="text-sm font-medium hover:text-emerald-400 transition-colors">כל התפקידים</button>
@@ -253,24 +198,11 @@ const App: React.FC = () => {
               מערכת התאמה חכמה המנתחת את הפרופיל האישי שלך ומשלבת נתונים פיזיים עם שאיפות מקצועיות למציאת המסלול המדויק ביותר במערך הלוחמה.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button 
-                  onClick={() => setView('quiz')}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 px-12 rounded-2xl shadow-2xl shadow-emerald-900/40 transition-all transform hover:-translate-y-1 active:scale-95"
-                >
-                  התחל אבחון התאמה
-                </button>
-                <button 
-                  onClick={() => setView('all-roles')}
-                  className="bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 font-bold py-5 px-12 rounded-2xl transition-all"
-                >
-                  סקירת כלל היחידות
-                </button>
+                <button onClick={() => setView('quiz')} className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 px-12 rounded-2xl shadow-2xl shadow-emerald-900/40 transition-all transform hover:-translate-y-1 active:scale-95">התחל אבחון התאמה</button>
+                <button onClick={() => setView('all-roles')} className="bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 font-bold py-5 px-12 rounded-2xl transition-all">סקירת כלל היחידות</button>
             </div>
-            
             <div className="mt-24 flex justify-center">
-                <span className="text-[10px] font-mono text-slate-600 font-bold tracking-widest uppercase opacity-70">
-                    גרסת בטא 1.0.0
-                </span>
+                <span className="text-[10px] font-mono text-slate-600 font-bold tracking-widest uppercase opacity-70">גרסת בטא 1.0.0</span>
             </div>
           </div>
         )}
