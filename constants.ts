@@ -1,4 +1,5 @@
-import { Role, FitnessLevel } from './types';
+
+import { Role } from './types';
 
 export const TAG_DESCRIPTIONS: Record<string, string> = {
   'a': 'לוחמה',
@@ -15,9 +16,6 @@ export const TAG_DESCRIPTIONS: Record<string, string> = {
   'n': 'ללא מיון'
 };
 
-// Database of combat roles
-// S = High Intelligence requirement, T = High Technology requirement, A = High Combat intensity, G = Small/Elite Team
-// H = Rowdy/Wild (Power Tag for bonus), F = Mixed
 export const ROLES_DB: Role[] = [
   { id: 1, name: 'טיס', type: 'חיל האוויר', rank: 1, minProfile: 97, minDapr: 80, tags: 'alTSfGd', fitnessRequired: 2 },
   { id: 2, name: 'סיירת מטכ"ל', type: 'חיל היבשה', rank: 2, minProfile: 97, minDapr: 50, tags: 'Alsfgxd', fitnessRequired: 1 },
