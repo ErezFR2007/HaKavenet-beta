@@ -17,7 +17,7 @@ export const TAG_DESCRIPTIONS: Record<string, string> = {
 };
 
 export const ROLES_DB: Role[] = [
-  { id: 1, name: 'טיס', type: 'חיל האוויר', rank: 1, minProfile: 97, minDapr: 80, tags: 'alTSfGd', fitnessRequired: 2 },
+  { id: 1, name: 'טיס', type: 'חיל האוויר', rank: 1, minProfile: 97, minDapr: 70, tags: 'alTSfGd', fitnessRequired: 2 },
   { id: 2, name: 'סיירת מטכ"ל', type: 'חיל היבשה', rank: 2, minProfile: 97, minDapr: 50, tags: 'Alsfgxd', fitnessRequired: 1 },
   { id: 3, name: 'שייטת 13', type: 'חיל הים', rank: 3, minProfile: 97, minDapr: 50, tags: 'Alsogxd', fitnessRequired: 1 },
   { id: 4, name: 'שלד"ג', type: 'חיל האוויר', rank: 4, minProfile: 97, minDapr: 50, tags: 'Altsgxd', fitnessRequired: 1 },
@@ -50,7 +50,7 @@ export const ROLES_DB: Role[] = [
   { id: 30, name: 'לוחם סנפיר', type: 'חיל הים', rank: 31, minProfile: 72, minDapr: 50, tags: 'foG', fitnessRequired: 2 },
   { id: 31, name: 'מודא"ל (מודיעין אלקטרוני)', type: 'חיל האוויר', rank: 32, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 3 },
   { id: 32, name: 'מפעיל ל"א', type: 'חיל האוויר', rank: 33, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 3 },
-  { id: 33, name: 'קצין מודיעין טקטי', type: 'חיל המודיעין', note: 'ייעודי לקצונה', rank: 34, minProfile: 72, minDapr: 80, tags: 'cltSfGx', fitnessRequired: 3 },
+  { id: 33, name: 'קצין מודיעין טקטי', type: 'חיל המודיעין', note: 'ייעודי לקצונה', rank: 34, minProfile: 72, minDapr: 60, tags: 'cltSfGx', fitnessRequired: 3 },
   { id: 34, name: 'קשר"ג', type: 'חיל התקשוב', note: 'ייעודי לקצונה', rank: 35, minProfile: 72, minDapr: 60, tags: 'cltSfg', fitnessRequired: 3 },
   { id: 35, name: 'בז - שריון', type: 'חיל היבשה', note: 'ייעודי לקצונה', rank: 36, minProfile: 72, minDapr: 50, tags: 'Aclgd', fitnessRequired: 2 },
   { id: 36, name: 'מטאור - תותחנים', type: 'חיל היבשה', note: 'ייעודי לקצונה', rank: 37, minProfile: 82, minDapr: 50, tags: 'tsfgd', fitnessRequired: 2 },
