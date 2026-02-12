@@ -125,6 +125,13 @@ const App: React.FC = () => {
 
       if (hasDealBreaker) finalPercentage *= 0.6; 
       
+      // בונוס דפ"ר ליחידות חכמות (s)
+      if (role.tags.toLowerCase().includes('s')) {
+        if (answers.dapr === 70) finalPercentage += 1.5;
+        else if (answers.dapr === 80) finalPercentage += 3;
+        else if (answers.dapr === 90) finalPercentage += 6;
+      }
+
       if (answers.interviewScore === 'medium') {
         if (role.rank <= 33) {
            finalPercentage -= (8 - ((role.rank - 1) * (7 / 32)));
