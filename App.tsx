@@ -28,7 +28,8 @@ const App: React.FC = () => {
     const rawMatches: MatchResult[] = ROLES_DB.map(role => {
       let matchScore = 0;
       let maxPossibleForThisUser = 0;
-      let hasDealBreaker = false;
+      let hasMinorDealBreaker = false;
+      let hasMajorDealBreaker = false;
       const reasons: string[] = [];
 
       let positiveComboCount = 0; 
@@ -81,16 +82,18 @@ const App: React.FC = () => {
           }
         }
         else if (userPref === 'no') {
-          if (roleHasFeature) matchScore -= weight * 2.0; 
-          else {
+          if (roleHasFeature) {
+            matchScore -= weight * 6.0; // עונש מוגדל משמעותית
+            hasMinorDealBreaker = true;
+          } else {
             matchScore += weight * 0.4;
             negativeAvoidanceCount++;
           }
         }
         else if (userPref === 'very_no') {
           if (roleHasFeature) {
-            matchScore -= weight * 4.5; 
-            hasDealBreaker = true; 
+            matchScore -= weight * 15.0; // עונש קריטי
+            hasMajorDealBreaker = true; 
           } else {
             matchScore += weight * 0.8;
             negativeAvoidanceCount++;
@@ -123,7 +126,9 @@ const App: React.FC = () => {
         finalPercentage += (11 - role.rank) * 1.2;
       }
 
-      if (hasDealBreaker) finalPercentage *= 0.6; 
+      // החלת חוסמי התאמה על הציון הסופי
+      if (hasMajorDealBreaker) finalPercentage *= 0.4; // הפחתה של 60% מהציון
+      else if (hasMinorDealBreaker) finalPercentage *= 0.7; // הפחתה של 30% מהציון
       
       // בונוס דפ"ר ליחידות חכמות (s)
       if (role.tags.toLowerCase().includes('s')) {
