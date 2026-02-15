@@ -18,6 +18,36 @@ export interface Role {
   fitnessRequired: FitnessLevel;
 }
 
+export interface CourseStage {
+  title: string;
+  duration?: string;
+  description: string;
+}
+
+export interface SelectionPath {
+  name: string; // שם המסלול (למשל "דרך יום סיירות" או "דרך איתור קדם צבאי")
+  steps: string[]; // רשימת שלבים, למשל ["מיון מקוון", "יום סיירות", "גיבוש"]
+}
+
+export interface YomHameaRequirement {
+  label: string;
+  score: number;
+}
+
+export interface RoleExtendedDetails {
+  description: string;
+  shortDescription?: string;
+  importantNote?: string; // הערה חשובה (כמו חסימת מיונים או ויתור)
+  selectionPaths: SelectionPath[]; // דרכי הגעה ליחידה
+  trainingProcess: CourseStage[]; // שלבי המסלול ביחידה
+  yomHameaRequirements?: YomHameaRequirement[]; // דרישות יום המא"ה
+  stats?: {
+    serviceLength: string; // זמן שירות כולל
+    selectionCount?: string; // מספר שלבי מיון
+    teamSize?: string;
+  };
+}
+
 export type TagPreference = 'very_no' | 'no' | 'neutral' | 'yes' | 'very_yes';
 
 export type InterviewScore = 'high' | 'medium' | 'low';

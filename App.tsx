@@ -1,14 +1,27 @@
 
 import React, { useState } from 'react';
-import { ROLES_DB, TAG_DESCRIPTIONS } from './constants';
-import { UserAnswers, MatchResult, FitnessLevel } from './types';
+import { ROLES_DB, TAG_DESCRIPTIONS, ROLE_EXTENDED_DATA } from './constants';
+import { UserAnswers, MatchResult, FitnessLevel, Role } from './types';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import RoleList from './components/RoleList';
+import RoleDetails from './components/RoleDetails';
 
 const App: React.FC = () => {
-  const [view, setView] = useState<'intro' | 'quiz' | 'results' | 'all-roles'>('intro');
+  const [view, setView] = useState<'intro' | 'quiz' | 'results' | 'all-roles' | 'role-details'>('intro');
   const [results, setResults] = useState<MatchResult[]>([]);
+  const [selectedRoleId, setSelectedRoleId] = useState<number | null>(null);
+
+  const handleRoleSelect = (roleId: number) => {
+    // בודק אם יש מידע מורחב על היחידה
+    if (ROLE_EXTENDED_DATA[roleId]) {
+      setSelectedRoleId(roleId);
+      setView('role-details');
+    } else {
+      // כאן ניתן להוסיף הודעה או התנהגות אחרת אם אין דף ליחידה
+      alert("מידע מורחב על יחידה זו יעלה בקרוב.");
+    }
+  };
 
   const calculateResults = (answers: UserAnswers) => {
     // 1. קביעת רמת כושר המשתמש
@@ -178,6 +191,52 @@ const App: React.FC = () => {
     setView('results');
   };
 
+  const renderContent = () => {
+    if (view === 'role-details' && selectedRoleId !== null) {
+      const role = ROLES_DB.find(r => r.id === selectedRoleId);
+      const details = ROLE_EXTENDED_DATA[selectedRoleId];
+      
+      if (role && details) {
+        return (
+          <RoleDetails 
+            role={role} 
+            details={details} 
+            onBack={() => setView(results.length > 0 ? 'results' : 'all-roles')} 
+          />
+        );
+      }
+    }
+
+    if (view === 'intro') {
+      return (
+          <div className="text-center py-20 animate-in fade-in duration-700">
+            <div className="bg-emerald-500/10 text-emerald-500 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-emerald-500/20 shadow-2xl shadow-emerald-500/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="6"/><line x1="12" x2="12" y1="22" y2="18"/>
+                </svg>
+            </div>
+            <h2 className="text-5xl font-black mb-6 bg-gradient-to-l from-white to-slate-400 bg-clip-text text-transparent">הדרך ליחידה מתחילה כאן.</h2>
+            <p className="text-xl text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed">
+              מערכת התאמה חכמה המנתחת את הפרופיל האישי שלך ומשלבת נתונים פיזיים עם שאיפות מקצועיות למציאת המסלול המדויק ביותר במערך הלוחמה.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <button onClick={() => setView('quiz')} className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 px-12 rounded-2xl shadow-2xl shadow-emerald-900/40 transition-all transform hover:-translate-y-1 active:scale-95">התחל אבחון התאמה</button>
+                <button onClick={() => setView('all-roles')} className="bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 font-bold py-5 px-12 rounded-2xl transition-all">סקירת כלל היחידות</button>
+            </div>
+            <div className="mt-24 flex justify-center">
+                <span className="text-[10px] font-mono text-slate-600 font-bold tracking-widest uppercase opacity-70">גרסת בטא 1.0.0</span>
+            </div>
+          </div>
+      );
+    }
+
+    if (view === 'quiz') return <Quiz onComplete={calculateResults} />;
+    if (view === 'results') return <Results results={results} onRestart={() => setView('quiz')} onRoleClick={handleRoleSelect} />;
+    if (view === 'all-roles') return <RoleList roles={ROLES_DB} onRoleClick={handleRoleSelect} />;
+
+    return null;
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans pb-24 overflow-x-hidden">
       <header className="bg-slate-900/50 backdrop-blur-md border-b border-slate-800 text-white p-6 shadow-lg sticky top-0 z-50">
@@ -198,30 +257,7 @@ const App: React.FC = () => {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 mt-8">
-        {view === 'intro' && (
-          <div className="text-center py-20">
-            <div className="bg-emerald-500/10 text-emerald-500 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-emerald-500/20 shadow-2xl shadow-emerald-500/10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="6"/><line x1="12" x2="12" y1="22" y2="18"/>
-                </svg>
-            </div>
-            <h2 className="text-5xl font-black mb-6 bg-gradient-to-l from-white to-slate-400 bg-clip-text text-transparent">הדרך ליחידה מתחילה כאן.</h2>
-            <p className="text-xl text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed">
-              מערכת התאמה חכמה המנתחת את הפרופיל האישי שלך ומשלבת נתונים פיזיים עם שאיפות מקצועיות למציאת המסלול המדויק ביותר במערך הלוחמה.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button onClick={() => setView('quiz')} className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 px-12 rounded-2xl shadow-2xl shadow-emerald-900/40 transition-all transform hover:-translate-y-1 active:scale-95">התחל אבחון התאמה</button>
-                <button onClick={() => setView('all-roles')} className="bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 font-bold py-5 px-12 rounded-2xl transition-all">סקירת כלל היחידות</button>
-            </div>
-            <div className="mt-24 flex justify-center">
-                <span className="text-[10px] font-mono text-slate-600 font-bold tracking-widest uppercase opacity-70">גרסת בטא 1.0.0</span>
-            </div>
-          </div>
-        )}
-
-        {view === 'quiz' && <Quiz onComplete={calculateResults} />}
-        {view === 'results' && <Results results={results} onRestart={() => setView('quiz')} />}
-        {view === 'all-roles' && <RoleList roles={ROLES_DB} />}
+        {renderContent()}
       </main>
     </div>
   );
