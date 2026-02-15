@@ -18,16 +18,23 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
   }, []);
 
   // Filter results that have a decent match percentage
-  const qualifiedResults = results.filter(r => r.matchPercentage >= 30);
+  const qualifiedResults = results.filter(r => r.matchPercentage >= 20);
   const topMatches = qualifiedResults.slice(0, visibleCount);
   const hasMore = qualifiedResults.length > visibleCount;
 
+  const handleWhatsAppShare = () => {
+    if (!results || results.length === 0) return;
+    
+    const topRole = results[0];
+    const siteUrl = 'https://earnest-banoffee-03307d.netlify.app/';
+    const text = `היי! עשיתי את אבחון היחידות הקרביות ב"הכוונת" ויצא לי שהכי מתאים לי לשרת ב${topRole.name}! 🎯%0A%0Aמעניין איזה תפקיד לוחמה יתאים לכם? כנסו לבדוק כאן באבחון היחידות הלוחמות:%0A${siteUrl}`;
+    window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+  };
+
   const getRoleVisuals = (role: MatchResult) => {
-    // Elite logic: Specifically requested units
     const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלד"ג'];
     const isElite = eliteKeywords.some(k => role.name.includes(k));
 
-    // Special units keywords logic
     const specialKeywords = [
       'חובלים', 'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
       'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'רוכב שמיים', 
@@ -35,10 +42,8 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
     ];
     const isSpecial = specialKeywords.some(k => role.name.includes(k)) && !isElite;
     
-    // Commando logic
     const isCommando = (role.note?.includes('קומנדו') || ['מגלן', 'דובדבן', 'אגוז'].includes(role.name)) && !isElite && !isSpecial;
     
-    // Exclusive logic
     const isInfantry = (role.note?.includes('חי"ר') || (role.name.includes('סיירת') && role.type.includes('יבשה'))) && !isCommando && !isElite && !isSpecial;
     
     let bgColor = 'bg-slate-900/60';
@@ -109,6 +114,27 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
           : 'bg-white/5 border-white/5 text-slate-500';
   };
 
+  if (results.length === 0) {
+    return (
+      <div className="animate-in fade-in zoom-in-95 duration-700 text-center py-20 px-6">
+        <div className="bg-rose-500/10 text-rose-500 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-rose-500/20 shadow-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+        </div>
+        <h2 className="text-4xl font-black text-white mb-6">לא נמצאו יחידות מתאימות</h2>
+        <p className="text-slate-400 text-xl font-medium max-w-xl mx-auto mb-12 leading-relaxed">
+          על פי הנתונים שהזנת (פרופיל, דפ"ר או העדפות), לא נמצאו יחידות קרביות העומדות בדרישות הסף או בהעדפותיך. 
+          אנו ממליצים לבצע את האבחון מחדש ולבדוק את נתוני הסף.
+        </p>
+        <button 
+          onClick={onRestart}
+          className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 px-16 rounded-2xl shadow-xl transition-all transform hover:-translate-y-1"
+        >
+          אבחון חוזר
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="animate-in fade-in zoom-in-95 duration-1000">
       <div className="text-center mb-16 space-y-4">
@@ -122,7 +148,6 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
         {topMatches.map((role) => {
           const visuals = getRoleVisuals(role);
           const barWidth = Math.max(5, 100 - (role.rank * 1.5));
-          // Use explicit type to avoid 'unknown' type inference from Set/Array.from
           const uniqueTagKeys: string[] = Array.from(new Set(role.tags.toLowerCase().split('')));
           
           return (
@@ -181,7 +206,6 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
                   <p className="text-[9px] text-slate-600 font-black uppercase tracking-[0.2em]">מאפיינים מרכזיים:</p>
                   <div className="flex flex-wrap gap-1.5">
                       {uniqueTagKeys.map((tagKey, i) => {
-                          // Fixed: Ensure tagKey is treated as a string for indexing TAG_DESCRIPTIONS
                           const tagDesc = TAG_DESCRIPTIONS[tagKey];
                           if (!tagDesc) return null;
                           return (
@@ -222,14 +246,21 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
 
       <div className="bg-slate-900/40 rounded-[3rem] p-10 md:p-16 text-center border border-slate-800 shadow-3xl relative overflow-hidden group">
         <div className="relative z-10">
-            <h3 className="text-4xl font-black mb-6 text-white">לא מצאת את מה שחיפשת?</h3>
+            <h3 className="text-4xl font-black mb-6 text-white">איך יצא לך? שתף את התוצאה!</h3>
             <p className="mb-12 text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed font-medium">
-                האלגוריתם שלנו משתכלל כל הזמן. ניתן לבצע את המבחן שוב עם דגש על העדפות שונות או לעבור על רשימת היחידות המלאה.
+                הזמן את החברים שלך לבדוק איזו יחידה הכי מתאימה להם במערך הלוחמה.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button 
+                  onClick={handleWhatsAppShare}
+                  className="bg-[#25D366] text-white font-black py-5 px-10 rounded-2xl hover:bg-[#128C7E] transition-all shadow-xl shadow-green-900/20 transform hover:scale-105 active:scale-95 text-lg flex items-center justify-center gap-3"
+              >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.464c1.589.941 3.208 1.441 4.905 1.442 5.347 0 9.697-4.349 9.699-9.698.001-2.592-1.008-5.028-2.844-6.864-1.836-1.837-4.272-2.847-6.864-2.847-5.348 0-9.697 4.349-9.699 9.698-.001 1.832.518 3.619 1.501 5.176l-1.001 3.652 3.737-.981zm11.332-6.852c-.301-.15-1.781-.879-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.179-.175.2-.35.225-.651.075-.3-.15-1.265-.467-2.41-1.488-.891-.795-1.492-1.776-1.667-2.076-.175-.3-.019-.462.13-.611.134-.134.3-.349.45-.524.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.588-.491-.508-.675-.518-.175-.01-.375-.011-.575-.011-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.116 3.23 5.125 4.527.715.308 1.273.492 1.707.63.718.228 1.372.196 1.889.119.577-.087 1.781-.729 2.031-1.429.25-.7.25-1.3.175-1.429-.075-.125-.275-.2-.575-.35z"/></svg>
+                  שתף בוואטסאפ
+              </button>
+              <button 
                   onClick={onRestart}
-                  className="bg-emerald-600 text-white font-black py-5 px-16 rounded-2xl hover:bg-emerald-500 transition-all shadow-xl shadow-emerald-900/40 transform hover:scale-105 active:scale-95 text-lg"
+                  className="bg-slate-900 border border-slate-700 hover:border-slate-500 text-white font-black py-5 px-16 rounded-2xl transition-all shadow-xl transform hover:scale-105 active:scale-95 text-lg"
               >
                   אבחון חוזר
               </button>
