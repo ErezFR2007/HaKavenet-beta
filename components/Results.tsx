@@ -1,14 +1,15 @@
 
 import React, { useEffect, useState } from 'react';
 import { MatchResult } from '../types';
-import { TAG_DESCRIPTIONS } from '../constants';
+import { TAG_DESCRIPTIONS, ROLE_EXTENDED_DATA } from '../constants';
 
 interface ResultsProps {
   results: MatchResult[];
   onRestart: () => void;
+  onRoleClick?: (roleId: number) => void;
 }
 
-const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
+const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) => {
   const [mounted, setMounted] = useState(false);
   const [visibleCount, setVisibleCount] = useState(9);
   
@@ -149,11 +150,13 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
           const visuals = getRoleVisuals(role);
           const barWidth = Math.max(5, 100 - (role.rank * 1.5));
           const uniqueTagKeys: string[] = Array.from(new Set(role.tags.toLowerCase().split('')));
+          const hasDetails = ROLE_EXTENDED_DATA[role.id] !== undefined;
           
           return (
             <div 
               key={role.id} 
-              className={`group ${visuals.bgColor} rounded-[2rem] p-7 border-2 ${visuals.borderColor} hover:scale-[1.02] transition-all duration-500 shadow-2xl relative overflow-hidden flex flex-col`}
+              onClick={() => onRoleClick && onRoleClick(role.id)}
+              className={`group ${visuals.bgColor} rounded-[2rem] p-7 border-2 ${visuals.borderColor} hover:scale-[1.02] transition-all duration-500 shadow-2xl relative overflow-hidden flex flex-col ${hasDetails ? 'cursor-pointer hover:shadow-emerald-900/20' : ''}`}
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="flex-1 h-1.5 bg-black/40 rounded-full overflow-hidden flex ring-1 ring-white/5">
@@ -178,7 +181,7 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
                       {visuals.isCommando && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-rose-500/30 bg-rose-500/10 text-rose-400">קומנדו</span>}
                       {visuals.isInfantry && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">חי"ר</span>}
                   </div>
-                  <h4 className={`text-2xl font-black leading-tight ${visuals.isElite ? 'text-yellow-50 drop-shadow-[0_2px_4px_rgba(234,179,8,0.4)]' : visuals.isCommando ? 'text-rose-50' : visuals.isSpecial ? 'text-purple-50' : 'text-white'}`}>
+                  <h4 className={`text-2xl font-black leading-tight ${visuals.isElite ? 'text-yellow-50 drop-shadow-[0_2px_4px_rgba(234,179,8,0.4)]' : visuals.isCommando ? 'text-rose-50' : visuals.isSpecial ? 'text-purple-50' : 'text-white'} underline decoration-transparent group-hover:decoration-current underline-offset-4 transition-all`}>
                     {role.name}
                   </h4>
                   {role.note && <p className="text-[11px] text-slate-500 mt-1 font-bold italic">{role.note}</p>}
@@ -224,6 +227,14 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart }) => {
                     style={{ width: mounted ? `${role.matchPercentage}%` : '0%' }}
                   />
                 </div>
+                {hasDetails && (
+                    <div className="absolute right-0 -bottom-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-[10px] font-bold text-slate-300 flex items-center gap-1 bg-slate-900/80 px-2 py-1 rounded-full border border-slate-700">
+                            למידע נוסף
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        </span>
+                    </div>
+                )}
               </div>
               
               <div className={`absolute -top-16 -right-16 w-48 h-48 rounded-full blur-[70px] pointer-events-none transition-opacity duration-700 opacity-40 group-hover:opacity-100 ${visuals.glowColor}`} />

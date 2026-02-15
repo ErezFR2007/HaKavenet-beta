@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { Role } from '../types';
-import { TAG_DESCRIPTIONS } from '../constants';
+import { TAG_DESCRIPTIONS, ROLE_EXTENDED_DATA } from '../constants';
 
 interface RoleListProps {
   roles: Role[];
+  onRoleClick?: (roleId: number) => void;
 }
 
-const RoleList: React.FC<RoleListProps> = ({ roles }) => {
+const RoleList: React.FC<RoleListProps> = ({ roles, onRoleClick }) => {
   const getRankStyle = (rank: number) => {
     if (rank <= 4) return 'bg-gradient-to-br from-yellow-400 to-yellow-600 border-yellow-300 text-white shadow-[0_0_15px_rgba(234,179,8,0.3)]';
     if (rank <= 24) return 'bg-gradient-to-br from-orange-50 via-slate-100 to-amber-200 border-orange-100 text-amber-900 font-black';
@@ -78,6 +79,7 @@ const RoleList: React.FC<RoleListProps> = ({ roles }) => {
                 const uniqueTags: string[] = Array.from(new Set(role.tags.toLowerCase().split('')));
                 const branchColorClass = getBranchColor(role.type);
                 const status = getRoleStatus(role);
+                const hasDetails = ROLE_EXTENDED_DATA[role.id] !== undefined;
                 
                 // Logic to hide note if it is redundant with the badge
                 let displayNote = role.note;
@@ -89,7 +91,11 @@ const RoleList: React.FC<RoleListProps> = ({ roles }) => {
                 }
                 
                 return (
-                  <tr key={role.id} className={`transition-all group border-r-4 border-transparent hover:bg-slate-800/30 ${getBranchBorder(role.type).replace('hover:border', 'hover:border-r')}`}>
+                  <tr 
+                    key={role.id} 
+                    onClick={() => onRoleClick && onRoleClick(role.id)}
+                    className={`transition-all group border-r-4 border-transparent hover:bg-slate-800/30 ${getBranchBorder(role.type).replace('hover:border', 'hover:border-r')} ${hasDetails ? 'cursor-pointer' : ''}`}
+                  >
                     <td className="p-6">
                         <div className={`flex items-center justify-center w-10 h-10 rounded-xl border font-black text-sm transition-transform group-hover:scale-110 ${getRankStyle(role.rank)}`}>
                             {role.rank}
@@ -98,7 +104,7 @@ const RoleList: React.FC<RoleListProps> = ({ roles }) => {
                     <td className="p-6">
                       <div className="flex flex-col">
                         <div className="flex items-center gap-2 flex-wrap">
-                            <span className={`font-black text-lg transition-colors group-hover:${branchColorClass} text-slate-100`}>
+                            <span className={`font-black text-lg transition-colors group-hover:${branchColorClass} text-slate-100 underline decoration-transparent group-hover:decoration-current underline-offset-4`}>
                                 {role.name}
                             </span>
                             {status === 'elite' && <span className="text-[8px] font-black uppercase tracking-tighter px-1.5 py-0.5 rounded border border-yellow-500/50 bg-yellow-500/20 text-yellow-400">עילית</span>}
@@ -136,6 +142,12 @@ const RoleList: React.FC<RoleListProps> = ({ roles }) => {
                     </td>
                     <td className="p-6 hidden sm:table-cell">
                         <div className={`text-sm font-bold ${branchColorClass}`}>{role.type}</div>
+                        {hasDetails && (
+                           <div className="text-[9px] text-slate-500 mt-1 flex items-center gap-1 group-hover:text-slate-300 transition-colors">
+                             לפרטים
+                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                           </div>
+                        )}
                     </td>
                   </tr>
                 );
