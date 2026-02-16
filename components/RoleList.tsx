@@ -35,7 +35,7 @@ const RoleList: React.FC<RoleListProps> = ({ roles, onRoleClick }) => {
   };
 
   const getRoleStatus = (role: Role) => {
-    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלד"ג'];
+    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלדג'];
     const specialKeywords = [
       'חובלים', 'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
       'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '669'

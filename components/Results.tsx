@@ -33,7 +33,7 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
   };
 
   const getRoleVisuals = (role: MatchResult) => {
-    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלד"ג'];
+    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלדג'];
     const isElite = eliteKeywords.some(k => role.name.includes(k));
 
     const specialKeywords = [
