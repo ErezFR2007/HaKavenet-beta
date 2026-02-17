@@ -16,12 +16,13 @@ const RoleDetails: React.FC<RoleDetailsProps> = ({ role, details, onBack }) => {
   }, []);
 
   const getRoleStatus = (role: Role) => {
-    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלדג'];
+    const eliteKeywords = ['מטכ"ל', 'שייטת 13', 'שלדג', '669'];
     const specialKeywords = [
-      'חובלים', 'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
-      'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '669'
+      'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
+      'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '444'
     ];
     
+    if (['טיס', 'חובלים', 'תוכנית ארז'].some(k => role.name.includes(k))) return 'prestige';
     if (eliteKeywords.some(k => role.name.includes(k))) return 'elite';
     if (role.note?.includes('קומנדו') || ['מגלן', 'דובדבן', 'אגוז'].includes(role.name)) return 'commando';
     if (specialKeywords.some(k => role.name.includes(k))) return 'special';
@@ -54,6 +55,12 @@ const RoleDetails: React.FC<RoleDetailsProps> = ({ role, details, onBack }) => {
                <span className="bg-slate-950/50 border border-slate-600 text-slate-300 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest backdrop-blur-sm">
                  {role.type}
                </span>
+
+               {status === 'prestige' && (
+                 <span className="bg-amber-400/10 border border-amber-300/40 text-amber-200 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest backdrop-blur-sm shadow-[0_0_20px_rgba(251,191,36,0.4)] ring-1 ring-amber-300/20">
+                   מסלול יוקרה
+                 </span>
+               )}
                
                {status === 'elite' && (
                  <span className="bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest backdrop-blur-sm shadow-[0_0_15px_rgba(234,179,8,0.2)]">

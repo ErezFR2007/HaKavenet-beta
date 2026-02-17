@@ -10,7 +10,7 @@ interface RoleListProps {
 
 const RoleList: React.FC<RoleListProps> = ({ roles, onRoleClick }) => {
   const getRankStyle = (rank: number) => {
-    if (rank <= 4) return 'bg-gradient-to-br from-yellow-400 to-yellow-600 border-yellow-300 text-white shadow-[0_0_15px_rgba(234,179,8,0.3)]';
+    if (rank <= 5) return 'bg-gradient-to-br from-yellow-400 to-yellow-600 border-yellow-300 text-white shadow-[0_0_15px_rgba(234,179,8,0.3)]';
     if (rank <= 24) return 'bg-gradient-to-br from-orange-50 via-slate-100 to-amber-200 border-orange-100 text-amber-900 font-black';
     if (rank <= 37) return 'bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 border-slate-100 text-slate-900 shadow-[0_0_10px_rgba(203,213,225,0.2)]';
     return 'bg-slate-800 border-slate-700 text-slate-400';
@@ -35,12 +35,13 @@ const RoleList: React.FC<RoleListProps> = ({ roles, onRoleClick }) => {
   };
 
   const getRoleStatus = (role: Role) => {
-    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלדג'];
+    const eliteKeywords = ['מטכ"ל', 'שייטת 13', 'שלדג', '669'];
     const specialKeywords = [
-      'חובלים', 'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
-      'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '669'
+      'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
+      'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '444'
     ];
     
+    if (['טיס', 'חובלים', 'תוכנית ארז'].some(k => role.name.includes(k))) return 'prestige';
     if (eliteKeywords.some(k => role.name.includes(k))) return 'elite';
     if (role.note?.includes('קומנדו') || ['מגלן', 'דובדבן', 'אגוז'].includes(role.name)) return 'commando';
     if (specialKeywords.some(k => role.name.includes(k))) return 'special';
@@ -107,6 +108,7 @@ const RoleList: React.FC<RoleListProps> = ({ roles, onRoleClick }) => {
                             <span className={`font-black text-lg transition-colors group-hover:${branchColorClass} text-slate-100 underline decoration-transparent group-hover:decoration-current underline-offset-4`}>
                                 {role.name}
                             </span>
+                            {status === 'prestige' && <span className="text-[8px] font-black uppercase tracking-tighter px-1.5 py-0.5 rounded border border-amber-300/50 bg-amber-400/20 text-amber-300 shadow-[0_0_6px_rgba(251,191,36,0.4)]">מסלול יוקרה</span>}
                             {status === 'elite' && <span className="text-[8px] font-black uppercase tracking-tighter px-1.5 py-0.5 rounded border border-yellow-500/50 bg-yellow-500/20 text-yellow-400">עילית</span>}
                             {status === 'commando' && <span className="text-[8px] font-black uppercase tracking-tighter px-1.5 py-0.5 rounded border border-rose-500/50 bg-rose-500/20 text-rose-400">קומנדו</span>}
                             {status === 'special' && <span className="text-[8px] font-black uppercase tracking-tighter px-1.5 py-0.5 rounded border border-purple-500/50 bg-purple-500/20 text-purple-400">מיוחדת</span>}

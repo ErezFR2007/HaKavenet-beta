@@ -33,19 +33,20 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
   };
 
   const getRoleVisuals = (role: MatchResult) => {
-    const eliteKeywords = ['טיס', 'מטכ"ל', 'שייטת 13', 'שלדג'];
+    const eliteKeywords = ['מטכ"ל', 'שייטת 13', 'שלדג', '669'];
     const isElite = eliteKeywords.some(k => role.name.includes(k));
+    const isPrestige = ['טיס', 'חובלים', 'תוכנית ארז'].some(k => role.name.includes(k));
 
     const specialKeywords = [
-      'חובלים', 'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
+      'צוללות', '504', 'קודקוד', 'ימ"ס', 'רפאים', 'יהל"ם', 'זיק', 
       'עוקץ', '5515', 'לוט"ר', 'מיתר', 'מורן', 'מלא"ר', 'רוכ"ש', 'רוכב שמיים', 
-      'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '444', '669'
+      'ילת"ם', 'ל"א', 'מודא"ל', 'מנחית סער', '444'
     ];
-    const isSpecial = specialKeywords.some(k => role.name.includes(k)) && !isElite;
+    const isSpecial = specialKeywords.some(k => role.name.includes(k)) && !isElite && !isPrestige;
     
-    const isCommando = (role.note?.includes('קומנדו') || ['מגלן', 'דובדבן', 'אגוז'].includes(role.name)) && !isElite && !isSpecial;
+    const isCommando = (role.note?.includes('קומנדו') || ['מגלן', 'דובדבן', 'אגוז'].includes(role.name)) && !isElite && !isSpecial && !isPrestige;
     
-    const isInfantry = (role.note?.includes('חי"ר') || (role.name.includes('סיירת') && role.type.includes('יבשה'))) && !isCommando && !isElite && !isSpecial;
+    const isInfantry = (role.note?.includes('חי"ר') || (role.name.includes('סיירת') && role.type.includes('יבשה'))) && !isCommando && !isElite && !isSpecial && !isPrestige;
     
     let bgColor = 'bg-slate-900/60';
     let borderColor = 'border-slate-800';
@@ -53,7 +54,13 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
     let accentColor = 'text-emerald-500';
     let barGradient = 'from-emerald-400 to-emerald-600';
 
-    if (isElite) {
+    if (isPrestige) {
+      bgColor = 'bg-slate-900/95';
+      borderColor = 'border-amber-300/60';
+      glowColor = 'bg-amber-400/20';
+      accentColor = 'text-amber-300';
+      barGradient = 'from-amber-100 via-yellow-400 to-amber-600';
+    } else if (isElite) {
       bgColor = 'bg-slate-900/90';
       borderColor = 'border-yellow-500/60';
       glowColor = 'bg-yellow-500/20';
@@ -82,11 +89,11 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
       }
     }
 
-    return { bgColor, borderColor, glowColor, accentColor, barGradient, isElite, isCommando, isInfantry, isSpecial };
+    return { bgColor, borderColor, glowColor, accentColor, barGradient, isElite, isPrestige, isCommando, isInfantry, isSpecial };
   };
 
   const getPrestigeBarGradient = (rank: number) => {
-    if (rank <= 4) return 'from-yellow-300 via-amber-400 to-yellow-600';
+    if (rank <= 5) return 'from-yellow-300 via-amber-400 to-yellow-600';
     if (rank <= 24) return 'from-orange-200 via-slate-200 to-amber-300';
     if (rank <= 36) return 'from-slate-200 via-slate-300 to-slate-400';
     return 'from-slate-600 to-slate-800';
@@ -100,14 +107,15 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
     }
 
     if (isPowerTag) {
+        if (visuals.isPrestige) return 'bg-amber-500/10 border-amber-500/30 text-amber-100 font-bold';
         if (visuals.isElite) return 'bg-yellow-500/10 border-yellow-500/30 text-yellow-100 font-bold';
         if (visuals.isCommando) return 'bg-rose-500/10 border-rose-500/30 text-rose-100 font-bold';
         if (visuals.isSpecial) return 'bg-purple-500/10 border-purple-500/30 text-purple-100 font-bold';
         return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-100 font-bold';
     }
     
-    return visuals.isElite 
-      ? 'bg-white/5 border-white/5 text-yellow-500/50' 
+    return visuals.isElite || visuals.isPrestige
+      ? 'bg-white/5 border-white/5 text-slate-300/70' 
       : visuals.isCommando 
         ? 'bg-white/5 border-white/5 text-rose-400/50' 
         : visuals.isSpecial
@@ -176,12 +184,13 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
                       <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border ${visuals.borderColor} bg-black/30 text-slate-400`}>
                           {role.type}
                       </span>
+                      {visuals.isPrestige && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-amber-300/50 bg-amber-400/20 text-amber-200 shadow-[0_0_10px_rgba(252,211,77,0.4)]">מסלול יוקרה</span>}
                       {visuals.isElite && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-yellow-500/50 bg-yellow-500/20 text-yellow-400">עילית</span>}
                       {visuals.isSpecial && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-purple-500/50 bg-purple-500/20 text-purple-400">מיוחדת</span>}
                       {visuals.isCommando && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-rose-500/30 bg-rose-500/10 text-rose-400">קומנדו</span>}
                       {visuals.isInfantry && <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">חי"ר</span>}
                   </div>
-                  <h4 className={`text-2xl font-black leading-tight ${visuals.isElite ? 'text-yellow-50 drop-shadow-[0_2px_4px_rgba(234,179,8,0.4)]' : visuals.isCommando ? 'text-rose-50' : visuals.isSpecial ? 'text-purple-50' : 'text-white'} underline decoration-transparent group-hover:decoration-current underline-offset-4 transition-all`}>
+                  <h4 className={`text-2xl font-black leading-tight ${visuals.isPrestige ? 'text-amber-50 drop-shadow-[0_2px_10px_rgba(251,191,36,0.6)]' : visuals.isElite ? 'text-yellow-50 drop-shadow-[0_2px_4px_rgba(234,179,8,0.4)]' : visuals.isCommando ? 'text-rose-50' : visuals.isSpecial ? 'text-purple-50' : 'text-white'} underline decoration-transparent group-hover:decoration-current underline-offset-4 transition-all`}>
                     {role.name}
                   </h4>
                   {role.note && <p className="text-[11px] text-slate-500 mt-1 font-bold italic">{role.note}</p>}
@@ -266,7 +275,7 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
                   onClick={handleWhatsAppShare}
                   className="bg-[#25D366] text-white font-black py-5 px-10 rounded-2xl hover:bg-[#128C7E] transition-all shadow-xl shadow-green-900/20 transform hover:scale-105 active:scale-95 text-lg flex items-center justify-center gap-3"
               >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.464c1.589.941 3.208 1.441 4.905 1.442 5.347 0 9.697-4.349 9.699-9.698.001-2.592-1.008-5.028-2.844-6.864-1.836-1.837-4.272-2.847-6.864-2.847-5.348 0-9.697 4.349-9.699 9.698-.001 1.832.518 3.619 1.501 5.176l-1.001 3.652 3.737-.981zm11.332-6.852c-.301-.15-1.781-.879-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.179-.175.2-.35.225-.651.075-.3-.15-1.265-.467-2.41-1.488-.891-.795-1.492-1.776-1.667-2.076-.175-.3-.019-.462.13-.611.134-.134.3-.349.45-.524.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.588-.491-.508-.675-.518-.175-.01-.375-.011-.575-.011-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.116 3.23 5.125 4.527.715.308 1.273.492 1.707.63.718.228 1.372.196 1.889.119.577-.087 1.781-.729 2.031-1.429.25-.7.25-1.3.175-1.429-.075-.125-.275-.2-.575-.35z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.464c1.589.941 3.208 1.441 4.905 1.442 5.347 0 9.697-4.349 9.699-9.698.001-2.592-1.008-5.028-2.844-6.864-1.836-1.837-4.272-2.847-6.864-2.847-5.348 0-9.697 4.349-9.699 9.698-.001 1.832.518 3.619 1.501 5.176l-1.001 3.652 3.737-.981zm11.332-6.852c-.301-.15-1.781-.879-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.179-.175.2-.35.225-.651.075-.3-.15-1.265-.467-2.41-1.488-.891-.795-1.492-1.776-1.667-2.076-.175-.3-.019-.462.13-.611.134-.134.3-.349.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.588-.491-.508-.675-.518-.175-.01-.375-.011-.575-.011-.2 0-.525.075-.8.375-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.116 3.23 5.125 4.527.715.308 1.273.492 1.707.63.718.228 1.372.196 1.889.119.577-.087 1.781-.729 2.031-1.429.25-.7.25-1.3.175-1.429-.075-.125-.275-.2-.575-.35z"/></svg>
                   שתף בוואטסאפ
               </button>
               <button 
