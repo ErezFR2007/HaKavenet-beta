@@ -27,7 +27,7 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
     if (!results || results.length === 0) return;
     
     const topRole = results[0];
-    const siteUrl = 'https://earnest-banoffee-03307d.netlify.app/';
+    const siteUrl = 'https://www.hakavenet-idf.co.il/';
     const text = `היי! עשיתי את אבחון היחידות הקרביות ב"הכוונת" ויצא לי שהכי מתאים לי לשרת ב${topRole.name}! 🎯%0A%0Aמעניין איזה תפקיד לוחמה יתאים לכם? כנסו לבדוק כאן באבחון היחידות הלוחמות:%0A${siteUrl}`;
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
@@ -337,6 +337,15 @@ const Results: React.FC<ResultsProps> = ({ results, onRestart, onRoleClick }) =>
             </div>
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent pointer-events-none" />
+      </div>
+
+      {/* הערת אזהרה/הסתייגות */}
+      <div className="mt-8 mb-4 text-center px-4">
+        <p className="text-[11px] text-stone-400 dark:text-slate-500 font-medium leading-relaxed opacity-70">
+          * שימו לב: תוצאות ההתאמה מוצגות כהמלצה ולהכוונה כללית בלבד, ומבוססות על אלגוריתם עצמאי. 
+          <br className="hidden sm:block" />
+          המערכת אינה חפה מטעויות, ואינה מהווה קביעה מוחלטת, הבטחה לשיבוץ או תחליף להליכי המיון הרשמיים של צה״ל.
+        </p>
       </div>
     </div>
   );
