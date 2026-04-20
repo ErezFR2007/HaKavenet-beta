@@ -11,68 +11,91 @@ export const TAG_DESCRIPTIONS: Record<string, string> = {
   'f': 'מעורב',
   'o': 'ימי',
   'g': 'צוות קטן',
-  'h': 'פרוע',
+  'h': 'חברתי',
   'x': 'מסווג',
-  'n': 'ללא מיון'
+  'n': 'ללא מיון',
+  'field_op': 'הפעלת מערכות בשטח',
+  'sea': 'סביבה ימית',
+  'air': 'חיל האוויר',
+  'elite_aspiration': 'יחידות מובחרות',
+  'cool_headed': 'קור רוח',
+  'air_force': 'חיל האוויר',
+  'arab_pop': 'אוכלוסייה עוינת',
+  'explosives': 'חבלה ותת-קרקע',
+  'rescue': 'חילוץ והצלה',
+  'tech_innovation': 'טכנולוגיה וחדשנות',
+  'animals': 'בעלי חיים',
+  'protection': 'הגנה ואבטחה',
+  'infantry_affinity': 'זיקה לחי"ר',
+  'remote_vs_close': 'השמדה מרחוק',
+  'top_fitness': 'כושר שיא',
+  'physical_tests': 'גיבושים ומבדקים פיזיים',
+  'defense_vs_attack': 'הגנה ושמירה'
 };
 
 export const ROLES_DB: Role[] = [
-  { id: 1, name: 'טיס', type: 'חיל האוויר', rank: 1, minProfile: 97, minDapr: 60, tags: 'alTSfGd', fitnessRequired: 2 },
-  { id: 2, name: 'סיירת מטכ"ל', type: 'חיל המודיעין', rank: 2, minProfile: 97, minDapr: 50, tags: 'Alsfgxd', fitnessRequired: 1 },
-  { id: 3, name: 'שייטת 13', type: 'חיל הים', rank: 3, minProfile: 97, minDapr: 50, tags: 'Alsogxd', fitnessRequired: 1 },
-  { id: 4, name: 'שלדג', type: 'חיל האוויר', rank: 4, minProfile: 97, minDapr: 50, tags: 'Altsgxd', fitnessRequired: 1 },
-  { id: 5, name: 'לוחם 669', type: 'חיל האוויר', rank: 5, minProfile: 97, minDapr: 50, tags: 'Alfgd', fitnessRequired: 1 },
-  { id: 6, name: 'חובלים', type: 'חיל הים', note: 'ייעודי לקצונה', rank: 6, minProfile: 82, minDapr: 60, tags: 'cltSfoG', fitnessRequired: 2 },
-  { id: 7, name: 'שייטת 7 (צוללות)', type: 'חיל הים', rank: 7, minProfile: 82, minDapr: 60, tags: 'lTSoGx', fitnessRequired: 3 },
-  { id: 8, name: 'מגלן', type: 'חיל היבשה', note: 'קומנדו', rank: 8, minProfile: 82, minDapr: 50, tags: 'Altsgd', fitnessRequired: 1 },
-  { id: 9, name: 'דובדבן', type: 'חיל היבשה', note: 'קומנדו', rank: 9, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
-  { id: 10, name: 'אגוז', type: 'חיל היבשה', note: 'קומנדו', rank: 10, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
+  { id: 1, slug: 'tays', name: 'טיס', type: 'חיל האוויר', rank: 1, minProfile: 97, minDapr: 60, tags: 'alTSfGxd', fitnessRequired: 3 },
+  { id: 2, slug: 'sayeret-matkal', name: 'סיירת מטכ"ל', type: 'חיל המודיעין', rank: 2, minProfile: 97, minDapr: 50, tags: 'Altsfgxd', fitnessRequired: 1 },
+  { id: 3, slug: 'shayetet-13', name: 'שייטת 13', type: 'חיל הים', rank: 3, minProfile: 97, minDapr: 50, tags: 'Altsogxd', fitnessRequired: 1 },
+  { id: 4, slug: 'shaldag', name: 'שלדג', type: 'חיל האוויר', rank: 4, minProfile: 97, minDapr: 50, tags: 'Altsgxd', fitnessRequired: 1 },
+  { id: 5, slug: 'unit-669', name: 'לוחם 669', type: 'חיל האוויר', rank: 5, minProfile: 97, minDapr: 50, tags: 'Alfgd', fitnessRequired: 1 },
+  { id: 6, slug: 'hovlim', name: 'חובלים', type: 'חיל הים', note: 'ייעודי לקצונה', rank: 6, minProfile: 82, minDapr: 60, tags: 'cltSfoG', fitnessRequired: 2 },
+  { id: 7, slug: 'tsololoth', name: 'שייטת 7 (צוללות)', type: 'חיל הים', rank: 7, minProfile: 82, minDapr: 60, tags: 'lTSoGx', fitnessRequired: 3 },
+  { id: 8, name: 'מגלן', type: 'חטיבת הקומנדו', rank: 8, minProfile: 82, minDapr: 50, tags: 'Altsgxd', fitnessRequired: 1 },
+  { id: 9, name: 'דובדבן', type: 'חטיבת הקומנדו', rank: 9, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
+  { id: 10, name: 'אגוז', type: 'חטיבת הקומנדו', rank: 10, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
   { id: 11, name: 'לוחם 504', type: 'חיל המודיעין', rank: 11, minProfile: 82, minDapr: 50, tags: 'atSGxd', fitnessRequired: 2 },
-  { id: 12, name: 'לוחם קודקוד (קורל)', type: 'חיל האוויר', rank: 12, minProfile: 82, minDapr: 50, tags: 'TSGx', fitnessRequired: 2 },
-  { id: 13, name: 'תוכנית ארז', type: 'חיל היבשה', note: 'ייעודי לקצונה', rank: 13, minProfile: 82, minDapr: 50, tags: 'aclGd', fitnessRequired: 2 },
-  { id: 14, name: 'ימ"ס', type: 'חיל היבשה', rank: 14, minProfile: 82, minDapr: 30, tags: 'AgHxd', fitnessRequired: 1 },
-  { id: 15, name: 'יהל"ם', type: 'חיל היבשה', rank: 15, minProfile: 82, minDapr: 30, tags: 'Atsfd', fitnessRequired: 2 },
-  { id: 22, name: 'עוקץ', type: 'חיל היבשה', rank: 16, minProfile: 82, minDapr: 30, tags: 'AlfGd', fitnessRequired: 2 },
-  { id: 16, name: 'סיירת צנחנים', type: 'חיל היבשה', rank: 17, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 1 },
-  { id: 17, name: 'סיירת גולני', type: 'חיל היבשה', rank: 18, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 1 },
-  { id: 19, name: 'סיירת גבעתי', type: 'חיל היבשה', rank: 19, minProfile: 82, minDapr: 30, tags: 'Ahd', fitnessRequired: 2 },
-  { id: 18, name: 'סיירת נח"ל', type: 'חיל היבשה', rank: 20, minProfile: 82, minDapr: 30, tags: 'Ad', fitnessRequired: 2 },
-  { id: 20, name: 'סיירת חרוב', type: 'חיל היבשה', rank: 21, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
-  { id: 21, name: 'זיק - תותחנים', type: 'חיל היבשה', rank: 22, minProfile: 72, minDapr: 70, tags: 'TSfGx', fitnessRequired: 3 },
-  { id: 23, name: 'רפאים', type: 'חיל היבשה', rank: 23, minProfile: 82, minDapr: 40, tags: 'atfg', fitnessRequired: 1 },
-  { id: 24, name: 'יחידת הניוד 5515', type: 'חיל היבשה', rank: 24, minProfile: 82, minDapr: 30, tags: 'agxd', fitnessRequired: 2 },
-  { id: 25, name: 'לוט"ר', type: 'חיל היבשה', rank: 25, minProfile: 82, minDapr: 50, tags: 'acfg', fitnessRequired: 2 },
-  { id: 26, name: 'מיתר - תותחנים', type: 'חיל היבשה', rank: 26, minProfile: 72, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
-  { id: 27, name: 'מורן - תותחנים', type: 'חיל היבשה', rank: 27, minProfile: 72, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
-  { id: 56, name: 'מלא"ר - שריון', type: 'חיל היבשה', rank: 28, minProfile: 82, minDapr: 50, tags: 'aTsfg', fitnessRequired: 2 },
-  { id: 28, name: 'רוכ"ש - תותחנים', type: 'חיל היבשה', rank: 29, minProfile: 82, minDapr: 50, tags: 'aTsfgd', fitnessRequired: 2 },
-  { id: 29, name: 'ילת"ם', type: 'חיל הים', rank: 30, minProfile: 72, minDapr: 50, tags: 'tfoG', fitnessRequired: 2 },
-  { id: 30, name: 'לוחם סנפיר', type: 'חיל הים', rank: 31, minProfile: 72, minDapr: 50, tags: 'foG', fitnessRequired: 2 },
-  { id: 31, name: 'מודא"ל (מודיעין אלקטרוני)', type: 'חיל האוויר', rank: 32, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 3 },
-  { id: 32, name: 'מפעיל ל"א', type: 'חיל האוויר', rank: 33, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 3 },
-  { id: 33, name: 'קצין מודיעין טקטי', type: 'חיל המודיעין', note: 'ייעודי לקצונה', rank: 34, minProfile: 72, minDapr: 60, tags: 'cltSfGx', fitnessRequired: 3 },
-  { id: 34, name: 'קשר"ג', type: 'חיל התקשוב', note: 'ייעודי לקצונה', rank: 35, minProfile: 72, minDapr: 60, tags: 'cltSfg', fitnessRequired: 3 },
-  { id: 35, name: 'בז - שריון', type: 'חיל היבשה', note: 'ייעודי לקצונה', rank: 36, minProfile: 72, minDapr: 50, tags: 'Aclgd', fitnessRequired: 2 },
-  { id: 36, name: 'מטאור - תותחנים', type: 'חיל היבשה', note: 'ייעודי לקצונה', rank: 37, minProfile: 82, minDapr: 50, tags: 'tsfgd', fitnessRequired: 2 },
-  { id: 37, name: 'צנחנים', type: 'חיל היבשה', note: 'חי"ר', rank: 38, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 2 },
-  { id: 38, name: 'גולני', type: 'חיל היבשה', note: 'חי"ר', rank: 39, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 2 },
-  { id: 39, name: 'גבעתי', type: 'חיל היבשה', note: 'חי"ר', rank: 40, minProfile: 82, minDapr: 30, tags: 'Ahdn', fitnessRequired: 2 },
-  { id: 40, name: 'נח"ל', type: 'חיל היבשה', note: 'חי"ר', rank: 41, minProfile: 82, minDapr: 30, tags: 'Adn', fitnessRequired: 2 },
-  { id: 41, name: 'כפיר', type: 'חיל היבשה', note: 'חי"ר', rank: 42, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 2 },
-  { id: 42, name: 'לוחם חוד ימי', type: 'חיל הים', rank: 43, minProfile: 72, minDapr: 30, tags: 'tfog', fitnessRequired: 3 },
-  { id: 43, name: 'מג"ב', type: 'חיל היבשה', rank: 44, minProfile: 82, minDapr: 30, tags: 'afHdn', fitnessRequired: 2 },
-  { id: 44, name: 'מנחית סער קדמי', type: 'חיל האוויר', rank: 45, minProfile: 82, minDapr: 50, tags: 'fg', fitnessRequired: 3 },
-  { id: 45, name: 'יחידת הניוד 444', type: 'חיל היבשה', rank: 46, minProfile: 82, minDapr: 30, tags: 'gh', fitnessRequired: 3 },
-  { id: 46, name: 'לוחמה אלקטרונית', type: 'חיל התקשוב', rank: 47, minProfile: 72, minDapr: 40, tags: 'tfx', fitnessRequired: 4 },
-  { id: 47, name: 'הנדסה קרבית', type: 'חיל היבשה', rank: 48, minProfile: 82, minDapr: 40, tags: 'Atdn', fitnessRequired: 3 },
-  { id: 48, name: 'שריון', type: 'חיל היבשה', rank: 49, minProfile: 72, minDapr: 40, tags: 'Atdn', fitnessRequired: 3 },
-  { id: 49, name: 'תותחנים', type: 'חיל היבשה', rank: 50, minProfile: 72, minDapr: 40, tags: 'tfnf', fitnessRequired: 4 },
-  { id: 50, name: 'מסייעת שריון', type: 'חיל היבשה', rank: 51, minProfile: 82, minDapr: 30, tags: 'Adn', fitnessRequired: 2 },
-  { id: 51, name: 'הגנה אווירית', type: 'חיל היבשה', rank: 52, minProfile: 72, minDapr: 40, tags: 'Tfnf', fitnessRequired: 4 },
-  { id: 52, name: 'איסוף קרבי', type: 'חיל היבשה', rank: 53, minProfile: 72, minDapr: 30, tags: 'tfnf', fitnessRequired: 4 },
-  { id: 53, name: 'פלח"ץ (חילוץ והצלה)', type: 'חיל היבשה', rank: 54, minProfile: 72, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
-  { id: 54, name: 'חי"ר גבולות', type: 'חיל היבשה', rank: 55, minProfile: 72, minDapr: 30, tags: 'fhn', fitnessRequired: 3 },
-  { id: 55, name: 'לוחמה במעברים', type: 'חיל היבשה', rank: 56, minProfile: 72, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
+  { id: 12, name: 'לוחם קודקוד (קורל)', type: 'חיל האוויר', rank: 12, minProfile: 82, minDapr: 50, tags: 'TSGx', fitnessRequired: 3 },
+  { id: 13, name: 'תוכנית ארז', type: 'זרוע היבשה', note: 'ייעודי לקצונה', rank: 13, minProfile: 82, minDapr: 50, tags: 'aclGd', fitnessRequired: 2 },
+  
+  // שינוי סדר: 5515 הוקפצה למקום 14 (מעל ימ"ס) - דפ"ר עודכן ל-40
+  { id: 14, name: 'ימ"ס', type: 'משטרת ישראל', rank: 15, minProfile: 82, minDapr: 30, tags: 'AgHxd', fitnessRequired: 1 },
+  // יהל"ם - דפ"ר עודכן ל-50
+  { id: 15, name: 'יהל"ם', type: 'חיל ההנדסה הקרבית', rank: 16, minProfile: 82, minDapr: 50, tags: 'Atsfd', fitnessRequired: 2 },
+  { id: 22, name: 'עוקץ', type: 'זרוע היבשה', rank: 17, minProfile: 82, minDapr: 30, tags: 'AlfGd', fitnessRequired: 2 },
+  
+  // סיירות ויחידות מיוחדות (הוזזו למטה ב-1 עקב הקפצת 5515)
+  { id: 16, name: 'סיירת צנחנים', type: 'חיל הרגלים', note: 'חי"ר', rank: 18, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 1 },
+  { id: 17, name: 'סיירת גולני', type: 'חיל הרגלים', note: 'חי"ר', rank: 19, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
+  { id: 19, name: 'סיירת גבעתי', type: 'חיל הרגלים', note: 'חי"ר', rank: 20, minProfile: 82, minDapr: 30, tags: 'Ahd', fitnessRequired: 2 },
+  { id: 57, name: 'לוחם אישים', type: 'אגף המבצעים', rank: 21, minProfile: 82, minDapr: 50, tags: 'agx', fitnessRequired: 2 },
+  { id: 21, name: 'זיק', type: 'חיל התותחנים', note:'תותחנים', rank: 22, minProfile: 82, minDapr: 60, tags: 'TSfGx', fitnessRequired: 3 },
+  { id: 23, name: 'היחידה הרב-ממדית', type: 'זרוע היבשה', rank: 23, minProfile: 82, minDapr: 40, tags: 'atg', fitnessRequired: 2 },
+  { id: 25, name: 'לוט"ר', type: 'זרוע היבשה', rank: 24, minProfile: 82, minDapr: 50, tags: 'acfg', fitnessRequired: 2 },
+  { id: 18, name: 'סיירת נח"ל', type: 'חיל הרגלים', note: 'חי"ר', rank: 25, minProfile: 82, minDapr: 30, tags: 'Ad', fitnessRequired: 2 },
+  { id: 20, name: 'סיירת חרוב', type: 'חיל הרגלים', note: 'חי"ר', rank: 26, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
+
+  { id: 26, name: 'מיתר', type: 'חיל התותחנים', note:'תותחנים', rank: 27, minProfile: 82, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
+  { id: 27, name: 'מורן', type: 'חיל התותחנים', note:'תותחנים', rank: 28, minProfile: 82, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
+  { id: 56, name: 'מלא"ר', type: 'חיל השריון', note:'שריון', rank: 29, minProfile: 82, minDapr: 50, tags: 'aTsfg', fitnessRequired: 2 },
+  { id: 28, name: 'רוכ"ש', type: 'חיל התותחנים', note:'תותחנים', rank: 30, minProfile: 82, minDapr: 50, tags: 'aTsfgd', fitnessRequired: 2 },
+  { id: 29, name: 'ילת"ם', type: 'חיל הים', rank: 31, minProfile: 72, minDapr: 50, tags: 'tfoG', fitnessRequired: 2 },
+  { id: 30, name: 'לוחם סנפיר', type: 'חיל הים', rank: 32, minProfile: 72, minDapr: 30, tags: 'foG', fitnessRequired: 2 },
+  { id: 58, name: 'תצפיתן חמ"ן', type: 'חיל המודיעין', rank: 33, minProfile: 72, minDapr: 50, tags: 'tfgx', fitnessRequired: 4 },
+  { id: 31, name: 'מודא"ל (מודיעין אלקטרוני)', type: 'חיל האוויר', rank: 34, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 4 },
+  { id: 32, name: 'מפעיל ל"א', type: 'חיל האוויר', rank: 35, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 4 },
+  { id: 44, name: 'מנחית סער קדמי', type: 'חיל האוויר', rank: 36, minProfile: 82, minDapr: 50, tags: 'fg', fitnessRequired: 4 },
+  { id: 33, name: 'קצין מודיעין טקטי', type: 'חיל המודיעין', note: 'ייעודי לקצונה', rank: 37, minProfile: 72, minDapr: 60, tags: 'cltSfGx', fitnessRequired: 3 },
+  { id: 34, name: 'קשר"ג', type: 'חיל התקשוב', note: 'ייעודי לקצונה', rank: 38, minProfile: 72, minDapr: 60, tags: 'cltSfg', fitnessRequired: 3 },
+  { id: 35, name: 'בז', type: 'חיל השריון', note: 'ייעודי לקצונה שריון', rank: 39, minProfile: 72, minDapr: 60, tags: 'Aclgd', fitnessRequired: 2 },
+  { id: 36, name: 'מטאור', type: 'חיל התותחנים', note: 'ייעודי לקצונה תותחנים', rank: 40, minProfile: 72, minDapr: 60, tags: 'cltfg', fitnessRequired: 2 },
+  { id: 37, name: 'צנחנים', type: 'חיל הרגלים', note: 'חי"ר', rank: 41, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 2 },
+  { id: 38, name: 'גולני', type: 'חיל הרגלים', note: 'חי"ר', rank: 42, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 3 },
+  { id: 39, name: 'גבעתי', type: 'חיל הרגלים', note: 'חי"ר', rank: 43, minProfile: 82, minDapr: 30, tags: 'Ahdn', fitnessRequired: 3 },
+  { id: 40, name: 'נח"ל', type: 'חיל הרגלים', note: 'חי"ר', rank: 44, minProfile: 82, minDapr: 30, tags: 'Adn', fitnessRequired: 3 },
+  { id: 41, name: 'כפיר', type: 'חיל הרגלים', note: 'חי"ר', rank: 45, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 3 },
+  { id: 42, name: 'לוחם חוד ימי', type: 'חיל הים', rank: 46, minProfile: 72, minDapr: 30, tags: 'tfog', fitnessRequired: 4 },
+  { id: 43, name: 'מג"ב', type: 'משטרת ישראל', rank: 47, minProfile: 82, minDapr: 30, tags: 'afHdn', fitnessRequired: 4 },
+  { id: 45, name: 'יחידת הניוד 444', type: 'זרוע היבשה', rank: 48, minProfile: 82, minDapr: 30, tags: 'cgh', fitnessRequired: 3 },
+  { id: 46, name: 'לוחם ל"א (לוחמה אלקטרונית)', type: 'חיל התקשוב', rank: 49, minProfile: 72, minDapr: 50, tags: 'tfx', fitnessRequired: 4 },
+  { id: 47, name: 'הנדסה קרבית', type: 'חיל ההנדסה הקרבית', rank: 50, minProfile: 82, minDapr: 40, tags: 'Atdn', fitnessRequired: 4 },
+  { id: 48, name: 'שריון', type: 'חיל השריון', rank: 51, minProfile: 72, minDapr: 40, tags: 'Atdn', fitnessRequired: 4 },
+  { id: 52, name: 'איסוף קרבי', type: 'חיל האיסוף', rank: 52, minProfile: 82, minDapr: 30, tags: 'tfnf', fitnessRequired: 4 },
+  { id: 49, name: 'תותחנים', type: 'חיל התותחנים', rank: 53, minProfile: 72, minDapr: 40, tags: 'tfnf', fitnessRequired: 4 },
+  { id: 51, name: 'הגנה אווירית', type: 'חיל האוויר', rank: 54, minProfile: 72, minDapr: 40, tags: 'Tfnf', fitnessRequired: 4 },
+  { id: 53, name: 'פלח"ץ (חילוץ והצלה)', type: 'פיקוד העורף', rank: 55, minProfile: 72, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
+  { id: 54, name: 'חי"ר גבולות', type: 'חיל הגנת הגבולות', rank: 56, minProfile: 72, minDapr: 30, tags: 'afhn', fitnessRequired: 4 },
+  { id: 55, name: 'לוחם מעברים', type: 'חיל המשטרה הצבאית', rank: 57, minProfile: 64, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
 ];
 
 // מילון נתונים מורחב ליחידות
@@ -178,7 +201,7 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     shortDescription: 'יחידת הקומנדו הימי של חיל הים, המתמחה בפשיטות ולוחמה בטרור.',
     stats: {
       serviceLength: '5 שנים ו-8 חודשים',
-      selectionCount: '2-3',
+      selectionCount: '3',
       teamSize: 'צוות קטן'
     },
     selectionPaths: [
@@ -264,7 +287,7 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
         name: 'דרך יום סיירות',
         steps: [
           'יום סיירות (תוצאת שייטת 13 או מטכ"ל/שלדג)',
-          'גיבוש שייטת או מטכ"ל/שלדג בתוצאות 669 (5 ימים)',
+          'גיבוש שייטת או מטכ"ל/שלדג בתוצאת 669 (5 ימים)',
           'גיבוש 669 "יום בריכה" (יום אחד)',
           'סיווג בטחוני ובדיקות'
         ]
@@ -613,30 +636,29 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     },
     selectionPaths: [
       {
+        name: 'דרך גיבושי מטכ"ל ושייטת',
+        steps: [
+          'יום סיירות (תוצאת שייטת 13 או מטכ"ל/שלדג)',
+          'סיום גיבוש שייטת או מטכ"ל/שלדג',
+          'מעבר ראיון 504 משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיון מודיעין לוחמה',
+        steps: [
+          'ביצוע מיון מודיעין לוחמה',
+          ' קבלת מיוני המשך ללוחם אתגרים',
+          'מיון ראשוני (פסיכוטכני וראיון פסיכולוג)',
+          'מיון מקצועי (מבחני קרב מגע ופיזיות)',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
         name: 'דרך יום סיירות (חובלים/צוללות)',
         steps: [
           'יום סיירות (תוצאת חובלים/צוללות)',
           'חתימת וויתור מיון חובלים/צוללות עבור מיוני המשך ל504',
-          'מיון ראשוני (פסיכוטכני וראיון פסיכולוג)',
-          'מיון מקצועי (מבחני קרב מגע ופיזיות)',
-          'סיווג בטחוני ובדיקות'
-        ]
-      },
-      {
-        name: 'דרך יום סיירות (מאותר 504)',
-        steps: [
-          'יום סיירות (תוצאת מאותר 504)',
-          'מיון ראשוני (פסיכוטכני וראיון פסיכולוג)',
-          'מיון מקצועי (מבחני קרב מגע ופיזיות)',
-          'סיווג בטחוני ובדיקות'
-        ]
-      },
-      {
-        name: 'דרך שבוע ראיונות',
-        steps: [
-          'יום סיירות (תוצאת שייטת 13 או מטכ"ל/שלדג)',
-          'לסיים גיבוש שייטת או מטכ"ל/שלדג',
-          'מעבר ראיון 504 משבוע ראיונות',
           'מיון ראשוני (פסיכוטכני וראיון פסיכולוג)',
           'מיון מקצועי (מבחני קרב מגע ופיזיות)',
           'סיווג בטחוני ובדיקות'
@@ -728,6 +750,494 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
       }
     ]
   },
+  13: {
+    description: `תוכנית 'ארז' היא תוכנית עילית חדשה להכשרת מפקדים קרביים לגדודי החי"ר וליחידות היבשה. התוכנית כוללת הכשרה כלוחם מובחר (קומנדו), כמפקד וקצין יבשתי, שכשיר ויודע להפעיל את כל יכולות הלחימה של היבשה (חי"ר, שריון, הנדסה, תותחנים ואיסוף) ומשולבת עם הכשרה אקדמאית לתואר ראשון דו-חוגי יוקרתי באוניברסיטת ת"א. בוגרי מסלול ההכשרה בתוכנית יסיימו את הכשרת בה"ד 1 כאקדמאים ויזכו לדרגות סגן (ושכר אקדמאי מהיום הראשון בקבע) וישרתו כקצינים קרבים בתפקידי מ"מ ומ"פ בכל יחידות היבשה. התוכנית מחפשת בני נוער בעלי תכונות של מנהיגות טבעית, חוסן אישי וכושר הסתגלות גבוה, יחסים בין אישיים מצוינים, יכולות פיזיולוגיות וכושר גופני גבוה, סקרנות ויכולת למידה מהירה וכמובן, מוטיבציה גבוהה ורצון להוביל, להשפיע, להנהיג ולקחת פיקוד. מתוך אלפי מועמדים רק 80 מתוכם מתקבלים לתוכנית.`,
+    shortDescription: 'תוכנית עילית להכשרת מפקדים קרביים בשילוב תואר אקדמי.',
+    stats: {
+      serviceLength: '6 שנים ו-8 חודשים',
+      selectionCount: '7',
+      teamSize: 'צוות מובחר'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך דראפט (נופלי גיבוש מטכ"ל/שייטת)',
+        steps: [
+          'יום סיירות (תוצאת שייטת/מטכ"ל)',
+          'סיום גיבוש שייטת/מטכ"ל (ללא מעבר)',
+          'קבלה לתוכנית ארז (דראפט)',
+          'עמידה בתנאי סף אקדמיים (בגרות מלאה ומוגברת)',
+          'סדרת מיון ארז (3 ימים)',
+          'מבדקי קצונה',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך איתור מוקדם (כנס חשיפה)',
+        steps: [
+          'כנס חשיפה תוכנית ארז',
+          'יום סיירות (תוצאת גיבוש חובלים/שייטת/מטכ"ל וציון פיקוד גבוה)',
+          'מילוי שאלונים וביצוע מטלות מקוונות',
+          'סיום גיבוש מרכזי (חובלים/צוללות/מטכ"ל/שייטת/טיס)',
+          'עמידה בתנאי סף אקדמיים',
+          'סדרת מיון ארז (3 ימים)',
+          'מבדקי קצונה',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'הכנה קדם צבאית',
+        duration: '2.5 חודשים',
+        description: 'פרק הכנה המתקיים לפני הגיוס הרשמי.'
+      },
+      {
+        title: 'הכשרה משולבת',
+        duration: '3 שנים',
+        description: 'הכשרה קרבית מובחרת כלוחם ומפקד, במקביל אליה הכשרה אקדמית לתואר ראשון דו-חוגי באוניברסיטת תל אביב.'
+      },
+      {
+        title: 'שירות קבע וקצונה',
+        duration: '44 חודשים',
+        description: 'שירות כקצין עד לתפקיד מ"פ שני באחת מיחידות היבשה (חי"ר, שריון, הנדסה, תותחנים ואיסוף).'
+      }
+    ]
+  },
+  14: {
+    description: `יחידת המסתערבים (ימ"ס) היא יחידת עילית של מסתערבים ללוחמה בטרור הפועל תחת משמר הגבול (מג"ב) וייעודה הבסיסי הוא להיטמע באוכלוסייה ערבית עוינת לצורכי איסוף מודיעין, טיפול בהפרות סדר והפגנות, ביצוע חיסולים, חטיפות ומעצרים קשים בלב אוכלוסייה ערבית עויינת. הפעילות מתבצעת כאשר לוחמי היחידה מחופשים לערבים. הלוחמים לומדים היטב את פני השטח של האזורים בהם פועלים, להכיר את מנהיגי הכפרים, ולהכיר את יחסי הכוחות בין החמולות והמנהיגים כדי להגיע קרוב ליעדים מבלי לעורר חשד. לזכותם של הלוחמים נזקפים מאות מעצרים מוצלחים של מחבלים, ופעילות מבצעית אינטנסיבית רבה.`,
+    shortDescription: 'יחידת המסתערבים המיוחדת של משמר הגבול.',
+    importantNote: 'ניתן לגשת לגיבוש ימ"ס 3 פעמים במהלך השירות במג"ב. מי שנופל מקורס ימ"ס יכול להיכנס לקורס חוזר עד 3 פעמים.',
+    stats: {
+      serviceLength: '2 שנים ו-8 חודשים',
+      selectionCount: '3',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיוס למג"ב (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס למשמר הגבול (מג"ב)',
+          'סיום טירונות 05 (4 חודשים)',
+          'יציאה לגיבוש ימ"ס',
+          'מעבר גיבוש ימ"ס (כ-5% עוברים)'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'מעבר יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (מטכ"ל/שייטת/חובלים) ללא מעבר',
+          'קבלה לימ"ס דרך שבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי טיס)',
+        steps: [
+          'מיון מקוון לטיס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טיס (ללא מעבר)',
+          'קבלה לימ"ס דרך שבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'קורס ימ"ס',
+        duration: '3.5 חודשים',
+        description: 'קורס אינטנסיבי הכולל קורס לוט"ר, עשרות אימוני קרב מגע, שבועות ירי בנשק ארוך ואקדח, שבועות שטח בנוי ושבועות ייעודיים.'
+      },
+      {
+        title: 'קורס מ"כים מזורז (אופציונלי)',
+        duration: 'חודש וחצי',
+        description: 'אפשרות לצאת לקורס פיקודי המעלה את הלוחם לרובאי 08.'
+      },
+      {
+        title: 'השלמת יחידה',
+        description: 'הכשרה ספציפית לפי האזור (גזרה) שהלוחם יגיע אליו בסוף הקורס (איו"ש, ירושלים או דרום).'
+      }
+    ]
+  },
+  15: {
+    description: `יהל"ם (יחידת הנדסה למשימות מיוחדות) היא יחידת העילית של חיל ההנדסה הקרבית והיא הסמכות ההנדסית הגבוהה ביותר בצה"ל. היחידה בעלת יכולות מיוחדות הכוללות פריצה הנדסית, חבלה התקפית, חבלה וסילוק פצצות, הפעלת רובוטים צבאיים, הגנה מפני איומי אב"כ (נשק ביולוגי), קומנדו הנדסי ולוחמת מנהרות. היחידה פועלת גם עצמאית וגם לצד יחידות מיוחדות אחרות, רוב פעולותיה שקטות ומסווגות.`,
+    shortDescription: 'יחידת העילית של חיל ההנדסה למשימות מיוחדות, פריצה, חבלה ומנהרות.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '1-6',
+      teamSize: 'צוות מיוחד'
+    },
+    yomHameaRequirements: [
+      { label: 'פיקוד', score: 3 },
+      { label: 'הפעלה', score: 3 },
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 },
+      { label: 'תפיסה מרחבית', score: 2 },
+      { label: 'קשב מתמשך', score: 2 }
+    ],
+    selectionPaths: [
+      {
+        name: 'דרך גיוס להנדסה קרבית',
+        steps: [
+          'שיבוץ וגיוס לחיל ההנדסה הקרבית',
+          'מעבר גיבוש יהל"ם (3 ימים)'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש מרכזי (ללא מעבר)',
+          'קבלה ליהל"ם משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי טיס)',
+        steps: [
+          'מיון מקוון לטיס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טיס (ללא מעבר)',
+          'קבלה ליהל"ם משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך עוקץ (לבנות בלבד)',
+        steps: [
+          'שיבוץ וגיוס לחי"ר גבולות',
+          'יציאה לגיבוש עוקץ לבנות',
+          'סיום הגיבוש בתוצאת יהל"ם'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות ואימון מתקדם',
+        duration: '12 חודשים',
+        description: '4 חודשים טירונות 05, חודש טירונות יחידה, 7 חודשים של אימון מתקדם והשלמה ל-07.'
+      },
+      {
+        title: 'שלב ההכשרה הייעודית',
+        description: 'קורס לוט"ר, קורס צניחה, קורס מ"כים (רובאי 08), טיפוס, גלישה והתמקצעות בחבלה.'
+      },
+      {
+        title: 'פיצול למגמות',
+        description: 'התפצלות להכשרות ייעודיות לפי הפלגות השונות (סילוק פצצות, סמור, מדרון וכו\'). כל יחידה עוברת מסלול נפרד הכולל הכשרה ספציפית.'
+      }
+    ]
+  },
+  16: {
+    description: `סיירת הצנחנים היא יחידת הסיור המובחרת של חטיבת הצנחנים ונחשבת לאחת הסיירות החטיבתיות המובילות והאיכותיות בצה"ל. תפקידה לשמש כ"עיניים" של החטיבה: להוביל את הכוחות בשטח אויב, לאסוף מודיעין טקטי, לבצע פשיטות שקטות, ולנטרל איומים מורכבים לפני הגעת הכוח העיקרי. הלוחמים בסיירת נדרשים לרמה מקצועית גבוהה מאוד בניווט, לוחמה בטרור (לוט"ר), לוחמה בשטח בנוי וצפוף, וכושר גופני מצוין.`,
+    shortDescription: 'יחידת הסיור המובחרת של חטיבת הצנחנים.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות (הדרך המרכזית)',
+        steps: [
+          'מעבר גיבוש צנחנים',
+          'גיוס לחטיבת הצנחנים',
+          'מעבר גיבוש יח"טיות (תוצאת סיירת צנחנים)'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי יום סיירות)',
+        steps: [
+          'מעבר יום סיירות',
+          'מעבר ראיון צנחנים (קבלת מאותר)',
+          'גיוס לחטיבת הצנחנים',
+          'מעבר גיבוש יח"טיות (תוצאת סיירת צנחנים)'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח צנחנים.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: '3 חודשים',
+        description: 'אימון מתקדם והשלמה לרובאי 07.'
+      },
+      {
+        title: 'מסלול הסיירת',
+        duration: '7 חודשים',
+        description: 'הכשרה ייעודית הכוללת קורס לוט"ר במתקן אדם, סדרות ניווט, לוחמה זעירה, קורס צניחה, ושבועות הסוואה, תצפית ופשיטה.'
+      }
+    ]
+  },
+  17: {
+    description: `סיירת גולני היא חוד החנית של חטיבת גולני ("מס' 1") ונחשבת לאחת הסיירות החטיבתיות החזקות והאגרסיביות בצה"ל. היחידה מתמחה בלוחמת חוד, פשיטות, לחימה בשטח בנוי צפוף (לש"ב), ושימוש ברק"מ (רכב קרבי משוריין) מתקדם מסוג "נמ"ר". תפקיד הסיירת הוא להוביל את החטיבה כולה בלחימה: לפתוח צירים, לאסוף מודיעין על האויב בזמן אמת, ולנטרל איומים מורכבים לפני הגעת הכוח העיקרי. הלוחמים ("הנמרים") ידועים ברוח קרב עיקשת ("רעל"), חתירה למגע וכושר גופני גבוה במיוחד. הסיירת פועלת בכל הגזרות, בדגש על מתארים צפוניים (לבנון) ורצועת עזה.`,
+    shortDescription: 'חוד החנית של חטיבת גולני, מתמחה בפשיטות, לש"ב ושימוש בנמ"ר.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לגולני',
+          'מעבר גיבוש יח"טיות בתוצאת סיירת גולני'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'מעבר גיבוש (מטכ"ל/שייטת/חובלים/צוללות) ללא מעבר',
+          'סיירת גולני משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי טיס)',
+        steps: [
+          'מיון מקוון לטיס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טייס (ללא מעבר)',
+          'סיירת גולני משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח גולני.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-3 חודשים',
+        description: 'אימון מתקדם והשלמה לרובאי 07.'
+      },
+      {
+        title: 'מסלול הסיירת',
+        duration: '7-9 חודשים',
+        description: 'עולים ליחידה להכשרה ייעודית: קורס לוט"ר במתקן אדם, הכשרה על נגמ"ש הנמ"ר, סדרות ניווט (בדד וחוליה), לוחמה זעירה, הסוואה ושבועות מלחמה אינטנסיביים.'
+      }
+    ]
+  },
+  18: {
+    description: `סיירת נח"ל היא יחידת הסיור המובחרת של חטיבת הנח"ל ומהווה את חוד החנית של החטיבה בלחימה. היחידה מתמחה בלוחמת חוד, פשיטות, לחימה בשטח בנוי וצפוף (לש"ב), לוחמה בתווך התת-קרקעי (מנהרות) ואיסוף מודיעין איכותי בעומק שטח האויב. תפקיד הסיירת הוא להוביל את החטיבה כולה, לפתוח צירים ולנטרל איומים מורכבים בטרם הגעת הכוח העיקרי. סיירת נח"ל פועלת בכל הגזרות ונדרשת לרמת מקצועיות, קור רוח וכושר גופני מהגבוהים בחיל הרגלים.`,
+    shortDescription: 'יחידת הסיור המובחרת של חטיבת הנח"ל, מתמחה בפשיטות ולש"ב.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לנח"ל',
+          'מעבר גיבוש יח"טיות בתוצאת סיירת נח"ל'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'סיירת נח"ל משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א + ב\' ופסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'סיירת נח"ל משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח נח"ל.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-3 חודשים',
+        description: 'אימון מתקדם והשלמה לרובאי 07.'
+      },
+      {
+        title: 'מסלול הסיירת',
+        duration: 'כ-7 חודשים',
+        description: 'בשלב זה הלוחמים עולים ליחידה ועוברים קורס לוט"ר, התמחות בטכניקות לחימה במבנים צפופים ובמנהרות, סדרות ניווט, אימונים מורכבים של פשיטה על יעדי אויב, תצפית והסוואה מתקדמת ושבועות מלחמה.'
+      }
+    ]
+  },
+  19: {
+    description: `סיירת גבעתי ("שועלי שמשון") היא יחידת הסיור המובחרת של חטיבת גבעתי. היחידה מתמחה בלוחמה במתאר דרומי ומדברי, לחימה בשטח בנוי (לש"ב) בדגש על רצועת עזה, ופשיטות מורכבות. ייחודה ההיסטורי של הסיירת הוא ביכולת לוחמה אמפיבית (נחיתה מהים), יכולת ייחודית בחיל הרגלים המאפשרת איגוף ימי. הלוחמים מתמחים בהסוואה מתקדמת, לוחמה זעירה, והפעלת אמצעי תצפית וקטלניות מודרניים. הסיירת מובילה את החטיבה בלחימה, פותחת צירים ומבצעת משימות מודיעין וסיכול איכותיות בעומק האויב. הלוחמים מצוידים בנשק המיקרו-תבור (כמו בגולני) וידועים במשפחתיות ובחוסן המנטלי הגבוה הנדרש לפעילות במדבר.`,
+    shortDescription: 'יחידת הסיור המובחרת של חטיבת גבעתי, מתמחה בלוחמה במתאר דרומי ונחיתה מהים.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לגבעתי',
+          'מעבר גיבוש יח"טיות בתוצאת סיירת גבעתי'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'סיירת גבעתי משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טייס (ללא מעבר)',
+          'סיירת גבעתי משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח גבעתי.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-3 חודשים',
+        description: 'אימון מתקדם והשלמה לרובאי 07.'
+      },
+      {
+        title: 'מסלול הסיירת',
+        duration: 'כ-7 חודשים',
+        description: 'הכשרה ייעודית הכוללת קורס לוט"ר במתקן אדם (ירי באקדח, פריצה, לש"ב), סדרות ניווט בדד בשטח מדברי, אימוני הסוואה ולוחמה זעירה ("זיקיות"), אימוני פשיטה ונחיתה מהים, ושבועות מלחמה מסכמים.'
+      }
+    ]
+  },
+  20: {
+    description: `סיירת חרוב היא חוד החנית ויחידת הסיור המובחרת של חטיבת כפיר. היחידה מתמחה בלוחמה בטרור (לוט"ר), לחימה בשטח בנוי וצפוף (לש"ב), ובלחימה בתווך התת-קרקעי (מנהרות). סיירת חרוב מובילה את החטיבה בלחימה ומתמחה בביצוע פשיטות מורכבות, מעצרים באזורים עוינים, ואיסוף מודיעין טקטי איכותי בעומק שטח האויב. סיירת חרוב פועלת בכלל הגזרות, בדגש על יהודה ושומרון ורצועת עזה, ולוחמיה מצוידים בנשק מתקדם ובאמצעים טכנולוגיים ייעודיים.`,
+    shortDescription: 'יחידת הסיור המובחרת של חטיבת כפיר, מתמחה בלוט"ר ולש"ב.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לכפיר',
+          'מעבר גיבוש יח"טיות בתוצאת סיירת חרוב'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'סיירת חרוב משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'סיירת חרוב משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח כפיר.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-3 חודשים',
+        description: 'אימון מתקדם והשלמה לרובאי 07.'
+      },
+      {
+        title: 'מסלול הסיירת',
+        duration: 'כ-7 חודשים',
+        description: 'בשלב זה הלוחמים עולים ליחידה ועוברים קורס לוט"ר, התמחות בטכניקות לחימה במבנים צפופים ובמנהרות (תת-קרקע), סדרות ניווט, אימונים מורכבים של פשיטה על יעדי אויב, תצפית והסוואה מתקדמת ושבועות מלחמה.'
+      }
+    ]
+  },
+  21: {
+    description: `יחידת זיק היא יחידה מיוחדת מסווגת של חיל התותחנים המפעילה כלי טיס מאויש מרחוק וכלי נוסף מסווג. היחידה מספקת לכוחות היבשה תצלומי אוויר עדכניים ביום ובלילה, ציון לייזר עבור מטרות, סימון לכוחות הקרקע, קשר עם כוחות מתמרנים וחיל האוויר ומבצעת תקיפות וסיכולים ממוקדים באמצעות הכטמ"מים התוקפים שהיא מפעילה. היחידה מוכרת מהמשפט "2-3 ש-גר" מאחד הסרטונים של צה"ל שיצאו במלחמת חרבות ברזל.`,
+    shortDescription: 'יחידת הכטמ"מים המיוחדת והמסווגת של חיל התותחנים.',
+    stats: {
+      serviceLength: '2 שנים ו-8 חודשים',
+      selectionCount: '6',
+      teamSize: 'צוות טכנולוגי'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך נפל טיס (הדרך המרכזית)',
+        steps: [
+          'מיון מקוון לטיס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'מעבר גיבוש טיס (תוצאת טיס)',
+          'סיווג בטחוני ושיבוץ לקורס טיס',
+          'נפילה מקורס טיס ושיבוץ לזיק'
+        ]
+      },
+      {
+        name: 'דרך נפילה מיחידות מובחרות',
+        steps: [
+          'קבלה ליחידה לוחמת מובחרת',
+          'נפילה במהלך ההכשרה',
+          'שיבוץ לזיק (בודדים בלבד)'
+        ]
+      },
+      {
+        name: 'דרך חיל התותחנים',
+        steps: [
+          'גיוס לחיל התותחנים',
+          'גיבוש תותחנים (תוצאת זיק)',
+          'שיבוץ לזיק (בודדים בלבד)'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות (שבטה)',
+        duration: 'חודשיים',
+        description: 'החיילים עוברים טירונות בסיסית ברמת רובאי 03 בבסיס שבטה.'
+      },
+      {
+        title: 'קורס מפעיל מערכות זיק (ממ"ז)',
+        duration: '6-8 חודשים',
+        description: 'קורס המכשיר את הלוחמים לעבודתם בשירות הסדיר. הקורס אינטנסיבי ומיועד לדמות את השלבים "בסיסי" ו"ראשוני" בקורס טיס.'
+      }
+    ]
+  },
   22: {
     description: `עוקץ היא יחידה המפעילה כלבים לצד לוחמי קומנדו למשימות מיוחדות בשגרה ובחירום. היחידה פועלת בעיקר לצד יחידות מיוחדות אחרות וגם בצורה עצמית. היחידה ולוחמיה השתתפו באלפי מבצעים, מעצרים, לכידת מבוקשים ועוד. היחידה משתפת פעולה עם כלל יחידות הצבא ולעיתים תכופות עם שייטת 13, סיירת מטכ״ל, שלדג וחטיבת הקומנדו. יחידת עוקץ היא אחת מהיחידות הכי מבוקשות בצה"ל, ומתוך אלפי מתמיינים רק 100 לוחמים ו15 לוחמות מתגייסים לעוקץ בכל שנה.`,
     shortDescription: 'יחידת הכלבנים המיוחדת של צה"ל הפועלת לצד יחידות העילית.',
@@ -763,6 +1273,14 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
           'ראיון עוקץ',
           'סיווג בטחוני ובדיקות'
         ]
+      },
+      {
+        name: 'דרך חי"ר גבולות (לבנות בלבד)',
+        steps: [
+          'גיוס לחי"ר גבולות',
+          'יציאה לגיבוש עוקץ בנות',
+          'מעבר גיבוש עוקץ בנות (יומיים)'
+        ]
       }
     ],
     trainingProcess: [
@@ -781,6 +1299,1516 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
         duration: '8 חודשים',
         description: 'קבלת הכלב והכשרה ייעודית משותפת כצמד לוחם-כלב עד לסיום המסלול (סה"כ 16-18 חודשים).'
       }
+    ]
+  },
+  23: {
+    description: `היחידה הרב-ממדית (רבמ"ד), הידועה גם בתור "יחידת רפאים", היא יחידת מיוחדת בצה"ל המתפקדת כיחידת קומנדו, שייעודה הוא לקבל ראשונים את כלי הנשק והרובוטיקה הכי מתקדמים וחדשניים, ומשתמשת בהם בשדה הקרב לפני כולם. בזכות הניסיון הראשוני של היחידה עם הנשקים החדשים, מערכות הפיתוח מקבלות 'משוב' עליהם, ומקבלות החלטות עבורם שמשפיעות על כלל יחידות הלוחמה של צה"ל. היחידה מיועדת להילחם בכל זירות הלחימה ובכל תוואי שטח בהתאם למאפייניו ולאתגריו המשתנים.`,
+    shortDescription: 'היחידה הרב-ממדית - כוח קומנדו טכנולוגי המשלב יכולות מתקדמות.',
+    stats: {
+      serviceLength: '2 שנים ו-8 חודשים',
+      selectionCount: '2-6',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות',
+        steps: [
+          'גיוס לאחת חטיבות החי"ר',
+          'גיבוש יח"טיות (תוצאת רבמ"ד)',
+          'שיבוץ ליחידה'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות (תוצאת גיבוש)',
+          'סיום גיבוש מרכזי (ללא מעבר)',
+          'ראיון רבמ"ד (שבוע ראיונות)',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי טיס)',
+        steps: [
+          'מיון מקוון לטיס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טיס (ללא מעבר)',
+          'ראיון רבמ"ד (שבוע ראיונות)',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח של אחת מחטיבות החי"ר (נח"ל, צנחנים וכו\').'
+      },
+      {
+        title: 'אימון מתקדם (תל נוף)',
+        duration: '3 חודשים',
+        description: 'הכשרה מתקדמת בבסיס תל נוף, השלמה לרובאי 07 וטירונות יחידה.'
+      },
+      {
+        title: 'שלב הלוחם (מתקן אדם)',
+        duration: '5 חודשים',
+        description: 'קורס צניחה, סדרות ניווט, לוחמה בשטח בנוי (לש"ב), סבך, קורס לוט"ר, קרב מגע ושבועות ירי מקצועי.'
+      },
+      {
+        title: 'הכשרה ייעודית',
+        duration: '3-4 חודשים',
+        description: 'הגעה ליחידה לביצוע הכשרה ייעודית על אמצעי הלחימה והרובוטיקה המתקדמים. סה"כ מסלול כ-16 חודשים.'
+      }
+    ]
+  },
+  25: {
+    description: `יחידת הלוט"ר (לוחמה בטרור) היא יחידה מובחרת בצה"ל הממונה על הכשרת כלל יחידות צה"ל בתחומי הלוחמה בטרור, הצליפה, ותחומים נוספים. יחידה משתייכת לחיל הרגלים ומוכשרת כיחידת קומנדו. במקביל לכך, לוחמי היחידה מבצעים אימונים, משימות ופעילויות מבצעיות מיוחדות ומגוונות. בעתות חירום היחידה פעילה ונמצאת בכוננות מתמדת לתפעול אירועי פח"ע.`,
+    shortDescription: 'בית הספר ללוחמה בטרור - יחידת קומנדו המכשירה את צה"ל בלוט"ר.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '1-6',
+      teamSize: 'צוות מיוחד'
+    },
+    yomHameaRequirements: [
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 }
+    ],
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש יח"טיות',
+        steps: [
+          'שיבוץ וגיוס לכפיר / נח"ל / גבעתי',
+          'מעבר גיבוש יח"טיות בתוצאת לוט"ר'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'מעבר יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש מרכזי (ללא מעבר)',
+          'קבלת לוט"ר משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי טיס)',
+        steps: [
+          'מיון מקוון לטיס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טייס (ללא מעבר)',
+          'קבלת לוט"ר משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'טירונות רובאי 05 בבא"ח צנחנים.'
+      },
+      {
+        title: 'טירונות יחידה',
+        duration: 'חודש',
+        description: 'טירונות יחידה במתקן אדם.'
+      },
+      {
+        title: 'הכשרה ביחידה',
+        description: 'ניווטים, התמחות בירי ובאמל"ח מגוון, תכנים ייעודים לעולם הלוחמה בטרור ברמת הפרט והצוות, אימוני קרב מגע, הכשרת אקדח וקורס צניחה.'
+      },
+      {
+        title: 'קורסים והסמכות',
+        description: 'קורס מ"כים, קורס מדריכי לוט"ר והסמכה לרובאי 09.'
+      }
+    ]
+  },
+  57: {
+    description: `לוחם האישים הוא חלק ממערך האבטחה המבצעית החמושה לצורך מניעה וסיכול פגיעה בבכירים ומשלחות צה"ל, ביחידה המטכ"לית לאבטחת בכירים. זהו תפקיד לחימה ייחודי, המשלב פעילויות אבטחה מגוונות תוך עבודה מול גורמי מקצוע בתוך ומחוץ לצה"ל. הלוחמים לוקחים חלק חיוני במערך ההגנה האישית של צמרת צה"ל, ונדרשים להיות בשטח דינמי המצריך יכולת לחימה ושליטה בנשק ברמה גבוהה, גמישות מחשבתית, תכנון מהיר והסקת מסקנות מיידית. לוחם האישיים נדרש לאסרטיביות, בגרות, עצמאות, ודבקות במשימה, כל זאת לצד ממלכתיות ושמירת סוד ברמה הגבוהה ביותר בביצוע משימותיו המבצעיות בשטחי מדינת ישראל ומחוצה לה.`,
+    shortDescription: 'תפקיד לחימה ייחודי המשלב פעילויות אבטחה מגוונות למניעה וסיכול פגיעה בבכירים ומשלחות צה"ל.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '3',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך יום מיון ייעודי',
+        steps: [
+          'סיום בהצלחה של יום מיון ייעודי לאבטחת אישים',
+          'מעבר בוחן כושר',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך יום סיירות',
+        steps: [
+          'מעבר יום סיירות בתוצאת גיבוש מטכ"ל / שייטת',
+          'סיום ללא מעבר גיבוש מטכ"ל / שייטת',
+          'מעבר ראיון לוחם אישים',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: 'כ-4 חודשים',
+        description: 'הכשרה בסיסית כלוחם חי"ר המקנה הסמכת רובאי 05.'
+      },
+      {
+        title: 'קורס אבטחה מקצועי',
+        duration: 'מספר חודשים',
+        description: 'הכשרה ייעודית ואינטנסיבית המשלבת מיומנויות ספציפיות באבטחת אישים, קרב מגע, שליטה גבוהה בנשק קצר (אקדח) ונשק ארוך, ושימוש בטכנולוגיות מתקדמות.'
+      }
+    ]
+  },
+  26: {
+    description: `יחידת מיתר (יחידה 427) היא יחידה מיוחדת לאיסוף והשמדה מסווגת, הפועלת תחת חיל התותחנים. בהגדרה הרשמית שלה היא יחידה בעלת ייעוד מסווג בעולמות איסוף מודיעין והשמדת מטרות איכות מעבר לקווי האויב. היחידה מפעילה את הכטמ"מ "דוהר שמיים". צוותי הלוחמים ביחידה משגרים את הכלי לאוויר מזירות בסמוך או מתוך שדה הקרב והקצינים ביחידה מפעילים אותו במהלך הטיסה. הדוה"ש מספק מודיעין חזותי איכותי, עוזר לסגור מעגלי אש ומעניק עוד שלל יכולות עליהן לא ניתן לפרט. הלוחמים נדרשים לשילוב רמה גבוהה של סיווג, שדאות טקטית, ויכולת טכנולוגית מורכבת.`,
+    shortDescription: 'יחידה מיוחדת מסווגת של חיל התותחנים המפעילה את הכטמ"מ "דוהר שמיים".',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות טכנולוגי'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש תותחנים (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לתותחנים',
+          'מעבר גיבוש תותחנים בתוצאת יחידת מיתר'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'יחידת מיתר משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'יחידת מיתר משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'בבא"ח תותחנים (שבטה) רובאי 03, כאשר החודש האחרון מוקדש לטירונות יחידה בו לומדים את מקצוע הניווט.'
+      },
+      {
+        title: 'מסלול ייעודי',
+        duration: '4 חודשים',
+        description: 'בשלב זה הלוחמים עולים לבסיס היחידה ועוברים התמקצעות בתחומי הניווטים והאמל"ח, תוך כדי ביצוע אקטים פיזיים. בסיום המסלול יקבלו הלוחמים סיכת לוחם תותחנים וסיכת לוחם מיתר, כאשר המתאימים ימשיכו לקורס מפקדים והשאר יעלו לפלוגות המבצעיות.'
+      }
+    ]
+  },
+  27: {
+    description: `יחידת מורן היא יחידה מסווגת ומובחרת הפועלת תחת חיל התותחנים. לוחמיה מוצבים בבסיס במרכז הארץ, ומוקפצים למשימות בעת הצורך. ייעודה המרכזי הוא הפעלת אמצעי אש מדויקים, והיא לוקחת חלק בפעילות מבצעית משמעותית ורגישה בכל הגזרות. היחידה משתפת פעולה באופן הדוק עם כלל הגופים המבצעיים של צה"ל - החטיבות והאוגדות המרחביות, חיל האוויר וחיל הים. הלוחמים ביחידה נדרשים לשילוב של חוסן מנטלי, יכולות קוגניטיביות וטכנולוגיות גבוהות, כושר קרבי ויכולת תפעול מערכות נשק מתקדמות תחת עומס.`,
+    shortDescription: 'יחידה מסווגת ומובחרת של חיל התותחנים המפעילה אמצעי אש מדויקים.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות טכנולוגי'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש תותחנים (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לתותחנים',
+          'מעבר גיבוש תותחנים בתוצאת יחידת מורן'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'יחידת מורן משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'יחידת מורן משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'בבא"ח תותחנים (שבטה) בפלוגה נפרדת, הסמכה כרובאי 05.'
+      },
+      {
+        title: 'טירונות יחידה',
+        duration: 'כחודש',
+        description: 'פרק הניווטים וההתמצאות אשר מתקיים בשבטה.'
+      },
+      {
+        title: 'מסלול ייעודי',
+        duration: 'כ-4 חודשים',
+        description: 'בשלב זה הלוחמים עוברים הכשרה מקצועית הכוללת את הפעלת האמצעי ופיתוח הכושר הקרבי – אימוני פרט, ניווטים מתקדמים ועומס פיזי. בסיום ההכשרה (סה"כ כ-8 חודשים) מצטרפים הלוחמים לפלוגות המבצעיות.'
+      }
+    ]
+  },
+  56: {
+    description: `מלא"ר (מלך האריות) היא יחידה מסווגת בחיל השריון, הפועלת ככוח מיוחד ואיכותי. היחידה מאומנת בטכנולוגיות מתקדמות ומשתמשת באמצעי לחימה מסווגים וייחודיים. לוחמי מלא"ר נדרשים לשלב חוסן מנטלי ופיזי עם הבנה טכנולוגית עמוקה ויכולת תפעול של מערכות מורכבות. ככוח מיוחד בתוך מערך השריון, היחידה לוקחת חלק בפעילויות מבצעיות רגישות וחשאיות, ולוחמיה מהווים חוד חנית טכנולוגי ומבצעי בחיל.`,
+    shortDescription: 'יחידה מסווגת בחיל השריון הפועלת ככוח מיוחד ואיכותי.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש מלא"ר (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לשריון',
+          'לאחר 3 חודשים מעבר גיבוש מלא"ר'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'מלא"ר משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'מלא"ר משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '3-4 חודשים',
+        description: 'בבא"ח שריון רובאי 05 (לוחם שריון). לאחר 3 חודשים של תחילת הכשרה, הלוחמים שהתגייסו לשריון יוצאים לגיבוש המסנן ליחידה.'
+      },
+      {
+        title: 'מסלול הכשרה ייעודית',
+        duration: 'מספר חודשים',
+        description: 'בשלב זה הלוחמים שאותרו עולים ליחידה ועוברים מסלול מסווג. ההכשרה כוללת התמקצעות מעמיקה בטכנולוגיות מתקדמות, הפעלת אמצעי לחימה מסווגים, פיתוח כושר קרבי, ואימונים ייעודיים ככוח מיוחד.'
+      }
+    ]
+  },
+  28: {
+    description: `יחידת רוכב שמיים (רוכ"ש) היא יחידה מיוחדת בחיל התותחנים המתמחה בהפעלת כלי טיס טקטיים בלתי מאוישים (כטב"ם מסוג "רוכב שמיים") מתוך שטח אויב. צוותי היחידה הם "צוותים חוברים" - הם מסופחים לכוחות מתמרנים גדולים (גדודי חי"ר ושריון) וליחידות מובחרות אחרות, ומספקים עבורם מודיעין חוזי איכותי עם רחפנים וסגירת מעגלי אש בזמן אמת עמוק בשטח. הלוחמים נושאים את ציוד הכטב"ם על גבם במשקלים כבדים, ומרכיבים ומשגרים אותו מלב שדה הקרב. התפקיד דורש רמה גבוהה של אינטליגנציה, יכולות טכניות וקוגניטיביות תחת לחץ אינטנסיבי, קור רוח, וכושר גופני מעולה להליכה ממושכת.`,
+    shortDescription: 'יחידה מיוחדת בחיל התותחנים המתמחה בהפעלת כטב"ם טקטי מתוך שטח אויב.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2+',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש תותחנים (הדרך המרכזית)',
+        steps: [
+          'שיבוץ וגיוס לחיל היבשה',
+          'מעבר גיבוש תותחנים בתוצאת רוכב שמיים'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (נופלי גיבוש)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש (ללא מעבר)',
+          'רוכב שמיים משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיוני טיס',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'רוכב שמיים משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'בבא"ח שבטה (בפלוגה נפרדת), רובאי 05. טירונות יחידה המוקדשת לניווטים והתמצאות.'
+      },
+      {
+        title: 'מסלול הכשרה ייעודי',
+        duration: 'כ-8 חודשים',
+        description: 'בשלב זה הלוחמים עוברים "אימון פרט" ו"אימון צוות". ההכשרה כוללת התמקצעות בהפעלת הכטמ"ם (בסימולטור ובשטח), הרכבה ושיגור תחת לחץ זמן, סדרות ניווט מתקדמות עם משקלים כבדים, ותרגול חבירה מקצועית לכוחות היבשה המתמרנים. המסלול משלב אקטים פיזיים קשים, שבועות מלחמה מסכמים ולעיתים גם קורס צניחה וקורס מ"כים.'
+      }
+    ]
+  },
+  29: {
+    description: `היחידה למשימות תת-מימיות (ילת"ם) היא היחידה המקצועית היחידה בצה"ל לצלילה, חבלה וסילוק פצצות ימי. היחידה מבצעת משימות מורכבות מתחת לפני המים בכל מקווי המים בארץ ומחוצה לה. בין משימות היחידה: התקנת מכלולים מורכבים במעמקים, שליית אמצעי לחימה וכלי שיט או טיס שטבעו, נטרול מוקשים, זיכוי כלי שיט, משימות חילוץ והצלה, ותיקון תקלות תת-מימיות בכלי שיט של זרוע הים. הלוחמים והלוחמות פועלים בצוותים משותפים כשלצידם רובוטים תת-ימיים, ומשתפים פעולה בעיקר עם שייטת 13, שייטת 7, שייטת 3 וגורמים נוספים.`,
+    shortDescription: 'היחידה המקצועית בצה"ל לצלילה, חבלה וסילוק פצצות ימי.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2',
+      teamSize: 'צוות צוללנים'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש לוחם ימי',
+        steps: [
+          'מעבר גיבוש לוחם ימי בהצטיינות וקבלת גיבוש המשך',
+          'מעבר גיבוש סנפיר ילת"ם בתוצאת ילת"ם',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיון לוחמות ימיות (לנשים בלבד)',
+        steps: [
+          'מעבר מיון מקוון לוחמות ימיות בתוצאת סנפיר ילת"ם',
+          'מעבר גיבוש ילת"ם',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'חודש',
+        description: 'טירונות רובאי 03 בסיסית בבה"ד חיל הים.'
+      },
+      {
+        title: 'שלב הכשרה בסיסי',
+        duration: '5-6 חודשים',
+        description: 'למידת ימאות בסיסית, הכשרת לוט"ר, קורסי צלילה מתקדמים (במים רדודים ולעומק רב), הכשרה לשימוש בכלים טכניים, צילום, ניווט והכשרות ייעודיות נוספות.'
+      },
+      {
+        title: 'שלב הכשרה מתקדם',
+        duration: 'חצי שנה',
+        description: 'בשלב זה ילמדו החיילים את הצלילה המקצועית, נייטרוקס, הפעלת אמצעים מורכבים יותר מתחת לפני המים, איתור וחיפוש, סדרות פיקוד שונות, חבלה וסילוק פצצות תת-מימיות.'
+      }
+    ]
+  },
+  30: {
+    description: `יחידת סנפיר היא יחידת ביטחון שוטף ייחודית בזרוע הים, הפועלת לאבטחת הנמלים והמרחבים הימיים הסמוכים להם. לוחמי סנפיר אמונים על סיכול חדירות עוינות מהים, מניעת פיגועים תת-ימיים ועל-ימיים, וביצוע סריקות ואבטחה סביב כלי שיט אזרחיים וצבאיים הנמצאים בנמלי ישראל. היחידה פועלת בנמלי חיפה, אשדוד ואילת, ומשלבת אמצעים טכנולוגיים מתקדמים לצד לוחמה ימית קרבית.`,
+    shortDescription: 'יחידת ביטחון שוטף בזרוע הים לאבטחת נמלים וסיכול חדירות.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2',
+      teamSize: 'צוות לוחמים'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש לוחם ימי',
+        steps: [
+          'מעבר גיבוש לוחם ימי בהצטיינות וקבלת גיבוש המשך',
+          'מעבר גיבוש סנפיר ילת"ם בתוצאת סנפיר',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך מיון לוחמות ימיות (לנשים בלבד)',
+        steps: [
+          'מעבר מיון מקוון לוחמות ימיות בתוצאת סנפיר ילת"ם',
+          'מעבר גיבוש סנפיר',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'חודש',
+        description: 'טירונות רובאי 03 בסיסית בבה"ד חיל הים.'
+      },
+      {
+        title: 'קורס סנפיר',
+        duration: '9 חודשים',
+        description: 'הלוחמים יעברו קורסים להפעלת סירות מהירות, שבועות נשק, מסעות, קורסי גילוי, זיהוי ושליית מוקשים וניטרולם, קורס לוט"ר וקורסי לחימה אחרים. הצבה ביחידות השטח. הכשרה לתפעול אמצעי לחימה של היחידה, מטווחים ימיים בתרחישי פח"ע, התמחות בצלילה הגנתית ותפעול סירות גומי והסמכות בסירות הליבה של היחידה ("צרעות").'
+      }
+
+    ]
+  },
+  58: {
+    description: `תצפיתן לוחם ביחידות מיוחדות הינו צוות איסוף קרבי שמטרתו לתת מענה לצורך המבצעי של יחידות מיוחדות ומסווגות כגון יחידה 636 באיסוף קרבי, שייטת 13 ויחידות נוספות, בשגרה ובחירום. בשגרה הצוות לוקח חלק במבצעים מיוחדים, ובחירום פועל ככוח מוכל בצוות אורגני של לוחמים ביחידות מיוחדות בהתאם למשימה. התפקיד כולל ברובו איסוף קרבי בשטח, אך כולל בנוסף עבודה משרדית.`,
+    shortDescription: 'צוות איסוף קרבי הנותן מענה ליחידות מיוחדות ומסווגות.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '3',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך מיון מודיעין לוחמה',
+        steps: [
+          'מעבר מיון מודיעין לוחמה',
+          'מעבר מיון מקוון מתקדם',
+          'מעבר יום מיונים ייעודי (דינמיקה קבוצתית)',
+          'ראיון אישי עם פסיכולוג',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'טירונות 05 בבא"ח גולני.'
+      },
+      {
+        title: 'הכשרה ייעודית',
+        duration: 'מספר חודשים',
+        description: 'הכשרה ייעודית עם היחידה שאליה הצוות השתייך.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'עיבוד מידע', score: 2 },
+      { label: 'עבודה בצוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 },
+      { label: 'תפיסה מרחבית', score: 2 },
+      { label: 'קשב מתמשך', score: 2 }
+    ]
+  },
+  31: {
+    description: `מפעילי מודיעין אלקטרוני מוטס (מודא"ל) אחראים על מתן תמונה מודיעינית בזמן אמת תוך הפעלת מערכות מודיעין מתקדמות מתוך מטוס. השירות הינו ביחידה מבצעית העוסקת בהגנת שמי המדינה מפני טרור אווירי, איתור מטרות לתקיפה ואבטחת פעילות כוחות צה"ל וגופי ביטחון נוספים. מטרת התפקיד היא ייצור תמונה מודיעינית, מעקב שוטף אחר פעולות אוויריות, קבלת דיווחים, ניתוח, עיבוד, וארגון המידע והפצתו בזמן אמת לגורמים המבצעים בחיל האוויר. המפעילים מהווים חלק מצוות מודיעיני-מבצעי, כאשר חלק מהמפעילים משרתים גם בגפים מוטסים.`,
+    shortDescription: 'מתן תמונה מודיעינית בזמן אמת תוך הפעלת מערכות מודיעין מתקדמות מתוך מטוס.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2',
+      teamSize: 'צוות מודיעיני-מבצעי'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך אשכול המודיעין של חיל האוויר (לבנות)',
+        steps: [
+          'דירוג אשכול המודיעין של חיל האוויר במנילה בעדיפות גבוהה',
+          'מיון ראשוני מקוון (שאלון העדפות, אישיות ומבחני חשיבה)',
+          'מעבר מבחנים ממוחשבים בירפ"א',
+          'סיווג ביטחוני'
+        ]
+      },
+      {
+        name: 'דרך בקשת מיונים (לבנים)',
+        steps: [
+          'שליחת בקשה למיונים וקורות חיים למוקד חיל האוויר',
+          'מיון ראשוני מקוון (שאלון העדפות, אישיות ומבחני חשיבה)',
+          'מעבר מבחנים ממוחשבים בירפ"א',
+          'סיווג ביטחוני'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'חודש',
+        description: 'טירונות רובאי 02.'
+      },
+      {
+        title: 'הכשרה מקצועית',
+        duration: 'כ-14 שבועות',
+        description: 'בבסיס חיל האוויר בעובדה.'
+      },
+      {
+        title: 'שלב הסמכה מקצועי',
+        duration: 'מספר חודשים',
+        description: 'בבסיסי יחידות המודיעין או בבסיסי חיל האוויר הפזורים ברחבי הארץ (לרוב בבסיסים סגורים), בתוך היחידה.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'טכני הפעלה', score: 3 },
+      { label: 'עיבוד מידע', score: 3 },
+      { label: 'עבודת צוות', score: 3 },
+      { label: 'קשב מתמשך', score: 3 },
+      { label: 'מנהל וארגון', score: 2 }
+    ]
+  },
+  32: {
+    description: `מפעילי לוחמה אלקטרונית (ל"א) אחראים על הפעלת מערכות טכנולוגיות מתוחכמות ומסווגות, מוטסות או קרקעיות, המשבשות את מערכות הלחימה של האויב ומגנות על משימות כלי הטיס של חיל האוויר באזורים מאוימים (במרחב הספקטרלי). המפעילים לוקחים חלק פעיל בתכנון ובניהול הפעילות המבצעית בטיסות, פריסות שטח, הדרכות ואימונים. חלק מהתפקידים הינם ביחידות מוטסות בהן המערכות מופעלות תוך כדי טיסה. התפקיד דורש סיווג ביטחוני גבוה, יכולת תפקוד יוצאת דופן תחת לחץ, עבודת צוות קפדנית, והסתגלות מהירה למצבי חוסר ודאות וקפיצה מאפס למאה.`,
+    shortDescription: 'הפעלת מערכות טכנולוגיות מתוחכמות לשיבוש מערכות לחימה של האויב.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך אשכול המודיעין של חיל האוויר (לבנות)',
+        steps: [
+          'דירוג אשכול המודיעין של חיל האוויר במנילה בעדיפות גבוהה',
+          'מיון ראשוני מקוון (שאלון העדפות, אישיות ומבחני חשיבה)',
+          'מבחן ממוחשב בירפ"א',
+          'סיווג ביטחוני'
+        ]
+      },
+      {
+        name: 'דרך בקשת מיונים (לבנים)',
+        steps: [
+          'שליחת בקשה למיונים וקורות חיים למוקד חיל האוויר',
+          'מיון ראשוני מקוון (שאלון העדפות, אישיות ומבחני חשיבה)',
+          'מבחן ממוחשב בירפ"א',
+          'סיווג ביטחוני'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'כחודשיים וחצי (10 שבועות)',
+        description: 'טירונות רובאי 03 בביסל"ח 314.'
+      },
+      {
+        title: 'קורס ל"א בסיסי',
+        duration: 'כ-10 שבועות',
+        description: 'בבית הספר לל"א וסייבר (תחת יחידה 555 - "עורבי השחקים") בבסיס תל נוף. הקורס כולל שלב מבואות, שלב יסודות (למידת עקרונות הל"א, סייבר, מודיעין, הפעלת מערכות) ושלב מגמות מעשי. ההכשרה מלווה ב"נוהל ערפל" אינטנסיבי לפיתוח חוסן מנטלי הכולל לילות לבנים והקפצות.'
+      },
+      {
+        title: 'קורס אימון מבצעי',
+        duration: 'כ-3 חודשים',
+        description: 'בסיום הקורס משובצים החיילים ביחידות המבצעיות ועוברים קורס אימון מבצעי עד להסמכתם המלאה.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'הפעלה', score: 3 },
+      { label: 'עיבוד מידע', score: 3 },
+      { label: 'השקעה והתמדה', score: 3 }
+    ]
+  },
+  33: {
+    description: `קצין מודיעין טקטי הוא מפקד האמון על המודיעין בגדוד. תפקיד זה מהווה שילוב מדויק בין לוחמת שטח קדמית לטכנולוגיה מתקדמת. הקמ"ן (קצין מודיעין) הגדודי אינו לוחם חי"ר שפורץ למבנים, אלא קצין שנמצא בחוליית הפיקוד עם מפקד הגדוד בקו האש הראשון, ומנתח בזמן אמת את תמונת הקרב. תפקידו הוא לזהות איומים באמצעות מערכות מודיעין מסווגות, להכווין אמצעי איסוף (כמו רחפנים) ולקבל החלטות טקטיות שמשפיעות ישירות על חיי הלוחמים בשטח. עבודת הקמ"ן נשענת על חומר מסווג ויצירת תמונה מודיעינית רחבה תחת אש.`,
+    shortDescription: 'מפקד האמון על המודיעין בגדוד, המשלב לוחמת שטח וטכנולוגיה מתקדמת.',
+    stats: {
+      serviceLength: '3 שנים ו-8 חודשים',
+      selectionCount: '3',
+      teamSize: 'חוליית פיקוד'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך מיון מודיעין לוחמה',
+        steps: [
+          'מעבר מיון מודיעין לוחמה',
+          'מיון ייעודי במערך מודיעין השדה (סימולציות קבוצתיות, מבחני אישיות ומבחנים קוגניטיביים)',
+          'מעבר ראיון קבלה',
+          'סיווג ביטחוני'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'הכשרה לסביבה מבצעית',
+        description: 'טירונות רובאי 05.'
+      },
+      {
+        title: 'קורס מקצוע מודיעין השדה',
+        description: 'החיילים עוברים קורס מקצוע מודיעין השדה וקורסים מקצועיים במכללה טכנולוגית אזרחית.'
+      },
+      {
+        title: 'שלב ההכשרה לפיקוד',
+        description: 'קורס קצינים בבה"ד 1 והשלמה חילית באגף המודיעין. לאורך התוכנית, כל חניך מלווה על ידי קצין בכיר מאגף המודיעין המשמש כמנטור אישי.'
+      },
+      {
+        title: 'שיבוץ',
+        duration: 'בסיום 19 חודשים',
+        description: 'משתבצים הקצינים בתפקיד מטה בחוליית הפיקוד הגדודית בצמוד למג"ד באחד הגדודים הסדירים של חילות השדה.'
+      }
+    ]
+  },
+  34: {
+    description: `קצין התקשוב הקרבי (קשר"ג) הוא מפקד וקצין מטה קרבי האחראי על תכנון, הפעלה ושמירה על הרציפות של כלל המערכות הדיגיטליות ורשתות התקשורת בשדה הקרב. במלחמה מודרנית, ללא תקשורת, מסכים דיגיטליים והצפנה – הגדוד למעשה עיוור וחירש. הקשר"ג נמצא בקו האש הראשון בחפ"ק (חוליית הפיקוד הקדמית) צמוד למג"ד, ומוודא שהמג"ד יכול לשלוט בכוחות, להעביר פקודות לפלוגות הקצה, להזמין סיוע אווירי ולתקשר עם דרגי הפיקוד שמעליו. בנוסף לתפקידו כקצין מטה, הקשר"ג מפקד באופן ישיר על מחלקת התקשוב של הגדוד – קשרים ולוחמים שרצים עם הכוחות בשטח ונושאים את האמצעים הטקטיים ומערכות הרדיו. בסיום ההכשרה, הקשר"גים משרתים בגדודים הלוחמים של כלל חילות השדה (חי"ר, שריון, תותחנים, הנדסה) וביחידות מיוחדות.`,
+    shortDescription: 'מפקד וקצין מטה קרבי האחראי על תכנון, הפעלה ושמירה על הרציפות של כלל המערכות הדיגיטליות ורשתות התקשורת בשדה הקרב.',
+    stats: {
+      serviceLength: '3 שנים ו-8 חודשים',
+      selectionCount: '1',
+      teamSize: 'מחלקת תקשוב'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך מיון קשר"גים',
+        steps: [
+          'מעבר מיון פיזי וקוגניטיבי של יומיים (מבחני כושר גופני, תרגילים קבוצתיים, מבחנים קוגניטיביים וריאיון אישי)',
+          'סיווג ביטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'הכשרת יסוד',
+        description: 'טירונות רובאי 03 ופיתוח כושר לחימה בסיסי.'
+      },
+      {
+        title: 'הכשרת יסוד מקצועית',
+        description: 'על מערכות התקשוב, השליטה וההצפנה.'
+      },
+      {
+        title: 'סיפוח',
+        description: 'תקופת שטח מעשית בה החיילים משובצים במחלקות תקשוב בגדודים לוחמים וביחידות מיוחדות כדי להתנסות וללמוד את העבודה המבצעית בזמן אמת.'
+      },
+      {
+        title: 'קורס מ"כים',
+        description: 'קורס מפקדי כיתות והכנה לקורס קצינים.'
+      },
+      {
+        title: 'קורס קצינים והשלמה חילית',
+        duration: 'בסיום כ-20 חודשים',
+        description: 'בבה"ד 1 במגמת הלוחמה (קק"צ "להב"), ומסתיים בהשלמה חילית אינטנסיבית של חיל התקשוב. בסיום ההכשרה מקבלים החניכים דרגות קצונה (סג"ם) ומשתבצים כקשר"גים ביחידות השטח.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'טיפול באדם', score: 3 },
+      { label: 'מנהל וארגון', score: 2 },
+      { label: 'פיקוד', score: 2 },
+      { label: 'בשלות ובגרות', score: 3 },
+      { label: 'גמישות מחשבתית', score: 3 }
+    ]
+  },
+  35: {
+    description: `מסלול בז הוא מסלול מצוינות ייעודי בחיל השריון, שמטרתו לאתר ולהכשיר את דור העתיד של קציני השריון מיום גיוסם. בניגוד ללוחם שריון רגיל שמתמחה בתפקיד אחד בטנק, חניכי מסלול בז מוכשרים מקצועית על כלל שלושת מקצועות הטנק, כדי להקנות להם הבנה הוליסטית לקראת תפקידם כמפקדי מחלקות. החניכים מאוגדים יחד כ"קבוצת איכות" כבר מהטירונות וזוכים ליחס חניכה גבוה במיוחד (יותר מפקדים על פחות חיילים), ליווי של קצינים בכירים בחיל, והתנסויות מוקדמות בפיקוד. זהו מסלול מובחר הדורש יכולות מנהיגות, הבנה של מערכות טכנולוגיות מתקדמות וחוסן מנטלי.`,
+    shortDescription: 'מסלול מצוינות ייעודי בחיל השריון להכשרת דור העתיד של קציני השריון.',
+    stats: {
+      serviceLength: '3 שנים ו-8 חודשים',
+      selectionCount: '1',
+      teamSize: 'קבוצת איכות'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש שריון',
+        steps: [
+          'שיבוץ וגיוס לחיל השריון',
+          'מעבר גיבוש שריון בתוצאת בז',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (מגיבושי סיירות)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש ללא מעבר',
+          'בז משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (מגיבוש טיס)',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'בז משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'בבא"ח שריון בה מוסמכים החיילים לרובאי 04 ומוכשרים לכלל מקצועות הטנק הבסיסיים.'
+      },
+      {
+        title: 'אימון מתקדם - צמ"פ',
+        duration: '4 חודשים',
+        description: 'אימון "צוות-מחלקה-פלוגה" בו משתייכים לאחת מהחטיבות המבצעיות (7, 188 או 401), עולים לרובאי 05, ומתאמנים בלחימה מבצעית משולבת עם תכני ניווט ומנהיגות.'
+      },
+      {
+        title: 'קורס מפקדי טנקים - קמ"ט',
+        duration: '4 חודשים',
+        description: 'הכשרה פיקודית בסופה מוסמכים למקצוע מפקד טנק (מט"ק).'
+      },
+      {
+        title: 'קורס קצינים',
+        duration: '4 חודשים',
+        description: 'בבה"ד 1 במגמת "להב", יחד עם לוחמים מצוערים מכלל חילות היבשה.'
+      },
+      {
+        title: 'השלמה חילית - קק"ש',
+        duration: '4 חודשים',
+        description: 'קורס קציני שריון המהווה את גולת הכותרת, בו מוסמכים כמפקדי מחלקות (מ"מ שריון), מתנסים בפיקוד בלחימה מורכבת ומקבלים את דרגות הקצונה.'
+      }
+    ]
+  },
+  36: {
+    description: `מסלול מטאור הוא מסלול מצוינות ייחודי לקצונה ייעודית בחיל התותחנים. המסלול מכשיר את דור העתיד של קציני האש והתקיפה של זרוע היבשה, ובונה יכולות מנהיגות, הובלה בשטח והבנה מקצועית רחבה של כלל המערכים בחיל מנקודת מבט מבצעית. קצינים בוגרי מטאור מהווים מוקד ידע וגורם מומחה להתאמת יכולות אש ואמצעי תקיפה לאתגרי שדה הקרב בשגרה ובמלחמה.`,
+    shortDescription: 'מסלול מצוינות ייחודי לקצונה ייעודית בחיל התותחנים המכשיר את דור העתיד של קציני האש והתקיפה.',
+    stats: {
+      serviceLength: '3 שנים ו-8 חודשים',
+      selectionCount: '1+',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש תותחנים',
+        steps: [
+          'שיבוץ וגיוס לחיל התותחנים',
+          'מעבר גיבוש תותחנים בתוצאת מטאור'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (מגיבושי סיירות)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש ללא מעבר',
+          'מסלול מטאור משבוע ראיונות',
+          'סיווג ביטחוני'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (מגיבוש טיס)',
+        steps: [
+          'מיון מקוון טיס',
+          'ירפ"א א\' + ירפ"א ב\' + פסיכולוג',
+          'סיום גיבוש טיס ללא מעבר',
+          'מסלול מטאור משבוע ראיונות',
+          'סיווג ביטחוני'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'טירונות קרבית במחנה שבטה, הסמכה לרובאי 05, שבועות קליעה, שדאות ולוחמה בשטח בנוי (לש"ב).'
+      },
+      {
+        title: 'הכשרה מקצועית ופיקודית',
+        duration: '4 חודשים',
+        description: 'הפעלת אש בסיסית, מודיעין מבצעי, ניתוח שטח ואויב ותרגולי שטח, תוך מתן אחריות פיקודית מוקדמת והובלת פרויקטים.'
+      },
+      {
+        title: 'סיפוח וסיכום מסלול',
+        duration: '4 חודשים',
+        description: 'לאחר ועדות שיבוצים, יוצאים לפרק סיפוח ביחידות המבצעיות, ומסיימים את מסלול ההכנה בשבועות חינוך, פיקוד ושבוע מסכם.'
+      },
+      {
+        title: 'קורס קצינים והשלמה חילית',
+        duration: '8 חודשים',
+        description: 'יציאה ברצף לקורס קציני יבשה בבה"ד 1 (4 חודשים) ולאחריו השלמה חילית של תותחנים (4 חודשים), בסיומם משתבצים כקציני אש ביחידות.'
+      }
+    ]
+  },
+  37: {
+    description: `חטיבת הצנחנים היא המוצנחת היחידה בחי"ר (חיל הרגלים), והיחידה מבניהם שדורשת מיון. החטיבה מהווה כוח תקיפה והכרעה מרכזי בזרוע היבשה. החטיבה מתמחה בביצוע פשיטות, תקיפה בעומק שטח האויב, ולחימה במתווים מורכבים, לצד היכולת הייחודית של הצנחת כוחות לוחמים והגעה ליעדים שונים מהאוויר. החטיבה מורכבת משלושה גדודים סדירים (101, 202, 890) וסיירת מובחרת (סיירת צנחנים), ולוקחת חלק משמעותי בחוד החנית המבצעי בכלל הגזרות.`,
+    shortDescription: 'החטיבה המוצנחת היחידה בחי"ר המהווה כוח תקיפה והכרעה מרכזי בזרוע היבשה.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '1+',
+      teamSize: 'פלוגה'
+    },
+    selectionPaths: [
+      {
+        name: 'דרך גיבוש צנחנים',
+        steps: [
+          'מעבר גיבוש צנחנים',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (מגיבושי סיירות)',
+        steps: [
+          'יום סיירות בתוצאת גיבוש',
+          'סיום גיבוש ללא מעבר',
+          'קבלת צנחנים משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'דרך שבוע ראיונות (מגיבוש טיס)',
+        steps: [
+          'מיון מקוון טייס',
+          'ירפ"א א\' + ירפ"א ב\' ופסיכולוג',
+          'סיום גיבוש טייס ללא מעבר',
+          'קבלת צנחנים משבוע ראיונות',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבא"ח צנחנים, הכוללת קליעה, שדאות, כושר קרבי והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם וקורס צניחה',
+        duration: '4 חודשים',
+        description: 'העלאת רמת הרובאות ל-07, אימוני לחימה מורכבים. פרק זה מסתיים במסע כומתה שבסופו מוענקת הכומתה האדומה.'
+      }
+    ]
+  },
+  38: {
+    description: `חטיבת גולני היא חטיבת חי"ר סדירה, מהוותיקות והמובילות בזרוע היבשה תחת פיקוד הצפון. החטיבה מהווה כוח תקיפה והכרעה מרכזי, ומתמחה בלחימה מורכבת בשטח פתוח, סבוך ובנוי. החטיבה מורכבת משלושה גדודים סדירים (12, 13, 51) והמובחרת סיירת גולני, ולוקחת חלק משמעותי בחוד החנית המבצעי בכלל הגזרות.`,
+    shortDescription: 'חטיבת חי"ר סדירה מהוותיקות והמובילות, מתמחה בלחימה מורכבת בשטח פתוח, סבוך ובנוי.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'פלוגה'
+    },
+    selectionPaths: [
+      {
+        name: 'שאלון העדפות',
+        steps: [
+          'דירוג חטיבת גולני בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחטיבה'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבא"ח גולני, הכוללת קליעה, שדאות, כושר קרבי והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-4 חודשים',
+        description: 'העלאת רמת הרובאות ל- 07 ואימוני לחימה מתקדמים. פרק זה מסתיים במסע כומתה שבסופו מוענקת הכומתה החומה.'
+      }
+    ]
+  },
+  39: {
+    description: `חטיבת גבעתי היא חטיבת חי"ר סדירה, המהווה את כוח התקיפה וההכרעה המרכזי תחת פיקוד הדרום. הייחוד המרכזי של גבעתי הוא המומחיות ארוכת השנים שלה בלחימה במתאר הדרומי, בדגש על רצועת עזה. החטיבה מהווה כוח תקיפה והכרעה מרכזי, ומתמחה בלחימה מורכבת בשטח פתוח, סבוך ובנוי. החטיבה מורכבת משלושה גדודים סדירים (שקד, צבר, רותם) וסיירת מובחרת (סיירת גבעתי), ולוקחת חלק משמעותי בחוד החנית המבצעי בכלל הגזרות.`,
+    shortDescription: 'חטיבת חי"ר סדירה, המהווה את כוח התקיפה וההכרעה המרכזי תחת פיקוד הדרום.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'פלוגה'
+    },
+    selectionPaths: [
+      {
+        name: 'שאלון העדפות',
+        steps: [
+          'דירוג חטיבת גבעתי בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחטיבה'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבא"ח גבעתי, הכוללת קליעה, שדאות, כושר קרבי והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-4 חודשים',
+        description: 'העלאת רמת הרובאות ל-07, ואימוני לחימה מורכבים. פרק זה מסתיים במסע כומתה שבסופו מוענקת הכומתה הסגולה.'
+      }
+    ]
+  },
+  40: {
+    description: `חטיבת הנח"ל היא חטיבת חי"ר סדירה בזרוע היבשה. הייחוד המרכזי של החטיבה טמון בשמה ("נוער חלוצי לוחם") ובמסורת הייחודית שלה. החטיבה מתמחה בלחימה מורכבת במגוון גזרות, בדגש על לוחמה בשטח בנוי וסבוך. החטיבה מורכבת משלושה גדודים סדירים (50, 931, 932) וסיירת מובחרת (סיירת נח"ל), ולוקחת חלק משמעותי בחוד החנית המבצעי בכלל הגזרות.`,
+    shortDescription: 'חטיבת חי"ר סדירה המתמחה בלחימה מורכבת במגוון גזרות, בדגש על לוחמה בשטח בנוי וסבוך.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'פלוגה'
+    },
+    selectionPaths: [
+      {
+        name: 'שאלון העדפות',
+        steps: [
+          'דירוג חטיבת הנח"ל בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחטיבה'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבא"ח נח"ל, הכוללת קליעה, שדאות, כושר קרבי והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-4 חודשים',
+        description: 'העלאת רמת הרובאות ל-07, אימוני לחימה מורכבים במתווים שונים. פרק זה מסתיים במסע כומתה שבסופו מוענקת הכומתה הירוקה (ירוק בהיר).'
+      }
+    ]
+  },
+  41: {
+    description: `חטיבת כפיר היא חטיבת חי"ר סדירה וצעירה יחסית בזרוע היבשה. הייחוד המרכזי של כפיר הוא המומחיות והניסיון המבצעי שלה בלחימה ביהודה ושומרון. החטיבה מתמחה בלוחמה בטרור ולחימה בשטח בנוי וצפוף. כיום היא חטיבה מתמרנת לכל דבר הפועלת בכלל הגזרות. החטיבה מורכבת מגדודים סדירים (נחשון, שמשון, דוכיפת, נצח יהודה) וסיירת מובחרת (סיירת חרוב).`,
+    shortDescription: 'חטיבת חי"ר סדירה המתמחה בלוחמה בטרור ולחימה בשטח בנוי וצפוף.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'פלוגה'
+    },
+    selectionPaths: [
+      {
+        name: 'שאלון העדפות',
+        steps: [
+          'דירוג חטיבת כפיר בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחטיבה'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות חי"ר',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבא"ח כפיר, הכוללת קליעה, שדאות, כושר קרבי והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-4 חודשים',
+        description: 'העלאת רמת הרובאות ל-07, אימוני לחימה מורכבים במתווים שונים. פרק זה מסתיים במסע כומתה שבסופו מוענקת הכומתה הירוקה-מנומרת.'
+      }
+    ]
+  },
+  42: {
+    description: `לוחם חוד ימי הוא תפקיד מפתח קרבי בזרוע הים, המחולק לשני מערכים מרכזיים: לוחמי ספינות הטילים (סטי"לים - שייטת 3) ולוחמי הביטחון השוטף (דבורנים - בט"ש). לוחמי הסטי"לים משרתים על ספינות קרב מתקדמות הרחק מחופי ישראל. הם מספקים כוח אש משמעותי, מגינים על נכסים אסטרטגיים, ומבצעים משימות תקיפה חשאיות ומודיעין בעומק הים תוך תפעול מערכות נשק מתקדמות ולוחמה אלקטרונית. הדבורנים (לוחמי הבט"ש) פועלים על ספינות קטנות ומהירות ובעלות יכולת תמרון גבוהה בצוותים קטנים ואינטימיים של כעשרה לוחמים. תפקידם להגן על הגבולות הימיים של המדינה, לסכל חדירות של גורמי טרור, ולפעול בשיתוף פעולה הדוק עם כוחות היבשה והאוויר.`,
+    shortDescription: 'תפקיד מפתח קרבי בזרוע הים, המחולק ללוחמי ספינות טילים (סטי"לים) ולוחמי ביטחון שוטף (דבורנים).',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '1',
+      teamSize: 'צוות ספינה'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גברים',
+        steps: [
+          'מעבר גיבוש לוחם ימי',
+          'סיווג ביטחוני ובדיקות'
+        ]
+      },
+      {
+        name: 'מסלול נשים',
+        steps: [
+          'מעבר מיון מקוון לוחמות ימיות',
+          'מעבר גיבוש לוחמות ימיות',
+          'סיווג ביטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'חודש וחצי עד חודשיים',
+        description: 'מתקיימת בבה"ד חיל הים וכוללת הסמכה לרובאי 03 בסיסית.'
+      },
+      {
+        title: 'הכשרה מקצועית',
+        duration: '3-6 חודשים',
+        description: 'מייעדת את הלוחמים לתפקיד ספציפי בספינה (כגון נשק, מכונה, שייט, גילוי, ניווט וקשר).'
+      },
+      {
+        title: 'הצבה בכלי שייט',
+        duration: 'המשך מסלול',
+        description: 'מוצבים בכלי השייט הייעודי שלהם (סטי"ל או כלי בט"ש) ומסיימים את ההכשרה שמסמיכה אותם כלוחמי חוד ימי (רובאי 07 ימי).'
+      }
+    ]
+  },
+  43: {
+    description: `משמר הגבול (מג"ב) הוא הזרוע המבצעית והקרבית של משטרת ישראל, כוח משטרתי-צבאי המשלב בין סמכויות של שוטר לבין הכשרה ויכולות של לוחם חי"ר. לוחמי מג"ב פועלים בכל רחבי הארץ, ומתמודדים ביומיום עם פשיעה חמורה, אבטחת מתקנים רגישים ופעילות בלב אוכלוסייה אזרחית. החיל מורכב ממגוון רחב של יחידות, ביניהן פלוגות הביטחון השוטף (בט"ש), סיירת 'סמ"ג' (סיור ובילוש), החטיבה הטקטית והחטיבה לביטחון פנים, וכוללת בתוכה יחידות עילית עולמיות כמו הימ"ס והימ"מ.`,
+    shortDescription: 'הזרוע המבצעית והקרבית של משטרת ישראל, כוח משטרתי-צבאי המשלב בין סמכויות של שוטר לבין הכשרה ויכולות של לוחם חי"ר.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'פלוגה'
+    },
+    yomHameaRequirements: [
+      { label: 'פיקוד', score: 2 },
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בגרות ובשלות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 }
+    ],
+    selectionPaths: [
+      {
+        name: 'מסלול בנים',
+        steps: [
+          'דירוג משמר הגבול בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס למג"ב',
+          'אישור התאמה משטרתית'
+        ]
+      },
+      {
+        name: 'מסלול בנות',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון) בתוצאת מג"ב',
+          'שיבוץ וגיוס למג"ב',
+          'אישור התאמה משטרתית'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'הכשרה קרבית ומשטרתית',
+        duration: 'כ-4 חודשים',
+        description: 'בבה"ד מג"ב. הלוחמים עוברים הכשרה קרבית לרובאי 05 (קליעה, שדאות, לוחמה בשטח פתוח ובנוי) ובמקביל הכשרה משטרתית (לוט"ר, לחימה בסביבה אזרחית, פיזור הפגנות, מעצרים וסמכויות שוטר).'
+      },
+      {
+        title: 'הצבה ביחידות',
+        duration: 'המשך מסלול',
+        description: 'בסיום הטירונות מקבלים תעודת שוטר, חוגרים את הכומתה הירוקה-כהה, ומשתבצים לפלוגות וליחידות המבצעיות הפרוסות במחוזות השונים ברחבי הארץ.'
+      }
+    ]
+  },
+  44: {
+    description: `מנחית סער קדמי משרת ביחידת ההנחתה הקדמית (יה"ק) של חיל האוויר. תפקיד היחידה הוא לאתר, להקים ולתפעל שדות תעופה ארעיים ומנחתי עפר עבור מטוסי התובלה הכבדה של החיל ("קרנף" ו"שמשון"), בתוך גבולות המדינה ומחוצה להם, פעמים רבות תחת תנאי שטח קשים, בחושך מוחלט ובחשאיות. המנחיתים הם הסמכות המקצועית הבלעדית בשטח לאישור נחיתת המטוסים. התפקיד משלב מיומנויות רבות: יכולות חי"ר, ניווט וניוד, לצד בחינה גיאולוגית של קרקע, סימון מנחתים בלילה, ומתן שירותי תעופה (כמו פיקוח טיסה, רפואה וכיבוי) הרחק מבסיסי הקבע. היחידה קטנה וייחודית, ודורשת יכולת עבודה בצוות, אחריות כבדה וקבלת החלטות מהירה בתנאי אי-ודאות.`,
+    shortDescription: 'איתור, הקמה ותפעול שדות תעופה ארעיים ומנחתי עפר עבור מטוסי התובלה הכבדה של חיל האוויר.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '2',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'מיוני חיל האוויר',
+        steps: [
+          'מיון ראשוני מקוון פסיכוטכני',
+          'מבחני התאמה ממוחשבים בירפ"א וראיון אישי',
+          'סיווג ביטחוני ובדיקות רפואיות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'כחודשיים',
+        description: 'טירונות בסיסית (רובאי 03) בבסיס נבטים.'
+      },
+      {
+        title: 'קורס מנחית סער קדמי בסיסי',
+        duration: 'כ-3 חודשים',
+        description: 'נלמדים יסודות הקמת המנחת, ניווט וחי"ר.'
+      },
+      {
+        title: 'מקצוע משנה תעופתי',
+        duration: 'כ-3 חודשים',
+        description: 'הצוות מתפצל וכל חייל רוכש מקצוע משנה: חובש, נהג מבצעי, פקח טיסה או בוחן עפר.'
+      },
+      {
+        title: 'שלב מסכם',
+        duration: 'כחודשיים',
+        description: 'התמקדות בעבודת הצוות המשולבת והמבצעית להקמה ותפעול של מנחתי עפר בחשכה ובמתארים מורכבים.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'תפיסה מרחבית', score: 2 },
+      { label: 'קשב מתמשך', score: 2 }
+    ]
+  },
+  45: {
+    description: `יחידת הניוד 444 (בלנ"מ – בית ספר לנהיגה מבצעית) היא הגוף המקצועי האחראי על הנהיגה המבצעית בצה"ל. הלוחמים ביחידה משמשים כמדריכי נהיגה מבצעית ומעבירים קורסים והכשרות ללוחמים מכלל גדודי צה"ל שיוצאים לקורס נהיגה מבצעית. בעתות חירום ומלחמה, הלוחמים-מדריכים מצוותים לכוחות הלוחמים בשטח ומבצעים משימות קריטיות של חילוץ פצועים תחת אש, תספוק וניוד כוחות בעומק שטח האויב.`,
+    shortDescription: 'הגוף המקצועי האחראי על הנהיגה המבצעית בצה"ל, משמשים גם כמדריכים וגם כלוחמים המבצעים משימות ניוד וחילוץ.',
+    importantNote: 'נדרש רישיון נהיגה ידני',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '1',
+      teamSize: 'צוות קטן'
+    },
+    selectionPaths: [
+      {
+        name: 'גיבוש בלנ"מ',
+        steps: [
+          'מעבר גיבוש בלנ"מ (2 ימים)',
+          'סיווג בטחוני ובדיקות'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבא"ח צנחנים, וכוללת הכשרת חי"ר והסמכה לרובאי 05.'
+      },
+      {
+        title: 'הכשרה מקצועית',
+        duration: 'כ-8 חודשים',
+        description: 'הלוחמים עולים לבסיס היחידה, מעלים רובאות ל-07, ועוברים הכשרה הכוללת לוחמת ניוד, מכונאות שדה, תפעול תקלות, נהיגת כביש ושטח בתנאי קיצון, לצד לימוד מתודולוגיות הדרכה ופיקוד.'
+      }
+    ]
+  },
+  46: {
+    description: `לוחמי הל"א הם הכוח הלוחם של חיל התקשוב, האחראיים על השליטה בספקטרום האלקטרומגנטי בשדה הקרב. מדובר בהפעלה טקטית של מערכות טכנולוגיות מתקדמות לשיבוש וחסימת תדרים. הלוחמים מפעילים ציוד ייעודי ומסווג שמטרתו לנתק את התקשורת של האויב, להפיל רחפני אויב ולמנוע הפעלת מטעני חבלה מרחוק מבוססי סלולר או רדיו. הלוחמים חוברים לכוחות המתמרנים ביבשה (ולעיתים גם באוויר ובים) ומספקים להם מעטפת הגנה אלקטרונית.`,
+    shortDescription: 'הכוח הלוחם של חיל התקשוב, האחראי על השליטה בספקטרום האלקטרומגנטי בשדה הקרב באמצעות מערכות טכנולוגיות מתקדמות לשיבוש וחסימת תדרים.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '1',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול בנים',
+        steps: [
+          'מעבר יום מיון ייעודי לגדוד (דינמיקה קבוצתית ומבחנים)',
+          'סיווג ביטחוני'
+        ]
+      },
+      {
+        name: 'מסלול בנות',
+        steps: [
+          'מעבר מיון לוחמות (מקוון)',
+          'זימון ומעבר מיון המשך לגדוד הל"א (הכולל דינמיקה קבוצתית ומבחנים)',
+          'סיווג ביטחוני'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '9 שבועות',
+        description: 'בבא"ח תותחנים, בה מוסמכים החיילים לרובאי 03 ועוברים הכשרת חי"ר בסיסית הכוללת קליעה ושטח.'
+      },
+      {
+        title: 'קורס מקצועי',
+        duration: 'כ-5 חודשים',
+        description: 'לומדים את תורת הלוחמה האלקטרונית ומתמקצעים בתפעול מערכות הקשר, החסימה ושיבוש התדרים.'
+      },
+      {
+        title: 'הצבה ביחידות',
+        duration: 'המשך מסלול',
+        description: 'משתבצים בפלוגות המבצעיות של הגדוד בגזרות השונות, והמתאימים יוכלו לצאת לקורסי פיקוד, קצונה או הדרכה.'
+      }
+    ]
+  },
+  47: {
+    description: `חיל ההנדסה הקרבית הוא הכוח שאחראי לפרוץ את הדרך ולהוביל ראשונים עבור כלל כוחות צה"ל. החיל משלב בין לוחמת חי"ר קלאסית לבין מומחיות קטלנית בחומרי נפץ, חבלה, מיקוש ולוחמת תת-קרקע (מנהרות). בשגרה ובמלחמה הם מבצעים פשיטות, מעצרים ומארבים כלוחמי חוד לכל דבר. החיל מורכב משלושה גדודים סדירים: 601 ("אסף"), 603 ("להב") ו-605 ("המחץ").`,
+    shortDescription: 'הכוח שאחראי לפרוץ את הדרך ולהוביל ראשונים עבור כלל כוחות צה"ל, משלב לוחמת חי"ר עם מומחיות בחומרי נפץ, חבלה ולוחמת תת-קרקע.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'גדוד'
+    },
+    yomHameaRequirements: [
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בגרות ובשלות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 }
+    ],
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס',
+        steps: [
+          'דירוג חיל ההנדסה הקרבית בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'בבהל"ץ (בית הספר להנדסה צבאית) – טירונות חי"ר הכוללת הנדסה בסיסית (חבלה ומיקוש) והגעה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: '4 חודשים',
+        description: 'העלאת רובאי ל-07, הסמכה מקצועית ל"פלס 06", חבלה מתקדמת, לש"ב (לוחמה בשטח בנוי), לוחמת תת-קרקע והפעלת רק"ם (רכב קרבי משוריין). השלב מסתיים במסע כומתה והענקת הכומתה הכסופה וסיכת הלוחם.'
+      }
+    ]
+  },
+  48: {
+    description: `חיל השריון הוא הכוח המתמרן המרכזי והמכריע של זרוע היבשה. כוחו של החיל מבוסס על טנקי מערכה מתקדמים מסדרת "מרכבה" (סימן 4) והופכים את הטנק למכונת מלחמה המשלבת עוצמת אש מדויקת, מיגון כבד וניידות. כל לוחם מתמחה באחד משלושת מקצועות הצוות בטנק: תותחן, טען או נהג. מעבר ללחימה הרכובה בטנקים במתארים שונים (שטח פתוח, סבוך ובנוי), לוחמי השריון פועלים גם כלוחמי חי"ר ובשגרה מבצעים פעילויות ביטחון שוטף, פשיטות ומעצרים בגזרות השונות (כמו באיו"ש). החיל מורכב משלוש חטיבות סדירות: חטיבה 7 (צפון), חטיבה 188 (צפון) וחטיבה 401 (דרום).`,
+    shortDescription: 'הכוח המתמרן המרכזי של זרוע היבשה, מבוסס על טנקי מרכבה ומשלב עוצמת אש, מיגון וניידות.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות טנק'
+    },
+    yomHameaRequirements: [
+      { label: 'הפעלה', score: 3 },
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 }
+    ],
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס',
+        steps: [
+          'דירוג חיל השריון בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחיל'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'מתחלקת לשני פרקים. החלק הראשון (כחודשיים וחצי) מתמקד בהכשרת חי"ר, שדאות, קליעה, כושר גופני והסמכה לרובאי 04. החלק השני (כחודש וחצי) הוא שלב המקצועות, בו כל לוחם לומד ומתרגל באופן מעשי ועיוני את תפקידו הייעודי בטנק (תותחן, טען או נהג). שלב זה מסתיים במסע כומתה (הכומתה השחורה) והשבעה בלטרון.'
+      },
+      {
+        title: 'אימון מתקדם - צמ"פ',
+        duration: '4 חודשים',
+        description: 'אימון "צוות-מחלקה-פלוגה". שלב אינטנסיבי בו לומדים להילחם ולתפקד כצוות טנק אורגני וכחלק ממסגרות לחימה רחבות יותר, ביום ובלילה. בסיום הצמ"פ עולה רמת הרובאות ל-05 ומוענקת סיכת לוחם השריון.'
+      }
+    ]
+  },
+  49: {
+    description: `חיל התותחנים הוא כוח האש העוצמתי והמכריע של זרוע היבשה, האחראי על השמדת מטרות אויב מרחוק וסגירת מעגלי אש מהירים. החיל מורכב ממספר מערכים מרכזיים:
+• המערך הקני, שמספק חיפוי ארטילרי כבד צמוד לכוחות היבשה באמצעות תותחים ניידים.
+• המערך הרקטי (MLRS) שמפעיל משגרים מדויקים וקטלניים לטווחים ארוכים.
+• מערך האיכון (מכ"מים) שתפקידו לאתר בזמן אמת את מקורות הירי של האויב ולהתריע לכוחות ולעורף.
+• יחידת המל"טים שמפעילה כטב"מים במטרה לתצפת ולאתר מטרות בעומק השטח ולסייע לכוחות הלוחמים.
+בנוסף למערכים אלו, פועלות בחיל גם מספר יחידות מיוחדות ומסווגות.`,
+    shortDescription: 'כוח האש העוצמתי והמכריע של זרוע היבשה, האחראי על השמדת מטרות אויב מרחוק.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס (בנים)',
+        steps: [
+          'דירוג חיל התותחנים בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחיל'
+        ]
+      },
+      {
+        name: 'מסלול גיוס (בנות)',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון)',
+          'שיבוץ וגיוס לחיל'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'חודשיים',
+        description: 'מתקיים בבסיס ההדרכה של חיל התותחנים (מחנה שבטה). הכשרת חי"ר, שדאות, קליעה והסמכה לרובאי 03.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: '4 חודשים',
+        description: 'קורס מקצועי בו הלוחמים לומדים לתפעל לעומק את האמל"ח הייעודי של המערך אליו שובצו. בסיום ההכשרה משתבצים הלוחמים בגדודים המבצעיים ברחבי הארץ.'
+      }
+    ]
+  },
+  51: {
+    description: `מערך ההגנה האווירית הוא "שכבת המגן" של מדינת ישראל מפני איומים מהאוויר ומהחלל. הלוחמים במערך פועלים בסוללות הפרוסות ברחבי הארץ, ומשלבים שירות שטח מבצעי עם הפעלת טכנולוגיית היירוט והמכ"ם המתקדמת בעולם. עם הגיוס, משובצים הלוחמים לאחת ממערכות הנשק של המערך: כיפת ברזל (יירוט רקטות וטילים לטווח קצר-בינוני), קלע דוד (יירוט טילים לטווח בינוני-ארוך וטילי שיוט), יהלום/פטריוט (יירוט כלי טיס, מטוסי קרב וכטב"מים), חץ (יירוט טילים בליסטיים ארוכי טווח מחוץ לאטמוספירה), או למערך מנת"ב/גילוי להתרעה (זיהוי שיגורי אויב בזמן אמת). זהו תפקיד שדורש דריכות שיא, קור רוח וקבלת החלטות קריטיות בשניות בודדות.`,
+    shortDescription: '"שכבת המגן" של מדינת ישראל מפני איומים מהאוויר ומהחלל, המפעילה את טכנולוגיית היירוט והמכ"ם המתקדמת בעולם.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס (בנים)',
+        steps: [
+          'דירוג הגנה אווירית בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס למערך'
+        ]
+      },
+      {
+        name: 'מסלול גיוס (בנות)',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון)',
+          'שיבוץ וגיוס למערך'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'מסלול הכשרה',
+        duration: 'כ-3.5 חודשים (14 שבועות)',
+        description: 'מתקיים בבית הספר להגנה אווירית (ביסל"א) בנגב. המסלול משלב טירונות (הסמכה לרובאי 03 הכוללת קליעה ושדאות) יחד עם קורס מקצועי אינטנסיבי על מערכת הנשק הספציפית אליה שובץ הלוחם. בסיום המסלול, עולים הלוחמים לסוללות המבצעיות. במהלך השירות הסדיר, לוחמים מתאימים יוכלו להתקדם ל"קורס מיירטים" (קורס יוקרתי המסמיך את הלוחם להיות זה שלוחץ בפועל על כפתור השיגור בקרון ההפעלה), ולצאת למסלולי פיקוד וקצונה.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'הפעלה טכנית', score: 3 },
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'עיבוד מידע', score: 2 },
+      { label: 'קשב מתמשך', score: 2 },
+      { label: 'תפיסה מרחבית', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 }
+    ]
+  },
+  52: {
+    description: `חיל האיסוף הקרבי אמון על איסוף מידע מודיעיני טקטי מהשטח בזמן אמת, סיכול פעילות חבלנית עוינת (פח"ע) והגנת גבולות המדינה. הלוחמים מתמחים בהסוואה, היטמעות בשטח, ניווטים מורכבים והפעלת אמצעי תצפית וטכנולוגיה מתקדמים. כמו כן פועלים לוחמי החיל לסיכול פעילות חבלנית עוינת ולהכוונת כוחות ואש.
+
+החיל מחולק למספר מערכים וייעודים:
+לוחמי איסוף רגליים (פרופיל 97): הכוח הרגלי שחודר רגלית לשטח האויב או לגזרה מורכבת, נושא משקלים כבדים על הגב, ומקים עמדות הסוואה ותצפית חשאיות (מארבים) למשך ימים. הפלוגות הייעודיות מבצעות משימות מורכבות ומסווגות יותר.
+לוחמי איסוף רכובים ומפעילי בלונים (פרופיל 82 ומעלה): פועלים על גבי רכבים קרביים ייעודיים להקמת תצפיות ניידות, או אחראים על פריסה והפעלה של בלוני איסוף טקטיים החולשים על גזרות רחבות מלמעלה.
+
+בסיום המסלול, הלוחמים משתבצים באחד מחמשת הגדודים הגזרתיים הקבועים של החיל:
+שחף (869): גבול לבנון (לוחמים בלבד).
+עיט (595): גבול סוריה (מעורב - לוחמים ולוחמות).
+ניצן (636): איו"ש והבקעה (לוחמים בלבד).
+נשר (414): רצועת עזה (מעורב - לוחמים ולוחמות).
+איתם (727): גבול מצרים וירדן (לוחמות בלבד).`,
+    shortDescription: 'אמון על איסוף מידע מודיעיני טקטי מהשטח בזמן אמת, סיכול פח"ע והגנת גבולות המדינה.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס (בנים)',
+        steps: [
+          'דירוג חיל איסוף קרבי בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחיל'
+        ]
+      },
+      {
+        name: 'מסלול גיוס (בנות)',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון)',
+          'שיבוץ וגיוס לחיל'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'מתקיים בבית הספר להגנת הגבולות (סיירים). הכשרת חי"ר בסיסית, קליעה, שדאות, כושר קרבי והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: '4 חודשים',
+        description: 'פרק מקצועי בו הלוחמים לומדים את ייעודם הספציפי. ההכשרה כוללת ניווטים, טכניקות הסוואה מתקדמות (בניית עמדות שטח), ותפעול אמצעי לחימה ואמצעי תצפית טכנולוגיים (אופקיים ואנכיים, כולל רחפנים).'
+      }
+    ]
+  },
+  53: {
+    description: `חטיבת החילוץ (לשעבר פלח"ץ, פלוגת חילוץ והצלה) היא חטיבת לוחמת חוד מעורבת הכפופה לפיקוד העורף. הייעוד של החטיבה הוא חילוץ והצלת חיים באתרי הרס. בשגרה, הגדודים פועלים ככוח חי"ר לכל דבר ותופסים קווים מבצעיים מורכבים (בעיקר ביהודה ושומרון ובבקעת הירדן), שם הם מבצעים מעצרים, סיורים וטיפול בהפרות סדר. בחירום, הם הכוח המקצועי בצה"ל שמוקפץ לאתרי הרס (קריסת מבנים, רעידות אדמה, פגיעת טילים) כדי לחלץ לכודים, בארץ ואף במשלחות סיוע ברחבי העולם. החטיבה מורכבת מארבעה גדודים מעורבים: שחר (498), קדם (489), תבור (894) ורם (668).`,
+    shortDescription: 'חטיבת לוחמת חוד מעורבת הכפופה לפיקוד העורף, שייעודה חילוץ והצלת חיים באתרי הרס ופעילות בט"ש בשגרה.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס (בנים)',
+        steps: [
+          'דירוג חטיבת החילוץ בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס לחטיבה'
+        ]
+      },
+      {
+        name: 'מסלול גיוס (בנות)',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון) בתוצאת פיקוד העורף',
+          'שיבוץ וגיוס לחטיבה'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: 'כ-10 שבועות',
+        description: 'הכשרת חי"ר, קליעה, שדאות, כושר קרבי והסמכה לרובאי 03 בבא"ח העורף.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'כ-14 שבועות',
+        description: 'שלב ההתמקצעות הייעודי, בו הלוחמים לומדים ומתרגלים שימוש בכלי חילוץ כבדים, הנדסת מבנים וטכניקות חילוץ מהרס. בסיום האימון המתקדם מוסמכים הלוחמים לרמת מחלץ 07 ורובאי 05.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'השקעה והתמדה', score: 2 }
+    ]
+  },
+  54: {
+    description: `מערך חי"ר גבולות מורכב מגדודים לוחמים מעורבים, המהווים את קו ההגנה השוטף של צה"ל לאורך גבולות השלום והגבולות ה"שקטים" של המדינה (מצרים, ירדן ומרחב התפר). הייעוד המרכזי של חי"ר הגבולות הוא שמירה על הביטחון השוטף בגבול. התפקיד סובב ברובו סביב ביצוע סיורים רכובים על הגדר, מארבים ותצפיות. המערך מחולק לחמישה גדודים גזרתיים קבועים: קרקל וברדלס (גבול מצרים והערבה), אריות הירדן ולביאי הבקעה (גבול ירדן), ופנתר (מרחב התפר באיו"ש).`,
+    shortDescription: 'מערך גדודים לוחמים מעורבים המהווים את קו ההגנה השוטף לאורך גבולות השלום ומרחב התפר.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס (בנים)',
+        steps: [
+          'דירוג חי"ר גבולות בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס'
+        ]
+      },
+      {
+        name: 'מסלול גיוס (בנות)',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון)',
+          'שיבוץ וגיוס'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'מתקיימת בבית הספר להגנת הגבולות. הכשרת חי"ר בסיסית הכוללת קליעה, כושר קרבי, עבודת צוות, שדאות, תפעול נשק והסמכה לרובאי 05.'
+      },
+      {
+        title: 'אימון מתקדם',
+        duration: 'חודשיים וחצי',
+        description: 'שלב זה מתבצע כבר בתוך הגזרות המבצעיות של הגדודים. המחלקה מתרגלת עבודה משותפת, לחימה במתארים הייחודיים לגזרה שלה, ובסופו מוסמכים הלוחמים לרובאי 06. לאחר האימון, תופסים הלוחמים קו מבצעי יחד כ"פלוגת מסלול" למשך חודשיים, ולאחר מכן משתלבים בפלוגות הוותיקות.'
+      }
+    ]
+  },
+  55: {
+    description: `מערך המעברים של חיל המשטרה הצבאית מהווה את קו ההגנה הראשון מול ניסיונות פיגוע. השירות מתמקד בבידוק ביטחוני קפדני במחסומים ובעמדות לאורך גדר הביטחון. הלוחמים והלוחמות מבצעים בידוק של רכבים והולכי רגל, ותפקידם למנוע חדירת גורמים עוינים, לסכל הברחות אמצעי לחימה וסחורות, ולמנוע כניסת שוהים בלתי חוקיים (שב"חים) – כל זאת במקביל לשמירה על שגרת חייהם של העוברים במעברים. התפקיד דורש עירנות מתמדת, קור רוח, ויכולת התמודדות בחיכוך יומיומי עם האוכלוסייה. המערך מורכב משני גדודים: תעוז (גזרת איו"ש ובקעת הירדן) וארז (גזרת עוטף ירושלים).`,
+    shortDescription: 'בידוק ביטחוני קפדני במחסומים ובעמדות לאורך גדר הביטחון למניעת חדירת גורמים עוינים והברחות.',
+    stats: {
+      serviceLength: 'שנתיים ו-8 חודשים',
+      selectionCount: '0',
+      teamSize: 'צוות'
+    },
+    selectionPaths: [
+      {
+        name: 'מסלול גיוס (בנים)',
+        steps: [
+          'דירוג לוחם מעברים בעדיפות גבוהה בשאלון ההעדפות',
+          'שיבוץ וגיוס'
+        ]
+      },
+      {
+        name: 'מסלול גיוס (בנות)',
+        steps: [
+          'דירוג אשכול לוחמה בעדיפות גבוהה',
+          'מעבר מיון לוחמות (מקוון)',
+          'שיבוץ וגיוס'
+        ]
+      }
+    ],
+    trainingProcess: [
+      {
+        title: 'מסלול הכשרה',
+        duration: 'כ-10 שבועות',
+        description: 'מתקיים בבית הספר למשטרה צבאית בקריית ההדרכה (עיר הבה"דים). המסלול משלב טירונות והכשרה מקצועית. החיילים עוברים אימוני קליעה, כושר גופני, קרב מגע, התמודדות עם אירועי פח"ע, והתמקצעות בשיטות בידוק ביטחוני פיזי וטכנולוגי. בסיום המסלול מוסמכים הלוחמים לרובאי 03, מוגדרים כשוטרים צבאיים ומשתבצים במחסומים בפלוגות המבצעיות.'
+      }
+    ],
+    yomHameaRequirements: [
+      { label: 'טיפול באדם', score: 3 },
+      { label: 'מנהל וארגון', score: 3 },
+      { label: 'פיקוד', score: 2 },
+      { label: 'עבודת צוות', score: 2 },
+      { label: 'בשלות ובגרות', score: 2 },
+      { label: 'מסגרתיות', score: 2 },
+      { label: 'קשב מתמשך', score: 3 }
     ]
   }
 };
