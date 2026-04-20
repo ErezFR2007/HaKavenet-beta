@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Role, RoleExtendedDetails } from '../types';
 
 interface RoleDetailsProps {
@@ -8,6 +8,16 @@ interface RoleDetailsProps {
 }
 
 const RoleDetails: React.FC<RoleDetailsProps> = ({ role, details, onBack }) => {
+
+  useEffect(() => {
+    // משנה את הכותרת של הדפדפן (וה-SEO של גוגל)
+    document.title = `הכוונת - ${role.name}`;
+    
+    // כשיוצאים מהדף, זה מחזיר לכותרת הרגילה
+    return () => {
+      document.title = 'הכוונת - הדרך שלך ללוחמה';
+    };
+  }, [role.name]);
   
   const getRoleStatus = (role: Role) => {
     const eliteKeywords = ['סיירת מטכ"ל', 'שייטת 13', 'שלדג', '669'];
