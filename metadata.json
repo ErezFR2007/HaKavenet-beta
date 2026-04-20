@@ -1,55 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="he" dir="rtl" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#0f172a" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <title>הכוונת - הדרך שלך ללוחמה</title>
-    <meta name="description" content="מערכת התאמה חכמה המנתחת את הנתונים שלך למציאת היחידה הקרבית המתאימה עבורך בצה״ל. מאגר של כל תפקידי הלוחמה בצה״ל." />    
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Assistant', 'sans-serif'],
-            },
-          },
-        },
-      }
-    </script>
-
-    <!-- Import Map for React -->
-    <script type="importmap">
 {
-  "imports": {
-    "react": "https://esm.sh/react@^19.0.0",
-    "react-dom": "https://esm.sh/react-dom@^19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@^19.0.0/client",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4"
-  }
+  "name": "הכוונת - מצא את תפקיד הלחימה שלך",
+  "description": "פלטפורמה חכמה לדירוג והתאמת תפקידי לוחמה בצה״ל על בסיס נתונים אישיים, כושר גופני והעדפות שירות.",
+  "requestFramePermissions": []
 }
-</script>
-  </head>
-  <body class="bg-[#f4f4f0] dark:bg-slate-950 text-stone-900 dark:text-slate-100 selection:bg-emerald-500/30 transition-colors duration-300">
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-  </body>
-</html>
