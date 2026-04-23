@@ -41,61 +41,55 @@ export const ROLES_DB: Role[] = [
   { id: 5, slug: 'unit-669', name: 'לוחם 669', type: 'חיל האוויר', rank: 5, minProfile: 97, minDapr: 50, tags: 'Alfgd', fitnessRequired: 1 },
   { id: 6, slug: 'hovlim', name: 'חובלים', type: 'חיל הים', note: 'ייעודי לקצונה', rank: 6, minProfile: 82, minDapr: 60, tags: 'cltSfoG', fitnessRequired: 2 },
   { id: 7, slug: 'tsololoth', name: 'שייטת 7 (צוללות)', type: 'חיל הים', rank: 7, minProfile: 82, minDapr: 60, tags: 'lTSoGx', fitnessRequired: 3 },
-  { id: 8, name: 'מגלן', type: 'חטיבת הקומנדו', rank: 8, minProfile: 82, minDapr: 50, tags: 'Altsgxd', fitnessRequired: 1 },
-  { id: 9, name: 'דובדבן', type: 'חטיבת הקומנדו', rank: 9, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
-  { id: 10, name: 'אגוז', type: 'חטיבת הקומנדו', rank: 10, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
-  { id: 11, name: 'לוחם 504', type: 'חיל המודיעין', rank: 11, minProfile: 82, minDapr: 50, tags: 'atSGxd', fitnessRequired: 2 },
-  { id: 12, name: 'לוחם קודקוד (קורל)', type: 'חיל האוויר', rank: 12, minProfile: 82, minDapr: 50, tags: 'TSGx', fitnessRequired: 3 },
-  { id: 13, name: 'תוכנית ארז', type: 'זרוע היבשה', note: 'ייעודי לקצונה', rank: 13, minProfile: 82, minDapr: 50, tags: 'aclGd', fitnessRequired: 2 },
-  
-  // שינוי סדר: 5515 הוקפצה למקום 14 (מעל ימ"ס) - דפ"ר עודכן ל-40
-  { id: 14, name: 'ימ"ס', type: 'משטרת ישראל', rank: 15, minProfile: 82, minDapr: 30, tags: 'AgHxd', fitnessRequired: 1 },
-  // יהל"ם - דפ"ר עודכן ל-50
-  { id: 15, name: 'יהל"ם', type: 'חיל ההנדסה הקרבית', rank: 16, minProfile: 82, minDapr: 50, tags: 'Atsfd', fitnessRequired: 2 },
-  { id: 22, name: 'עוקץ', type: 'זרוע היבשה', rank: 17, minProfile: 82, minDapr: 30, tags: 'AlfGd', fitnessRequired: 2 },
-  
-  // סיירות ויחידות מיוחדות (הוזזו למטה ב-1 עקב הקפצת 5515)
-  { id: 16, name: 'סיירת צנחנים', type: 'חיל הרגלים', note: 'חי"ר', rank: 18, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 1 },
-  { id: 17, name: 'סיירת גולני', type: 'חיל הרגלים', note: 'חי"ר', rank: 19, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
-  { id: 19, name: 'סיירת גבעתי', type: 'חיל הרגלים', note: 'חי"ר', rank: 20, minProfile: 82, minDapr: 30, tags: 'Ahd', fitnessRequired: 2 },
-  { id: 57, name: 'לוחם אישים', type: 'אגף המבצעים', rank: 21, minProfile: 82, minDapr: 50, tags: 'agx', fitnessRequired: 2 },
-  { id: 21, name: 'זיק', type: 'חיל התותחנים', note:'תותחנים', rank: 22, minProfile: 82, minDapr: 60, tags: 'TSfGx', fitnessRequired: 3 },
-  { id: 23, name: 'היחידה הרב-ממדית', type: 'זרוע היבשה', rank: 23, minProfile: 82, minDapr: 40, tags: 'atg', fitnessRequired: 2 },
-  { id: 25, name: 'לוט"ר', type: 'זרוע היבשה', rank: 24, minProfile: 82, minDapr: 50, tags: 'acfg', fitnessRequired: 2 },
-  { id: 18, name: 'סיירת נח"ל', type: 'חיל הרגלים', note: 'חי"ר', rank: 25, minProfile: 82, minDapr: 30, tags: 'Ad', fitnessRequired: 2 },
-  { id: 20, name: 'סיירת חרוב', type: 'חיל הרגלים', note: 'חי"ר', rank: 26, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
-
-  { id: 26, name: 'מיתר', type: 'חיל התותחנים', note:'תותחנים', rank: 27, minProfile: 82, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
-  { id: 27, name: 'מורן', type: 'חיל התותחנים', note:'תותחנים', rank: 28, minProfile: 82, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
-  { id: 56, name: 'מלא"ר', type: 'חיל השריון', note:'שריון', rank: 29, minProfile: 82, minDapr: 50, tags: 'aTsfg', fitnessRequired: 2 },
-  { id: 28, name: 'רוכ"ש', type: 'חיל התותחנים', note:'תותחנים', rank: 30, minProfile: 82, minDapr: 50, tags: 'aTsfgd', fitnessRequired: 2 },
-  { id: 29, name: 'ילת"ם', type: 'חיל הים', rank: 31, minProfile: 72, minDapr: 50, tags: 'tfoG', fitnessRequired: 2 },
-  { id: 30, name: 'לוחם סנפיר', type: 'חיל הים', rank: 32, minProfile: 72, minDapr: 30, tags: 'foG', fitnessRequired: 2 },
-  { id: 58, name: 'תצפיתן חמ"ן', type: 'חיל המודיעין', rank: 33, minProfile: 72, minDapr: 50, tags: 'tfgx', fitnessRequired: 4 },
-  { id: 31, name: 'מודא"ל (מודיעין אלקטרוני)', type: 'חיל האוויר', rank: 34, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 4 },
-  { id: 32, name: 'מפעיל ל"א', type: 'חיל האוויר', rank: 35, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 4 },
-  { id: 44, name: 'מנחית סער קדמי', type: 'חיל האוויר', rank: 36, minProfile: 82, minDapr: 50, tags: 'fg', fitnessRequired: 4 },
-  { id: 33, name: 'קצין מודיעין טקטי', type: 'חיל המודיעין', note: 'ייעודי לקצונה', rank: 37, minProfile: 72, minDapr: 60, tags: 'cltSfGx', fitnessRequired: 3 },
-  { id: 34, name: 'קשר"ג', type: 'חיל התקשוב', note: 'ייעודי לקצונה', rank: 38, minProfile: 72, minDapr: 60, tags: 'cltSfg', fitnessRequired: 3 },
-  { id: 35, name: 'בז', type: 'חיל השריון', note: 'ייעודי לקצונה שריון', rank: 39, minProfile: 72, minDapr: 60, tags: 'Aclgd', fitnessRequired: 2 },
-  { id: 36, name: 'מטאור', type: 'חיל התותחנים', note: 'ייעודי לקצונה תותחנים', rank: 40, minProfile: 72, minDapr: 60, tags: 'cltfg', fitnessRequired: 2 },
-  { id: 37, name: 'צנחנים', type: 'חיל הרגלים', note: 'חי"ר', rank: 41, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 2 },
-  { id: 38, name: 'גולני', type: 'חיל הרגלים', note: 'חי"ר', rank: 42, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 3 },
-  { id: 39, name: 'גבעתי', type: 'חיל הרגלים', note: 'חי"ר', rank: 43, minProfile: 82, minDapr: 30, tags: 'Ahdn', fitnessRequired: 3 },
-  { id: 40, name: 'נח"ל', type: 'חיל הרגלים', note: 'חי"ר', rank: 44, minProfile: 82, minDapr: 30, tags: 'Adn', fitnessRequired: 3 },
-  { id: 41, name: 'כפיר', type: 'חיל הרגלים', note: 'חי"ר', rank: 45, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 3 },
-  { id: 42, name: 'לוחם חוד ימי', type: 'חיל הים', rank: 46, minProfile: 72, minDapr: 30, tags: 'tfog', fitnessRequired: 4 },
-  { id: 43, name: 'מג"ב', type: 'משטרת ישראל', rank: 47, minProfile: 82, minDapr: 30, tags: 'afHdn', fitnessRequired: 4 },
-  { id: 45, name: 'יחידת הניוד 444', type: 'זרוע היבשה', rank: 48, minProfile: 82, minDapr: 30, tags: 'cgh', fitnessRequired: 3 },
-  { id: 46, name: 'לוחם ל"א (לוחמה אלקטרונית)', type: 'חיל התקשוב', rank: 49, minProfile: 72, minDapr: 50, tags: 'tfx', fitnessRequired: 4 },
-  { id: 47, name: 'הנדסה קרבית', type: 'חיל ההנדסה הקרבית', rank: 50, minProfile: 82, minDapr: 40, tags: 'Atdn', fitnessRequired: 4 },
-  { id: 48, name: 'שריון', type: 'חיל השריון', rank: 51, minProfile: 72, minDapr: 40, tags: 'Atdn', fitnessRequired: 4 },
-  { id: 52, name: 'איסוף קרבי', type: 'חיל האיסוף', rank: 52, minProfile: 82, minDapr: 30, tags: 'tfnf', fitnessRequired: 4 },
-  { id: 49, name: 'תותחנים', type: 'חיל התותחנים', rank: 53, minProfile: 72, minDapr: 40, tags: 'tfnf', fitnessRequired: 4 },
-  { id: 51, name: 'הגנה אווירית', type: 'חיל האוויר', rank: 54, minProfile: 72, minDapr: 40, tags: 'Tfnf', fitnessRequired: 4 },
-  { id: 53, name: 'פלח"ץ (חילוץ והצלה)', type: 'פיקוד העורף', rank: 55, minProfile: 72, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
-  { id: 54, name: 'חי"ר גבולות', type: 'חיל הגנת הגבולות', rank: 56, minProfile: 72, minDapr: 30, tags: 'afhn', fitnessRequired: 4 },
-  { id: 55, name: 'לוחם מעברים', type: 'חיל המשטרה הצבאית', rank: 57, minProfile: 64, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
+  { id: 8, slug: 'maglan', name: 'מגלן', type: 'חטיבת הקומנדו', rank: 8, minProfile: 82, minDapr: 50, tags: 'Altsgxd', fitnessRequired: 1 },
+  { id: 9, slug: 'duvdevan', name: 'דובדבן', type: 'חטיבת הקומנדו', rank: 9, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
+  { id: 10, slug: 'egoz', name: 'אגוז', type: 'חטיבת הקומנדו', rank: 10, minProfile: 82, minDapr: 50, tags: 'Alghxd', fitnessRequired: 1 },
+  { id: 11, slug: 'lohem-504', name: 'לוחם 504', type: 'חיל המודיעין', rank: 11, minProfile: 82, minDapr: 50, tags: 'atSGxd', fitnessRequired: 2 },
+  { id: 12, slug: 'korel', name: 'לוחם קודקוד (קורל)', type: 'חיל האוויר', rank: 12, minProfile: 82, minDapr: 50, tags: 'TSGx', fitnessRequired: 3 },
+  { id: 13, slug: 'erez', name: 'תוכנית ארז', type: 'זרוע היבשה', note: 'ייעודי לקצונה', rank: 13, minProfile: 82, minDapr: 50, tags: 'aclGd', fitnessRequired: 2 },
+  { id: 14, slug: 'yamas', name: 'ימ"ס', type: 'משטרת ישראל', rank: 15, minProfile: 82, minDapr: 30, tags: 'AgHxd', fitnessRequired: 1 },
+  { id: 15, slug: 'yahalom', name: 'יהל"ם', type: 'חיל ההנדסה הקרבית', rank: 16, minProfile: 82, minDapr: 50, tags: 'Atsfd', fitnessRequired: 2 },
+  { id: 22, slug: 'oketz', name: 'עוקץ', type: 'זרוע היבשה', rank: 17, minProfile: 82, minDapr: 30, tags: 'AlfGd', fitnessRequired: 2 },
+  { id: 16, slug: 'sayeret-tzanhanim', name: 'סיירת צנחנים', type: 'חיל הרגלים', note: 'חי"ר', rank: 18, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 1 },
+  { id: 17, slug: 'sayeret-golani', name: 'סיירת גולני', type: 'חיל הרגלים', note: 'חי"ר', rank: 19, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
+  { id: 19, slug: 'sayeret-givati', name: 'סיירת גבעתי', type: 'חיל הרגלים', note: 'חי"ר', rank: 20, minProfile: 82, minDapr: 30, tags: 'Ahd', fitnessRequired: 2 },
+  { id: 57, slug: 'lohem-ishim', name: 'לוחם אישים', type: 'אגף המבצעים', rank: 21, minProfile: 82, minDapr: 50, tags: 'agx', fitnessRequired: 2 },
+  { id: 21, slug: 'zik', name: 'זיק', type: 'חיל התותחנים', note:'תותחנים', rank: 22, minProfile: 82, minDapr: 60, tags: 'TSfGx', fitnessRequired: 3 },
+  { id: 23, slug: 'rav-memadit', name: 'היחידה הרב-ממדית', type: 'זרוע היבשה', rank: 23, minProfile: 82, minDapr: 40, tags: 'atg', fitnessRequired: 2 },
+  { id: 25, slug: 'lotar', name: 'לוט"ר', type: 'זרוע היבשה', rank: 24, minProfile: 82, minDapr: 50, tags: 'acfg', fitnessRequired: 2 },
+  { id: 18, slug: 'sayeret-nahal', name: 'סיירת נח"ל', type: 'חיל הרגלים', note: 'חי"ר', rank: 25, minProfile: 82, minDapr: 30, tags: 'Ad', fitnessRequired: 2 },
+  { id: 20, slug: 'sayeret-haruv', name: 'סיירת חרוב', type: 'חיל הרגלים', note: 'חי"ר', rank: 26, minProfile: 82, minDapr: 30, tags: 'AHd', fitnessRequired: 2 },
+  { id: 26, slug: 'meitar', name: 'מיתר', type: 'חיל התותחנים', note:'תותחנים', rank: 27, minProfile: 82, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
+  { id: 27, slug: 'moran', name: 'מורן', type: 'חיל התותחנים', note:'תותחנים', rank: 28, minProfile: 82, minDapr: 50, tags: 'Tsfgx', fitnessRequired: 3 },
+  { id: 56, slug: 'malar', name: 'מלא"ר', type: 'חיל השריון', note:'שריון', rank: 29, minProfile: 82, minDapr: 50, tags: 'aTsfg', fitnessRequired: 2 },
+  { id: 28, slug: 'rochesh', name: 'רוכ"ש', type: 'חיל התותחנים', note:'תותחנים', rank: 30, minProfile: 82, minDapr: 50, tags: 'aTsfgd', fitnessRequired: 2 },
+  { id: 29, slug: 'yaltam', name: 'ילת"ם', type: 'חיל הים', rank: 31, minProfile: 72, minDapr: 50, tags: 'tfoG', fitnessRequired: 2 },
+  { id: 30, slug: 'snapir', name: 'לוחם סנפיר', type: 'חיל הים', rank: 32, minProfile: 72, minDapr: 30, tags: 'foG', fitnessRequired: 2 },
+  { id: 58, slug: 'tazpitan-haman', name: 'תצפיתן חמ"ן', type: 'חיל המודיעין', rank: 33, minProfile: 72, minDapr: 50, tags: 'tfgx', fitnessRequired: 4 },
+  { id: 31, slug: 'modal', name: 'מודא"ל (מודיעין אלקטרוני)', type: 'חיל האוויר', rank: 34, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 4 },
+  { id: 32, slug: 'mafil-la', name: 'מפעיל ל"א', type: 'חיל האוויר', rank: 35, minProfile: 72, minDapr: 50, tags: 'TSfGx', fitnessRequired: 4 },
+  { id: 44, slug: 'manhit-saar', name: 'מנחית סער קדמי', type: 'חיל האוויר', rank: 36, minProfile: 82, minDapr: 50, tags: 'fg', fitnessRequired: 4 },
+  { id: 33, slug: 'kamat', name: 'קצין מודיעין טקטי', type: 'חיל המודיעין', note: 'ייעודי לקצונה', rank: 37, minProfile: 72, minDapr: 60, tags: 'cltSfGx', fitnessRequired: 3 },
+  { id: 34, slug: 'kashrag', name: 'קשר"ג', type: 'חיל התקשוב', note: 'ייעודי לקצונה', rank: 38, minProfile: 72, minDapr: 60, tags: 'cltSfg', fitnessRequired: 3 },
+  { id: 35, slug: 'baz', name: 'בז', type: 'חיל השריון', note: 'ייעודי לקצונה שריון', rank: 39, minProfile: 72, minDapr: 60, tags: 'Aclgd', fitnessRequired: 2 },
+  { id: 36, slug: 'meteor', name: 'מטאור', type: 'חיל התותחנים', note: 'ייעודי לקצונה תותחנים', rank: 40, minProfile: 72, minDapr: 60, tags: 'cltfg', fitnessRequired: 2 },
+  { id: 37, slug: 'tzanhanim', name: 'צנחנים', type: 'חיל הרגלים', note: 'חי"ר', rank: 41, minProfile: 82, minDapr: 40, tags: 'Ad', fitnessRequired: 2 },
+  { id: 38, slug: 'golani', name: 'גולני', type: 'חיל הרגלים', note: 'חי"ר', rank: 42, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 3 },
+  { id: 39, slug: 'givati', name: 'גבעתי', type: 'חיל הרגלים', note: 'חי"ר', rank: 43, minProfile: 82, minDapr: 30, tags: 'Ahdn', fitnessRequired: 3 },
+  { id: 40, slug: 'nahal', name: 'נח"ל', type: 'חיל הרגלים', note: 'חי"ר', rank: 44, minProfile: 82, minDapr: 30, tags: 'Adn', fitnessRequired: 3 },
+  { id: 41, slug: 'kfir', name: 'כפיר', type: 'חיל הרגלים', note: 'חי"ר', rank: 45, minProfile: 82, minDapr: 30, tags: 'AHdn', fitnessRequired: 3 },
+  { id: 42, slug: 'hod-yami', name: 'לוחם חוד ימי', type: 'חיל הים', rank: 46, minProfile: 72, minDapr: 30, tags: 'tfog', fitnessRequired: 4 },
+  { id: 43, slug: 'magav', name: 'מג"ב', type: 'משטרת ישראל', rank: 47, minProfile: 82, minDapr: 30, tags: 'afHdn', fitnessRequired: 4 },
+  { id: 45, slug: 'niyud-444', name: 'יחידת הניוד 444', type: 'זרוע היבשה', rank: 48, minProfile: 82, minDapr: 30, tags: 'cgh', fitnessRequired: 3 },
+  { id: 46, slug: 'lohem-la', name: 'לוחם ל"א (לוחמה אלקטרונית)', type: 'חיל התקשוב', rank: 49, minProfile: 72, minDapr: 50, tags: 'tfx', fitnessRequired: 4 },
+  { id: 47, slug: 'handasa-kravit', name: 'הנדסה קרבית', type: 'חיל ההנדסה הקרבית', rank: 50, minProfile: 82, minDapr: 40, tags: 'Atdn', fitnessRequired: 4 },
+  { id: 48, slug: 'shiryon', name: 'שריון', type: 'חיל השריון', rank: 51, minProfile: 72, minDapr: 40, tags: 'Atdn', fitnessRequired: 4 },
+  { id: 52, slug: 'isuf-kravi', name: 'איסוף קרבי', type: 'חיל האיסוף', rank: 52, minProfile: 82, minDapr: 30, tags: 'tfnf', fitnessRequired: 4 },
+  { id: 49, slug: 'tothanim', name: 'תותחנים', type: 'חיל התותחנים', rank: 53, minProfile: 72, minDapr: 40, tags: 'tfnf', fitnessRequired: 4 },
+  { id: 51, slug: 'hagana-avirit', name: 'הגנה אווירית', type: 'חיל האוויר', rank: 54, minProfile: 72, minDapr: 40, tags: 'Tfnf', fitnessRequired: 4 },
+  { id: 53, slug: 'palhatz', name: 'פלח"ץ (חילוץ והצלה)', type: 'פיקוד העורף', rank: 55, minProfile: 72, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
+  { id: 54, slug: 'hir-gvulot', name: 'חי"ר גבולות', type: 'חיל הגנת הגבולות', rank: 56, minProfile: 72, minDapr: 30, tags: 'afhn', fitnessRequired: 4 },
+  { id: 55, slug: 'maavarim', name: 'לוחם מעברים', type: 'חיל המשטרה הצבאית', rank: 57, minProfile: 64, minDapr: 30, tags: 'fhn', fitnessRequired: 4 },
 ];
 
 // מילון נתונים מורחב ליחידות
@@ -171,28 +165,18 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     trainingProcess: [
       {
         title: 'טירונות חי"ר',
-        duration: '4 חודשים',
-        description: 'השלב הפותח. טירונות רובאי 05 (בדרך כלל בבא"ח צנחנים או במתקן אדם, בהתאם למחזור). דגש על משמעת ברזל, קליעה, שדאות וכושר גופני בסיסי.'
+        duration: '5 חודשים',
+        description: 'טירונות 05 בבא"ח צנחנים ואימון מתקדם הכולל השלמה לרובאי 07.'
       },
       {
-        title: 'טירונות יחידה ואימון מתקדם',
-        duration: '2.5 חודשים',
-        description: 'הלוחמים עולים ליחידה ומתחילים את ההכשרה הייחודית. שלב זה כולל השלמה לרובאי 07, תחילת העבודה על דינמיקה צוותית, ואימוני חי"ר מתקדמים כבסיס להמשך.'
+        title: 'טירונות יחידה',
+        duration: '3 חודשים',
+        description: 'עלייה לבסיס האם וטירונות יחידה.'
       },
       {
-        title: 'שלב הניווטים',
-        duration: '4 עד 5 חודשים',
-        description: '"הלב" של המסלול. בניגוד ליחידות אחרות, כאן הדגש הוא עצום על ניווטי בדד (יחידים) למרחקים ארוכים, בכל תנאי מזג אוויר ושטח. שלב זה בונה את הביטחון העצמי, העצמאות והחוסן המנטלי של הלוחם. בהמשך מתבצעים גם ניווטים רכובים על גבי פלטפורמות שונות.'
-      },
-      {
-        title: 'שלב ההתמחויות והקורסים',
-        duration: '3 עד 4 חודשים',
-        description: 'שלב מגוון מאוד שכולל רצף של קורסים מקצועיים: קורס צניחה, קורס לוט"ר (לוחמה בטרור - הכשרה כצוות השתלטות, לוחמה בשטח בנוי ופריצה), יסודות המודיעין והסיור, סדרת שבי וכישורי הישרדות, העמקה מקצועית: אימוני צליפה, לוחמת גרילה, קרב מגע וקורסי שחייה וצלילה בסיסיים.'
-      },
-      {
-        title: 'ההכשרה הייעודית בצוות',
-        duration: '4.5 חודשים',
-        description: 'החלק המסכם והמסווג ביותר במסלול. התוכן בשלב זה ייעודי לכל צוות לפי המשימות האופרטיביות שלו ואסור בפרסום (ממודר בין הצוותים). כאן הצוות מתגבש לכוח מבצעי לוחם שמסוגל לבצע משימות קצה.'
+        title: 'המשך מסלול',
+        duration: '8 חודשים',
+        description: 'עלייה לבסיס האם, קורס צניחה, קורס שחייה וצלילה, ניווטים, קורס לוט"ר, מודיעין וסיור, כישורי הישרדות, סדרת שבי, קליעה וצליפה, לוחמה בכל תנאי שטח ומזג אוויר, לוחמת גרילה, לוחמת קומנדו, אמנויות לחימה, ויציאה לקורס קצינים המכשירה לרובאי 012.'
       }
     ]
   },
@@ -227,19 +211,19 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     ],
     trainingProcess: [
       {
-        title: 'טירונות חי"ר ואימון מתקדם',
+        title: 'טירונות חי"ר',
         duration: '5 חודשים',
-        description: 'הכשרת רובאי 05 ו-07 בבא"ח גולני. דגש על משמעת ברזל, קליעה וכושר גופני.'
+        description: 'טירונות 05 בבא"ח גולני ואימון מתקדם הכולל השלמה לרובאי 07.'
       },
       {
-        title: 'המכין (טירונות יחידה)',
-        duration: 'כ-6 חודשים',
-        description: 'שלב הכולל קורס צניחה, צלילה קרבית, ניווטים, לוחמה בטרור בים וביבשה, ושיט.'
+        title: 'השלב המכין',
+        duration: '3 חודשים',
+        description: 'עלייה לבסיס האם וטירונות יחידה הנקראת השלב המכין. בשלב זה מתבצעים רוב הניפויים.'
       },
       {
-        title: 'שלב ייעודי',
-        duration: 'כ-9 חודשים',
-        description: 'חלוקה למקצועות: משיט (הפעלת כלי שיט), צולל (צלילה מבצעית) ופושט (לחימה רגלית מהים). כולל סדרת שבי.'
+        title: 'השלב הייעודי',
+        duration: '10 חודשים',
+        description: 'כל צוות לוחמים מתמקצע בתחום ייחודי. ההכשרות כוללות תקיפה על ידי סירות, קורס לוחמה בטרור, קורס צניחה, צלילה קרבית, קורס מפקדי ים ועוד.'
       }
     ]
   },
@@ -295,19 +279,19 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     ],
     trainingProcess: [
       {
-        title: 'טירונות ואימון יסוד',
-        duration: 'כחצי שנה',
-        description: 'טירונות משותפת בביסל"ח 314 עם יחידת שלדג ויחידת ההנחתה הקדמית (רובאי 05), ולאחריה השלמה לרובאי 07 בטירונות היחידה.'
+        title: 'טירונות חי"ר',
+        duration: '5 חודשים',
+        description: 'טירונות 05 בבא"ח נח"ל / ביסל"ח 314, אימון מתקדם והשלמה לרובאי 07.'
       },
       {
-        title: 'הכשרות מקצועיות',
-        duration: 'מספר חודשים',
-        description: 'קורס חובשים קרביים, קורס מ"כים (הסמכה לרובאי 08) וקורס לוט"ר (לוחמה בטרור).'
+        title: 'קורסים מקצועיים',
+        duration: '4 חודשים',
+        description: 'קורס חובשים קרביים, קורס לוט"ר, ויציאה לקורס מ"כים (רובאי 08).'
       },
       {
-        title: 'השלב ייעודי',
-        duration: 'כ-8 חודשים',
-        description: 'קורסי צניחה, צלילה, הישרדות, טג"ח (טיפוס, גלישה וחילוץ), אימוני מסוקים ואימוני חילוץ מכל תנאי שטח (יבשה, ים, קניון, צוקים) ומתוך כלי רכב וכלי טיס.'
+        title: 'השלב הייעודי',
+        duration: '9 חודשים',
+        description: 'שלב ייעודי הכולל אימוני מסוקים, צניחה, צלילה, אימוני מילוט וחילוץ ועוד.'
       }
     ]
   },
@@ -804,7 +788,7 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     ]
   },
   14: {
-    description: `יחידת המסתערבים (ימ"ס) היא יחידת עילית של מסתערבים ללוחמה בטרור הפועל תחת משמר הגבול (מג"ב) וייעודה הבסיסי הוא להיטמע באוכלוסייה ערבית עוינת לצורכי איסוף מודיעין, טיפול בהפרות סדר והפגנות, ביצוע חיסולים, חטיפות ומעצרים קשים בלב אוכלוסייה ערבית עויינת. הפעילות מתבצעת כאשר לוחמי היחידה מחופשים לערבים. הלוחמים לומדים היטב את פני השטח של האזורים בהם פועלים, להכיר את מנהיגי הכפרים, ולהכיר את יחסי הכוחות בין החמולות והמנהיגים כדי להגיע קרוב ליעדים מבלי לעורר חשד. לזכותם של הלוחמים נזקפים מאות מעצרים מוצלחים של מחבלים, ופעילות מבצעית אינטנסיבית רבה.`,
+    description: `יחידת המסתערבים (ימ"ס) היא יחידת עילית של מסתערבים ללוחמה בטרור הפועלת תחת משמר הגבול (מג"ב) וייעודה הבסיסי הוא להיטמע באוכלוסייה ערבית עוינת לצורכי איסוף מודיעין, טיפול בהפרות סדר והפגנות, ביצוע חיסולים, חטיפות ומעצרים קשים בלב אוכלוסייה ערבית עויינת. הפעילות מתבצעת כאשר לוחמי היחידה מחופשים לערבים. הלוחמים לומדים היטב את פני השטח של האזורים בהם פועלים, להכיר את מנהיגי הכפרים, ולהכיר את יחסי הכוחות בין החמולות והמנהיגים כדי להגיע קרוב ליעדים מבלי לעורר חשד. לזכותם של הלוחמים נזקפים מאות מעצרים מוצלחים של מחבלים, ופעילות מבצעית אינטנסיבית רבה.`,
     shortDescription: 'יחידת המסתערבים המיוחדת של משמר הגבול.',
     importantNote: 'ניתן לגשת לגיבוש ימ"ס 3 פעמים במהלך השירות במג"ב. מי שנופל מקורס ימ"ס יכול להיכנס לקורס חוזר עד 3 פעמים.',
     stats: {
@@ -826,7 +810,7 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
         name: 'דרך שבוע ראיונות (נופלי גיבוש)',
         steps: [
           'מעבר יום סיירות בתוצאת גיבוש',
-          'סיום גיבוש (מטכ"ל/שייטת/חובלים) ללא מעבר',
+          'סיום גיבוש מרכזי (ללא מעבר)',
           'קבלה לימ"ס דרך שבוע ראיונות',
           'סיווג בטחוני ובדיקות'
         ]
@@ -844,18 +828,19 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     ],
     trainingProcess: [
       {
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'טירונות 05 בבה"ד מג"ב.'
+      },
+      {
         title: 'קורס ימ"ס',
-        duration: '3.5 חודשים',
-        description: 'קורס אינטנסיבי הכולל קורס לוט"ר, עשרות אימוני קרב מגע, שבועות ירי בנשק ארוך ואקדח, שבועות שטח בנוי ושבועות ייעודיים.'
+        duration: '3 חודשים',
+        description: 'קורס הכולל מגוון הכשרות שונות כגון: לוחמה בטרור, שליטה והפעלת כלי נשק שונים, קרב מגע, לוחמה פנים אל פנים, לוחמה בשטח בנוי, יחד עם ההכשרה ייעודית הכוללת הסוואה, הסתערבות, לוחמה זעירה, והשלמה לרובאי 07. ניתן ליפול ולבצע את הקורס מחדש עד 3 פעמים.'
       },
       {
-        title: 'קורס מ"כים מזורז (אופציונלי)',
-        duration: 'חודש וחצי',
-        description: 'אפשרות לצאת לקורס פיקודי המעלה את הלוחם לרובאי 08.'
-      },
-      {
-        title: 'השלמת יחידה',
-        description: 'הכשרה ספציפית לפי האזור (גזרה) שהלוחם יגיע אליו בסוף הקורס (איו"ש, ירושלים או דרום).'
+        title: 'השלמה מבצעית',
+        duration: '1-3 חודשים',
+        description: 'השלמה מבצעית שמשתנה לפי הגזרה אליה הלוחם שובץ. יו"ש - 3 חודשים, ירושלים - 2 חודשים, דרום - חודש 1.'
       }
     ]
   },
@@ -904,6 +889,14 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
         ]
       },
       {
+        name: 'דרך יום סיירות (לבנות בלבד)',
+        steps: [
+          'סיום יום סיירות',
+          'מעבר מיון יהל"ם',
+          'סיווג בטחוני ובדיקות'
+        ]
+      },
+      {
         name: 'דרך עוקץ (לבנות בלבד)',
         steps: [
           'שיבוץ וגיוס לחי"ר גבולות',
@@ -914,17 +907,19 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
     ],
     trainingProcess: [
       {
-        title: 'טירונות ואימון מתקדם',
-        duration: '12 חודשים',
-        description: '4 חודשים טירונות 05, חודש טירונות יחידה, 7 חודשים של אימון מתקדם והשלמה ל-07.'
+        title: 'טירונות',
+        duration: '4 חודשים',
+        description: 'טירונות 05 בבסיס הנדסה בבהל"צ.'
       },
       {
-        title: 'שלב ההכשרה הייעודית',
-        description: 'קורס לוט"ר, קורס צניחה, קורס מ"כים (רובאי 08), טיפוס, גלישה והתמקצעות בחבלה.'
+        title: 'טירונות יחידה',
+        duration: 'חודש',
+        description: 'עלייה לבסיס האם וטירונות יחידה.'
       },
       {
-        title: 'פיצול למגמות',
-        description: 'התפצלות להכשרות ייעודיות לפי הפלגות השונות (סילוק פצצות, סמור, מדרון וכו\'). כל יחידה עוברת מסלול נפרד הכולל הכשרה ספציפית.'
+        title: 'הכשרה מתקדמת',
+        duration: '11 חודשים',
+        description: 'הכשרה ביחידה הכוללת: אימון חי"ר בסיסי ומתקדם עם השלמה לרובאי 07, קליעה, הישרדות, ניווט, קרב מגע, קורס לוט"ר, קורס צניחה, קורס מכי"ם הכולל העלאה לרובאי 08, שלבים מסכמים וקורסים ייעודיים לצוותים בתחום ההנדסה.'
       }
     ]
   },
@@ -1259,7 +1254,7 @@ export const ROLE_EXTENDED_DATA: Record<number, RoleExtendedDetails> = {
         name: 'דרך שבוע ראיונות (נופלי גיבוש)',
         steps: [
           'מעבר יום סיירות',
-          'סיום גיבוש (מטכ"ל/שייטת/חובלים/צוללות) בתוצאת לא עבר',
+          'סיום גיבוש מרכזי (ללא מעבר)',
           'ראיון עוקץ (שבוע ראיונות)',
           'סיווג בטחוני ובדיקות'
         ]
