@@ -1422,7 +1422,7 @@ const App: React.FC = () => {
                 <button onClick={() => setView('all-roles')} className="bg-white dark:bg-slate-900 border border-stone-300 dark:border-slate-700 hover:border-stone-400 dark:hover:border-slate-500 text-stone-700 dark:text-slate-300 font-bold py-5 px-12 rounded-2xl transition-all shadow-sm">סקירת כלל היחידות</button>
             </div>
             <div className="mt-24 flex justify-center">
-                <span className="text-[10px] font-mono text-stone-500 dark:text-slate-600 font-bold tracking-widest uppercase opacity-70">גרסה 2.0</span>
+                <span className="text-[10px] font-mono text-stone-500 dark:text-slate-600 font-bold tracking-widest uppercase opacity-70">'גרסה 2.1'</span>
             </div>
           </div>
       );
